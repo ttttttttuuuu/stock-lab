@@ -14,6 +14,8 @@ const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 export const DATA_SOURCE = SB_URL && SB_KEY ? "supabase" : "local";
 // true on static hosting (Cloudflare Pages): no server, no /api/* routes
 export const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_EXPORT === "1";
+// subpath prefix when hosted under a project path (GitHub Pages /stock-lab)
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const TTL_MS = 5 * 60 * 1000;
 const SWR_WINDOW_MS = 24 * 3600 * 1000;
@@ -205,7 +207,7 @@ export function loadTrades() {
   return cached("trades", () =>
     DATA_SOURCE === "supabase"
       ? sbTable("trades", "order=entry_date.asc")
-      : fetch("/data/trades.json").then((r) => r.json()));
+      : fetch(`${BASE}/data/trades.json`).then((r) => r.json()));
 }
 
 export function loadOverview() {
@@ -222,7 +224,7 @@ export function loadOverview() {
         trades, positionsRaw.map((p) => maybeParse(p.data)), snapshots);
       return ov;
     }
-    return (await fetch("/data/overview.json")).json();
+    return (await fetch(`${BASE}/data/overview.json`)).json();
   }, { persist: true });
 }
 
@@ -250,7 +252,7 @@ export function loadSignalsData() {
         paper_trades: trades,
       };
     }
-    return (await fetch("/data/signals.json")).json();
+    return (await fetch(`${BASE}/data/signals.json`)).json();
   }, { persist: true });
 }
 
@@ -285,7 +287,7 @@ export function loadStockLab() {
         }
       } catch { /* tables not created yet — fall back to local export */ }
     }
-    return (await fetch("/data/stock_lab.json")).json();
+    return (await fetch(`${BASE}/data/stock_lab.json`)).json();
   }, { persist: true });
 }
 
@@ -297,7 +299,7 @@ export function loadStockPairTrades(strategy, symbol) {
           `strategy=eq.${strategy}&symbol=eq.${symbol}&order=entry_date.asc`);
       } catch { /* fall back to local export */ }
     }
-    const r = await fetch(`/data/stock_trades/${strategy}__${symbol}.json`);
+    const r = await fetch(`${BASE}/data/stock_trades/${strategy}__${symbol}.json`);
     return r.ok ? r.json() : [];
   });
 }
@@ -309,7 +311,7 @@ export function loadPrices(symbol) {
         return await sbTable("prices", `symbol=eq.${symbol}&order=date.asc`);
       } catch { /* fall back to local export */ }
     }
-    const r = await fetch(`/data/prices/${symbol}.json`);
+    const r = await fetch(`${BASE}/data/prices/${symbol}.json`);
     return r.ok ? r.json() : [];
   });
 }
@@ -318,7 +320,7 @@ export function loadPrices(symbol) {
 // written by engine.capital_sim, same-origin in both data modes
 export function loadCapitalSim() {
   return cached("capsim", async () => {
-    const r = await fetch("/data/capital_sim.json");
+    const r = await fetch(`${BASE}/data/capital_sim.json`);
     return r.ok ? r.json() : null;
   });
 }
@@ -327,7 +329,7 @@ export function loadCapitalSim() {
 // written by engine.intraday_paper, same-origin in both data modes
 export function loadStockPaper1h() {
   return cached("stockpaper1h", async () => {
-    const r = await fetch("/data/stock_paper_1h.json");
+    const r = await fetch(`${BASE}/data/stock_paper_1h.json`);
     return r.ok ? r.json() : null;
   });
 }
@@ -336,7 +338,7 @@ export function loadStockPaper1h() {
 // served same-origin in both Supabase and local mode; written by export_web
 export function loadProductionParams() {
   return cached("prodparams", async () => {
-    const r = await fetch("/data/production_params.json");
+    const r = await fetch(`${BASE}/data/production_params.json`);
     return r.ok ? r.json() : { watchlist: [] };
   });
 }
@@ -356,7 +358,7 @@ export function loadStockPaper() {
         };
       } catch { /* tables not created yet — fall back to local export */ }
     }
-    const r = await fetch("/data/stock_paper.json");
+    const r = await fetch(`${BASE}/data/stock_paper.json`);
     return r.ok ? r.json() : { positions: [], closed_trades: [] };
   }, { persist: true });
 }
@@ -438,7 +440,7 @@ export function loadParamOpt() {
         }
       } catch { /* table not created yet — fall back to local export */ }
     }
-    return (await fetch("/data/param_opt.json")).json();
+    return (await fetch(`${BASE}/data/param_opt.json`)).json();
   }, { persist: true });
 }
 
@@ -500,6 +502,6 @@ export function loadExitOpt() {
         }
       } catch { /* table not created yet — fall back to local export */ }
     }
-    return (await fetch("/data/exit_opt.json")).json();
+    return (await fetch(`${BASE}/data/exit_opt.json`)).json();
   }, { persist: true });
 }
