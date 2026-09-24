@@ -1,11 +1,8 @@
 name: github-pages
 
+# manual only — GitHub Pages publishing is silently restricted on this
+# account (builds succeed but the site never goes live); kept for future use
 on:
-  push:
-    branches: [main]
-    paths:
-      - "web/**"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
