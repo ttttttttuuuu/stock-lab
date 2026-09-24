@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowUpDown, FlaskConical, RotateCw, Trophy, Search } from "lucide-react";
-import { loadStockLab, loadStockPaper, loadProductionParams, invalidatePrefix } from "../../lib/data";
+import { loadStockLab, loadStockPaper, loadProductionParams, invalidatePrefix, IS_STATIC } from "../../lib/data";
 import { INTERVAL_LABEL } from "../../lib/stratLabels";
 import Skeleton from "../../components/Skeleton";
 
@@ -106,7 +106,7 @@ export default function StockLab() {
   // visitor triggers the engine (fetch prices -> backtest -> sync DB) and
   // polls until done; everyone else just reads the DB.
   useEffect(() => {
-    if (!data) return undefined;
+    if (!data || IS_STATIC) return undefined;
     const runAt = data.run_at ? new Date(data.run_at) : null;
     const now = new Date();
     const fresh = runAt
@@ -185,9 +185,11 @@ export default function StockLab() {
         <Link href="/lab/optimize" className="btn">
           <FlaskConical size={13} aria-hidden="true" /> 参数寻优：网格搜索最优参数
         </Link>
-        <button className="btn" onClick={startEvolve} disabled={evolveRunning}>
-          <RotateCw size={13} aria-hidden="true" /> 进化更新
-        </button>
+        {!IS_STATIC && (
+          <button className="btn" onClick={startEvolve} disabled={evolveRunning}>
+            <RotateCw size={13} aria-hidden="true" /> 进化更新
+          </button>
+        )}
       </p>
 
       {refreshing && (
@@ -243,7 +245,7 @@ export default function StockLab() {
         <p className="hint">按总盈亏排序 · 点击查看完整交易明细与 K 线标注</p>
         <div className="pair-grid">
           {top10.map((p, i) => (
-            <Link key={`${p.strategy}-${p.symbol}`} href={`/lab/${p.strategy}/${p.symbol}`}
+            <Link key={`${p.strategy}-${p.symbol}`} href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`}
                   className="pair-card" aria-label={`第${i + 1}名 ${p.symbol} ${STRAT_LABELS[p.strategy] || p.strategy}`}>
               <span className={`rank-badge ${i < 3 ? "top" : ""}`}>{i + 1}</span>
               <div className="pair-head">
@@ -295,7 +297,7 @@ export default function StockLab() {
                     <tr key={key}>
                       <td className="muted">{i + 1}</td>
                       <td>
-                        <Link href={`/lab/${p.strategy}/${p.symbol}`} className="sym-link">
+                        <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
                           <strong>{p.symbol}</strong>
                         </Link>{" "}
                         <span className="badge backtest">{STRAT_LABELS[p.strategy] || p.strategy}</span>
@@ -375,7 +377,7 @@ export default function StockLab() {
                 <tr key={`${p.strategy}-${p.symbol}`}>
                   <td className="muted">{i + 1}</td>
                   <td>
-                    <Link href={`/lab/${p.strategy}/${p.symbol}`} className="sym-link">
+                    <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
                       <strong>{p.symbol}</strong>
                     </Link>
                   </td>

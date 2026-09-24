@@ -7,9 +7,13 @@
 // stale-while-revalidate for small payloads (overview/signals). TTL 5 min.
 // The 7.5MB trades payload is memory-cached only (localStorage quota).
 
-const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
+  || "https://hmdiyqqvdwtqbbhwsgjr.supabase.co";
+const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  || "sb_publishable_cNJ6-lUSzM88MigBIoDpiQ_TEqtEccp";
 export const DATA_SOURCE = SB_URL && SB_KEY ? "supabase" : "local";
+// true on static hosting (Cloudflare Pages): no server, no /api/* routes
+export const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_EXPORT === "1";
 
 const TTL_MS = 5 * 60 * 1000;
 const SWR_WINDOW_MS = 24 * 3600 * 1000;

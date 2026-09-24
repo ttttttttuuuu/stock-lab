@@ -162,7 +162,7 @@ export default function CapitalSim() {
                 <tr key={`${p.symbol}-${p.strategy}`}>
                   <td className="muted">{i + 1}</td>
                   <td>
-                    <Link href={`/lab/${p.strategy}/${p.symbol}`} className="sym-link">
+                    <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
                       <strong>{p.symbol}</strong>
                     </Link>{" "}
                     <span className="badge backtest">{STRAT_LABELS[p.strategy] || p.strategy}</span>{" "}
@@ -217,7 +217,7 @@ export default function CapitalSim() {
                       <tr key={key}>
                         <td className="muted">{i + 1}</td>
                         <td>
-                          <Link href={`/lab/${p.strategy}/${p.symbol}`} className="sym-link">
+                          <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
                             <strong>{p.symbol}</strong>
                           </Link>{" "}
                           <span className="badge backtest">{STRAT_LABELS[p.strategy] || p.strategy}</span>{" "}

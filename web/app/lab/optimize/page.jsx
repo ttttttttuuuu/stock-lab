@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowUpDown, FlaskConical, RotateCw, Search } from "lucide-react";
-import { loadParamOpt, loadExitOpt, invalidatePrefix } from "../../../lib/data";
+import { loadParamOpt, loadExitOpt, invalidatePrefix, IS_STATIC } from "../../../lib/data";
 import Skeleton from "../../../components/Skeleton";
 
 const STRAT_LABELS = {
@@ -193,11 +193,13 @@ export default function ParamOptimize() {
             {data.run_at ? new Date(data.run_at).toLocaleString("zh-CN", { hour12: false }) : "—"}
           </strong>
         </div>
-        <div className="stat-item" style={{ justifyContent: "center" }}>
-          <button className="btn primary" onClick={startRun} disabled={running}>
-            <RotateCw size={13} aria-hidden="true" /> 进化更新
-          </button>
-        </div>
+        {!IS_STATIC && (
+          <div className="stat-item" style={{ justifyContent: "center" }}>
+            <button className="btn primary" onClick={startRun} disabled={running}>
+              <RotateCw size={13} aria-hidden="true" /> 进化更新
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="panel">
@@ -342,7 +344,7 @@ export default function ParamOptimize() {
                 <tr key={`${p.strategy}-${p.symbol}`}>
                   <td className="muted">{i + 1}</td>
                   <td>
-                    <Link href={`/lab/${p.strategy}/${p.symbol}`} className="sym-link">
+                    <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
                       <strong>{p.symbol}</strong>
                     </Link>
                   </td>

@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { use, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine,
 } from "recharts";
-import { loadPrices, loadStockPairTrades } from "../../../../lib/data";
-import { STRAT_LABELS, INTERVAL_LABEL } from "../../../../lib/stratLabels";
-import Skeleton from "../../../../components/Skeleton";
-import StockChart from "../../../../components/StockChart";
+import { loadPrices, loadStockPairTrades } from "../../../lib/data";
+import { STRAT_LABELS, INTERVAL_LABEL } from "../../../lib/stratLabels";
+import Skeleton from "../../../components/Skeleton";
+import StockChart from "../../../components/StockChart";
 
 const fmt = (n, d = 2) =>
   n == null ? "—" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d });
@@ -22,13 +23,16 @@ const EXIT_LABELS = {
   time_stop: "时间止损",
 };
 
-export default function PairDetail({ params }) {
-  const { strategy, symbol } = use(params);
+function PairDetail() {
+  const sp = useSearchParams();
+  const strategy = sp.get("strategy") || "";
+  const symbol = sp.get("symbol") || "";
   const [trades, setTrades] = useState(null);
   const [candles, setCandles] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!strategy || !symbol) return;
     Promise.all([loadStockPairTrades(strategy, symbol), loadPrices(symbol)])
       .then(([t, c]) => { setTrades(t); setCandles(c); })
       .catch((e) => setError(String(e)));
@@ -81,6 +85,8 @@ export default function PairDetail({ params }) {
     };
   }, [trades]);
 
+  if (!strategy || !symbol)
+    return <div className="panel"><h2>缺少参数</h2><p className="muted">请从实验室页面进入配对详情。</p></div>;
   if (error)
     return <div className="panel"><h2>数据加载失败</h2><p className="muted">{error}</p></div>;
   if (!trades || !candles) return <Skeleton variant="chart" />;
@@ -261,5 +267,13 @@ export default function PairDetail({ params }) {
         </div>
       </div>
     </>
+  );
+}
+
+export default function PairPage() {
+  return (
+    <Suspense fallback={<Skeleton variant="chart" />}>
+      <PairDetail />
+    </Suspense>
   );
 }

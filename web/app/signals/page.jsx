@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useState } from "react";
-import { loadSignalsData, invalidatePrefix } from "../../lib/data";
+import { loadSignalsData, invalidatePrefix, IS_STATIC } from "../../lib/data";
 import Skeleton from "../../components/Skeleton";
 
 const STRAT_LABELS = {
@@ -39,7 +39,7 @@ export default function Signals() {
   // visitor triggers the daily engine (prices -> signals -> paper trades
   // -> sync) and polls until done; everyone else just reads the DB.
   useEffect(() => {
-    if (!data) return undefined;
+    if (!data || IS_STATIC) return undefined;
     const latest = data.signals?.[0]?.created_at
       ? new Date(data.signals[0].created_at) : null;
     const now = new Date();
