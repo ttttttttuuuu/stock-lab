@@ -1,0 +1,1 @@
+[{"symbol": "AXP", "strategy": "ensemble_weighted", "side": "short", "entry_date": "2025-10-17", "entry_price": 346.62, "shares": 0.2885, "exit_date": "2025-10-20", "exit_price": 349.48, "exit_reason": "signal_off", "pnl": -0.83, "pnl_pct": -0.83, "hold_days": 1}]

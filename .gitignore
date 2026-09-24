@@ -1,0 +1,25 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node / next
+node_modules/
+.next/
+out/
+
+# data: caches & logs are regenerable; keep trader.db + state JSONs in git
+# (GitHub Actions runners are ephemeral — state must round-trip via the repo)
+data/cache/
+data/*.log
+data/*.lock
+logs/
+
+# os
+.DS_Store
+
+# icloud conflict copies
+data/* 2.*

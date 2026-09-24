@@ -1,0 +1,18 @@
+{
+  "name": "weekly-options-trader",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "lightweight-charts": "^5.2.1",
+    "lucide-react": "^1.47.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.0"
+  }
+}
