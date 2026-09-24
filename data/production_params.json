@@ -1,0 +1,78 @@
+{
+  "updated_at": "2026-09-22T10:23:23.688828+00:00",
+  "note": "watchlist re-optimization",
+  "strategy_params": {
+    "sma_cross": {
+      "fast": 5,
+      "slow": 30
+    },
+    "rsi_reversion": {
+      "period": 7,
+      "oversold": 35,
+      "overbought": 65
+    },
+    "macd_trend": {
+      "fast": 19,
+      "slow": 39,
+      "signal": 9
+    },
+    "bb_breakout": {
+      "n": 10,
+      "k": 2.0
+    },
+    "supertrend": {
+      "period": 20,
+      "mult": 3.0
+    },
+    "ut_bot": {
+      "mult": 3.0,
+      "atr_period": 14
+    },
+    "ttm_squeeze": {
+      "n": 15,
+      "mult_kc": 2.0
+    },
+    "wavetrend": {
+      "ch_len": 14,
+      "avg_len": 21
+    }
+  },
+  "strategy_exits": {
+    "ut_bot": [
+      0.15,
+      -0.07
+    ],
+    "ttm_squeeze": [
+      0.1,
+      -0.05
+    ],
+    "supertrend": [
+      0.08,
+      -0.04
+    ],
+    "bb_breakout": [
+      0.08,
+      -0.04
+    ],
+    "macd_trend": [
+      0.06,
+      -0.03
+    ],
+    "rsi_reversion": [
+      0.05,
+      -0.05
+    ],
+    "sma_cross": [
+      0.08,
+      -0.04
+    ],
+    "wavetrend": [
+      0.1,
+      -0.05
+    ]
+  },
+  "watchlist": [
+    "rsi_reversion",
+    "wavetrend"
+  ]
+}

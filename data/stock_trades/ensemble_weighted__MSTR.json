@@ -1,0 +1,1 @@
+[{"symbol": "MSTR", "strategy": "ensemble_weighted", "side": "long", "entry_date": "2026-08-19", "entry_price": 104.25, "shares": 0.959233, "exit_date": "2026-08-20", "exit_price": 112.39, "exit_reason": "signal_off", "pnl": 7.81, "pnl_pct": 7.81, "hold_days": 1}]
