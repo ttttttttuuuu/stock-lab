@@ -108,6 +108,48 @@ def sig_wavetrend_p(df: pd.DataFrame, ch_len: int = 14,
     return pd.Series(out, index=df.index)
 
 
+def sig_natural_trade_p(df: pd.DataFrame, anchor: int = 40,
+                        vol_mult: float = 1.5, trend_ma: int = 30) -> pd.Series:
+    """自然交易理论（量化版）：fib 引力区回撤 + 量能确认 + 趋势过滤。
+
+    Defaults reproduce the production strategy exactly.
+    """
+    high_n = df["high"].rolling(anchor).max().to_numpy()
+    low_n = df["low"].rolling(anchor).min().to_numpy()
+    trend = df["close"].rolling(trend_ma).mean().to_numpy()
+    vol_ma = df["volume"].rolling(20).mean().to_numpy()
+    c = df["close"].to_numpy()
+    o = df["open"].to_numpy()
+    lo = df["low"].to_numpy()
+    hi = df["high"].to_numpy()
+    vol = df["volume"].to_numpy()
+
+    out = np.zeros(len(df), dtype=int)
+    state = 0
+    for i in range(len(df)):
+        rng = high_n[i] - low_n[i]
+        if not (np.isfinite(rng) and np.isfinite(trend[i])
+                and np.isfinite(vol_ma[i]) and rng > 0):
+            out[i] = state
+            continue
+        gz_lo, gz_hi = high_n[i] - 0.618 * rng, high_n[i] - 0.382 * rng
+        sz_lo, sz_hi = low_n[i] + 0.382 * rng, low_n[i] + 0.618 * rng
+        vol_ok = vol[i] >= vol_ma[i] * vol_mult
+        if state == 1 and c[i] < gz_lo:
+            state = 0
+        elif state == -1 and c[i] > sz_hi:
+            state = 0
+        if state == 0 and vol_ok:
+            if (c[i] > trend[i] and lo[i] <= gz_hi
+                    and gz_lo <= c[i] <= gz_hi and c[i] > o[i]):
+                state = 1
+            elif (c[i] < trend[i] and hi[i] >= sz_lo
+                    and sz_lo <= c[i] <= sz_hi and c[i] < o[i]):
+                state = -1
+        out[i] = state
+    return pd.Series(out, index=df.index)
+
+
 PARAM_SIGNALS = {
     "sma_cross": sig_sma_cross_p,
     "rsi_reversion": sig_rsi_p,
@@ -117,6 +159,7 @@ PARAM_SIGNALS = {
     "ut_bot": sig_ut_bot_p,
     "ttm_squeeze": sig_ttm_p,
     "wavetrend": sig_wavetrend_p,
+    "natural_trade": sig_natural_trade_p,
 }
 
 # default combo = current production parameters (baseline row in the grid),
@@ -185,6 +228,20 @@ PARAM_GRIDS = {
         {"ch_len": 10, "avg_len": 21}, {"ch_len": 10, "avg_len": 28},
         {"ch_len": 14, "avg_len": 14}, {"ch_len": 14, "avg_len": 21},
         {"ch_len": 14, "avg_len": 28},
+    ],
+    "natural_trade": [
+        {"anchor": 30, "vol_mult": 1.2, "trend_ma": 20},
+        {"anchor": 30, "vol_mult": 1.2, "trend_ma": 30},
+        {"anchor": 30, "vol_mult": 1.5, "trend_ma": 20},
+        {"anchor": 30, "vol_mult": 1.5, "trend_ma": 30},
+        {"anchor": 40, "vol_mult": 1.2, "trend_ma": 20},
+        {"anchor": 40, "vol_mult": 1.2, "trend_ma": 30},
+        {"anchor": 40, "vol_mult": 1.5, "trend_ma": 20},
+        {"anchor": 40, "vol_mult": 1.5, "trend_ma": 30},
+        {"anchor": 60, "vol_mult": 1.2, "trend_ma": 20},
+        {"anchor": 60, "vol_mult": 1.2, "trend_ma": 30},
+        {"anchor": 60, "vol_mult": 1.5, "trend_ma": 20},
+        {"anchor": 60, "vol_mult": 1.5, "trend_ma": 30},
     ],
 }
 
