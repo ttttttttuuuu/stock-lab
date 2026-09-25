@@ -1,0 +1,94 @@
+{
+  "snapshot_date": "2026-09-25",
+  "reason": "dual-window re-selection baseline (old full-window Top10)",
+  "pairs": [
+    {
+      "symbol": "SMCI",
+      "strategy": "macd_trend",
+      "backtest_pnl": 319.12
+    },
+    {
+      "symbol": "SMCI",
+      "strategy": "ensemble",
+      "backtest_pnl": 238.87
+    },
+    {
+      "symbol": "ARM",
+      "strategy": "macd_trend",
+      "backtest_pnl": 191.25
+    },
+    {
+      "symbol": "MU",
+      "strategy": "macd_trend",
+      "backtest_pnl": 188.81
+    },
+    {
+      "symbol": "COIN",
+      "strategy": "macd_trend",
+      "backtest_pnl": 179.31
+    },
+    {
+      "symbol": "SMCI",
+      "strategy": "sma_cross",
+      "backtest_pnl": 176.59
+    },
+    {
+      "symbol": "ARM",
+      "strategy": "supertrend",
+      "backtest_pnl": 162.27
+    },
+    {
+      "symbol": "ARM",
+      "strategy": "ensemble",
+      "backtest_pnl": 159.63
+    },
+    {
+      "symbol": "ARM",
+      "strategy": "ut_bot",
+      "backtest_pnl": 153.53
+    },
+    {
+      "symbol": "ORCL",
+      "strategy": "ut_bot",
+      "backtest_pnl": 140.07
+    }
+  ],
+  "open_positions": [
+    {
+      "key": "ARM|supertrend",
+      "side": "long",
+      "entry_ts": "2026-09-21 15:00:00-04:00",
+      "entry_price": 323.1
+    },
+    {
+      "key": "ARM|ut_bot",
+      "side": "long",
+      "entry_ts": "2026-09-21 15:00:00-04:00",
+      "entry_price": 323.1
+    },
+    {
+      "key": "SMCI|sma_cross",
+      "side": "long",
+      "entry_ts": "2026-09-21 15:00:00-04:00",
+      "entry_price": 41.185
+    },
+    {
+      "key": "ARM|macd_trend",
+      "side": "short",
+      "entry_ts": "2026-09-23 14:00:00-04:00",
+      "entry_price": 333.865
+    },
+    {
+      "key": "COIN|macd_trend",
+      "side": "short",
+      "entry_ts": "2026-09-23 11:00:00-04:00",
+      "entry_price": 199.375
+    },
+    {
+      "key": "MU|macd_trend",
+      "side": "short",
+      "entry_ts": "2026-09-23 15:00:00-04:00",
+      "entry_price": 1071.43
+    }
+  ]
+}
