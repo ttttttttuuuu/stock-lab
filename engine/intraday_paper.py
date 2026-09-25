@@ -28,7 +28,8 @@ from .stock_backtest import TRADE_BUDGET, exits_for
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE_FILE = ROOT / "data" / "stock_paper_1h_positions.json"
-MIN_BACKTEST_TRADES = 10
+MIN_VAL_TRADES = 8
+VAL_WINDOW_DAYS = 90  # recent regime window for pair ranking
 
 
 def load_state() -> dict:
@@ -59,20 +60,43 @@ def ensure_tables(conn):
 
 
 def top_pairs(frames: dict, sigs: dict, tf: str, top_n: int) -> list[dict]:
-    """Top N pairs by full-window PnL on this timeframe's cached bars."""
+    """Dual-window selection (regime-aware):
+    - train window: everything older than VAL_WINDOW_DAYS — must be
+      profitable (long-term viability filter)
+    - validation window: the last VAL_WINDOW_DAYS — ranking metric
+      (recent regime strength)
+    Full-window PnL ranking kept stale pairs whose edge had decayed;
+    this drops them within a week.
+    """
+    from datetime import date, timedelta
     from .stock_backtest import compute_metrics, run_stock_backtest
     wl = set(production.watchlist())
     hold = TIMEFRAMES[tf]["hold_bars"]
+    train_end = (date.today() - timedelta(days=VAL_WINDOW_DAYS)).isoformat()
     rows = []
     for sym, df in frames.items():
+        dates = df["date"].astype(str)
+        tr_mask = dates <= train_end
+        va_mask = dates > train_end
+        dtr = df[tr_mask].reset_index(drop=True)
+        dva = df[va_mask].reset_index(drop=True)
+        if len(dtr) < 50 or len(dva) < 20:
+            continue
         for name in strategies.STOCK_STRATEGIES:
             if name in wl:
                 continue
-            trades = run_stock_backtest(df, sigs[(sym, name)], sym, name,
-                                        max_hold_days=hold)
-            m = compute_metrics(trades)
-            if m.get("trades", 0) >= MIN_BACKTEST_TRADES:
-                rows.append({"symbol": sym, "strategy": name, **m})
+            sig = sigs[(sym, name)]
+            tr = run_stock_backtest(dtr, sig[tr_mask].reset_index(drop=True),
+                                    sym, name, max_hold_days=hold)
+            mt = compute_metrics(tr)
+            if mt.get("total_pnl", 0) <= 0:
+                continue  # no long-term edge — skip
+            va = run_stock_backtest(dva, sig[va_mask].reset_index(drop=True),
+                                    sym, name, max_hold_days=hold)
+            mv = compute_metrics(va)
+            if mv.get("trades", 0) >= MIN_VAL_TRADES:
+                rows.append({"symbol": sym, "strategy": name, **mv,
+                             "train_pnl": mt.get("total_pnl", 0)})
     rows.sort(key=lambda r: r.get("total_pnl", 0), reverse=True)
     return rows[:top_n]
 

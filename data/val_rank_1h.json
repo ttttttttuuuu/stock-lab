@@ -1,0 +1,122 @@
+[
+  {
+    "pair": "META×sma_cross",
+    "val_pnl": 48.44,
+    "val_wr": 50.0,
+    "val_n": 18,
+    "train_pnl": -8.37,
+    "current": false
+  },
+  {
+    "pair": "SMCI×ensemble",
+    "val_pnl": 47.96,
+    "val_wr": 59.6,
+    "val_n": 52,
+    "train_pnl": 188.18,
+    "current": true
+  },
+  {
+    "pair": "LCID×ut_bot",
+    "val_pnl": 44.88,
+    "val_wr": 40.9,
+    "val_n": 22,
+    "train_pnl": -12.84,
+    "current": false
+  },
+  {
+    "pair": "LCID×ensemble",
+    "val_pnl": 44.41,
+    "val_wr": 57.8,
+    "val_n": 45,
+    "train_pnl": -141.1,
+    "current": false
+  },
+  {
+    "pair": "META×supertrend",
+    "val_pnl": 38.21,
+    "val_wr": 53.3,
+    "val_n": 15,
+    "train_pnl": -51.47,
+    "current": false
+  },
+  {
+    "pair": "INTC×ensemble",
+    "val_pnl": 33.39,
+    "val_wr": 58.7,
+    "val_n": 46,
+    "train_pnl": 7.41,
+    "current": false
+  },
+  {
+    "pair": "LCID×bb_breakout",
+    "val_pnl": 33.38,
+    "val_wr": 40.9,
+    "val_n": 22,
+    "train_pnl": 6.35,
+    "current": false
+  },
+  {
+    "pair": "SMCI×macd_trend",
+    "val_pnl": 32.71,
+    "val_wr": 45.9,
+    "val_n": 37,
+    "train_pnl": 294.29,
+    "current": true
+  },
+  {
+    "pair": "MSFT×sma_cross",
+    "val_pnl": 31.09,
+    "val_wr": 62.5,
+    "val_n": 16,
+    "train_pnl": -36.97,
+    "current": false
+  },
+  {
+    "pair": "INTC×macd_trend",
+    "val_pnl": 29.53,
+    "val_wr": 44.4,
+    "val_n": 36,
+    "train_pnl": -70.87,
+    "current": false
+  },
+  {
+    "pair": "HOOD×macd_trend",
+    "val_pnl": 29.27,
+    "val_wr": 43.9,
+    "val_n": 41,
+    "train_pnl": -40.64,
+    "current": false
+  },
+  {
+    "pair": "PLTR×sma_cross",
+    "val_pnl": 28.65,
+    "val_wr": 45.5,
+    "val_n": 33,
+    "train_pnl": -29.49,
+    "current": false
+  },
+  {
+    "pair": "MSFT×ut_bot",
+    "val_pnl": 28.14,
+    "val_wr": 61.5,
+    "val_n": 13,
+    "train_pnl": -44.07,
+    "current": false
+  },
+  {
+    "pair": "NVDA×macd_trend",
+    "val_pnl": 26.97,
+    "val_wr": 50.0,
+    "val_n": 28,
+    "train_pnl": 51.73,
+    "current": false
+  },
+  {
+    "pair": "MSFT×macd_trend",
+    "val_pnl": 26.35,
+    "val_wr": 39.1,
+    "val_n": 23,
+    "train_pnl": -39.43,
+    "current": false
+  }
+]

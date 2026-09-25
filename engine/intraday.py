@@ -162,8 +162,12 @@ def _chunk_bars(df: pd.DataFrame, n: int) -> pd.DataFrame:
 
 
 def fetch_intraday(symbol: str, timeframe: str,
-                   use_cache: bool = True) -> pd.DataFrame:
-    """Intraday OHLCV for `symbol` at `timeframe` (15m/1h/4h), ascending."""
+                   use_cache: bool = True,
+                   max_age_days: int | None = None) -> pd.DataFrame:
+    """Intraday OHLCV for `symbol` at `timeframe` (15m/1h/4h), ascending.
+
+    max_age_days: accept cache up to N days old (None = same-day only).
+    Useful for analysis scripts where day-old bars are fine."""
     if timeframe not in TIMEFRAMES:
         raise ValueError(f"unknown timeframe: {timeframe}")
     cfg = TIMEFRAMES[timeframe]
@@ -172,7 +176,13 @@ def fetch_intraday(symbol: str, timeframe: str,
     today = date.today().isoformat()
     if use_cache and cache.exists():
         marker = cache.with_suffix(".day")
-        if marker.exists() and marker.read_text().strip() == today:
+        fresh = marker.exists() and (
+            marker.read_text().strip() == today
+            or (max_age_days is not None
+                and (date.today()
+                     - date.fromisoformat(marker.read_text().strip())).days
+                <= max_age_days))
+        if fresh:
             df = pd.read_csv(cache)
             # mixed EDT/EST offsets make read_csv fall back to strings —
             # parse explicitly as UTC then convert to ET
