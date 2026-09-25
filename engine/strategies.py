@@ -35,6 +35,9 @@ PARAMS = {
     "wt_ch_len": _p["wavetrend"]["ch_len"], "wt_avg_len": _p["wavetrend"]["avg_len"],
     "wt_ob": _p["wavetrend"].get("overbought", 53.0),
     "wt_os": _p["wavetrend"].get("oversold", -53.0),
+    "nt_anchor": _p["natural_trade"]["anchor"],
+    "nt_vol_mult": _p["natural_trade"]["vol_mult"],
+    "nt_trend_ma": _p["natural_trade"]["trend_ma"],
 }
 
 
@@ -208,11 +211,69 @@ def sig_wavetrend(df: pd.DataFrame) -> pd.Series:
     return pd.Series(out, index=df.index)
 
 
+def sig_natural_trade(df: pd.DataFrame) -> pd.Series:
+    """自然交易理论（龚有柴）量化版 —— fib 空间 + 量能 + fib 时间：
+
+    fib 空间：锚定波段（anchor 根 K 的最高/最低）的 0.382–0.618 回撤区
+        是"引力区"，回踩引力区后大概率延续原趋势；
+    量能：入场 K 线成交量 >= vol_mult × 20 均量（能量确认）；
+    fib 时间：锚定窗口长度即时间要素；
+    趋势过滤：收盘价在趋势均线上方才做多，下方才做空。
+
+    多头：上升趋势 + 盘中回踩引力区 + 收阳线 + 放量 → 入场；
+        收盘跌破 0.618 位（引力失效）→ 离场。
+    空头：镜像。
+    """
+    anchor = int(PARAMS["nt_anchor"])
+    vol_mult = float(PARAMS["nt_vol_mult"])
+    ma_n = int(PARAMS["nt_trend_ma"])
+
+    high_n = df["high"].rolling(anchor).max().to_numpy()
+    low_n = df["low"].rolling(anchor).min().to_numpy()
+    trend = df["close"].rolling(ma_n).mean().to_numpy()
+    vol_ma = df["volume"].rolling(20).mean().to_numpy()
+
+    c = df["close"].to_numpy()
+    o = df["open"].to_numpy()
+    lo = df["low"].to_numpy()
+    hi = df["high"].to_numpy()
+    vol = df["volume"].to_numpy()
+
+    out = np.zeros(len(df), dtype=int)
+    state = 0
+    for i in range(len(df)):
+        rng = high_n[i] - low_n[i]
+        if not (np.isfinite(rng) and np.isfinite(trend[i])
+                and np.isfinite(vol_ma[i]) and rng > 0):
+            out[i] = state
+            continue
+        # gravity zones
+        gz_lo, gz_hi = high_n[i] - 0.618 * rng, high_n[i] - 0.382 * rng
+        sz_lo, sz_hi = low_n[i] + 0.382 * rng, low_n[i] + 0.618 * rng
+        vol_ok = vol[i] >= vol_ma[i] * vol_mult
+
+        if state == 1 and c[i] < gz_lo:      # 0.618 引力失效
+            state = 0
+        elif state == -1 and c[i] > sz_hi:
+            state = 0
+
+        if state == 0 and vol_ok:
+            if (c[i] > trend[i] and lo[i] <= gz_hi
+                    and gz_lo <= c[i] <= gz_hi and c[i] > o[i]):
+                state = 1
+            elif (c[i] < trend[i] and hi[i] >= sz_lo
+                    and sz_lo <= c[i] <= sz_hi and c[i] < o[i]):
+                state = -1
+        out[i] = state
+    return pd.Series(out, index=df.index)
+
+
 TV_STRATEGIES = {
     "supertrend": sig_supertrend,
     "ut_bot": sig_ut_bot,
     "ttm_squeeze": sig_ttm_squeeze,
     "wavetrend": sig_wavetrend,
+    "natural_trade": sig_natural_trade,
 }
 
 # stock-lab universe = original 6 + TradingView candidates

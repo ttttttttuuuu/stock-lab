@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-24T03:28:41.297635+00:00",
+  "run_at": "2026-09-25T03:05:08.796437+00:00",
   "budget_per_pair": 100.0,
   "capital": 1000.0,
   "watchlist_excluded": [
@@ -10,7 +10,7 @@
     {
       "timeframe": "1d",
       "split": "2026-07-01",
-      "test_window": "2026-07-01 -> 2026-09-23",
+      "test_window": "2026-07-01 -> 2026-09-24",
       "portfolio_top10": {
         "pairs": [
           {
@@ -20,8 +20,8 @@
             "train_trades": 109,
             "train_win_rate": 47.7,
             "test_trades": 11,
-            "test_pnl": 30.38,
-            "test_win_rate": 63.6
+            "test_pnl": 25.8,
+            "test_win_rate": 54.5
           },
           {
             "symbol": "RKLB",
@@ -30,8 +30,8 @@
             "train_trades": 135,
             "train_win_rate": 50.4,
             "test_trades": 17,
-            "test_pnl": 51.24,
-            "test_win_rate": 52.9
+            "test_pnl": 55.82,
+            "test_win_rate": 58.8
           },
           {
             "symbol": "AMD",
@@ -40,8 +40,8 @@
             "train_trades": 75,
             "train_win_rate": 57.3,
             "test_trades": 15,
-            "test_pnl": -29.65,
-            "test_win_rate": 26.7
+            "test_pnl": -27.3,
+            "test_win_rate": 33.3
           },
           {
             "symbol": "APP",
@@ -69,9 +69,9 @@
             "train_pnl": 183.62,
             "train_trades": 111,
             "train_win_rate": 46.8,
-            "test_trades": 11,
-            "test_pnl": -3.17,
-            "test_win_rate": 45.5
+            "test_trades": 12,
+            "test_pnl": 1.52,
+            "test_win_rate": 50.0
           },
           {
             "symbol": "HOOD",
@@ -80,7 +80,7 @@
             "train_trades": 84,
             "train_win_rate": 53.6,
             "test_trades": 14,
-            "test_pnl": -14.96,
+            "test_pnl": -16.48,
             "test_win_rate": 28.6
           },
           {
@@ -90,7 +90,7 @@
             "train_trades": 68,
             "train_win_rate": 45.6,
             "test_trades": 9,
-            "test_pnl": 4.62,
+            "test_pnl": -0.25,
             "test_win_rate": 33.3
           },
           {
@@ -110,11 +110,11 @@
             "train_trades": 102,
             "train_win_rate": 49.0,
             "test_trades": 13,
-            "test_pnl": 23.62,
+            "test_pnl": 23.27,
             "test_win_rate": 46.2
           }
         ],
-        "test_total": 93.3,
+        "test_total": 93.6,
         "winning_legs": 6,
         "equity": [
           {
@@ -291,7 +291,11 @@
           },
           {
             "date": "2026-09-23",
-            "pnl": 93.3
+            "pnl": 102.67
+          },
+          {
+            "date": "2026-09-24",
+            "pnl": 93.6
           }
         ]
       },
@@ -302,7 +306,7 @@
         "train_trades": 109,
         "train_win_rate": 47.7,
         "test_trades": 11,
-        "test_pnl_x10": 303.8,
+        "test_pnl_x10": 258.0,
         "equity": [
           {
             "date": "2026-07-07",
@@ -345,8 +349,8 @@
             "pnl": 280.6
           },
           {
-            "date": "2026-09-23",
-            "pnl": 303.8
+            "date": "2026-09-24",
+            "pnl": 258.0
           }
         ]
       },
@@ -357,19 +361,19 @@
           {
             "symbol": "RKLB",
             "train_pnl": 245.68,
-            "test_pnl": 30.38,
+            "test_pnl": 25.8,
             "test_trades": 11
           },
           {
             "symbol": "HOOD",
             "train_pnl": 180.72,
-            "test_pnl": -14.96,
+            "test_pnl": -16.48,
             "test_trades": 14
           },
           {
             "symbol": "MSTR",
             "train_pnl": 149.71,
-            "test_pnl": 23.62,
+            "test_pnl": 23.27,
             "test_trades": 13
           },
           {
@@ -381,46 +385,46 @@
           {
             "symbol": "SNOW",
             "train_pnl": 124.76,
-            "test_pnl": 8.61,
-            "test_trades": 8
+            "test_pnl": 8.37,
+            "test_trades": 9
           },
           {
             "symbol": "RBLX",
             "train_pnl": 122.6,
-            "test_pnl": -62.55,
+            "test_pnl": -62.89,
             "test_trades": 13
           },
           {
             "symbol": "AMAT",
             "train_pnl": 119.52,
-            "test_pnl": 23.67,
+            "test_pnl": 23.69,
             "test_trades": 13
           },
           {
             "symbol": "APP",
             "train_pnl": 110.05,
-            "test_pnl": 9.52,
+            "test_pnl": 10.35,
             "test_trades": 10
           },
           {
             "symbol": "ARM",
             "train_pnl": 102.79,
-            "test_pnl": -8.07,
+            "test_pnl": -16.19,
             "test_trades": 16
           },
           {
             "symbol": "PLTR",
             "train_pnl": 101.68,
-            "test_pnl": 44.94,
+            "test_pnl": 45.37,
             "test_trades": 9
           }
         ],
-        "test_total": 63.24
+        "test_total": 49.37
       },
       "hindsight_max": {
         "symbol": "RKLB",
         "strategy": "macd_trend",
-        "test_pnl": 51.24
+        "test_pnl": 55.82
       }
     },
     {

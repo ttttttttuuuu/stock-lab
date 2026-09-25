@@ -22,12 +22,14 @@ DEFAULT_STRATEGY_PARAMS = {
     "ut_bot": {"mult": 3.0, "atr_period": 14},
     "ttm_squeeze": {"n": 15, "mult_kc": 2.0},
     "wavetrend": {"ch_len": 14, "avg_len": 21},
+    "natural_trade": {"anchor": 40, "vol_mult": 1.5, "trend_ma": 30},
 }
 
 DEFAULT_STRATEGY_EXITS = {          # strategy -> (take_profit, stop_loss)
     "ut_bot": (0.15, -0.07),
     "ttm_squeeze": (0.15, -0.07),
     "supertrend": (0.08, -0.04),
+    "natural_trade": (0.08, -0.04),
     "bb_breakout": (0.08, -0.04),
     "macd_trend": (0.06, -0.03),
     "rsi_reversion": (0.05, -0.05),

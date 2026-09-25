@@ -86,7 +86,7 @@ function PairDetail() {
   }, [trades]);
 
   if (!strategy || !symbol)
-    return <div className="panel"><h2>缺少参数</h2><p className="muted">请从实验室页面进入配对详情。</p></div>;
+    return <div className="panel"><h2>缺少参数</h2><p className="muted">请从策略页面进入配对详情。</p></div>;
   if (error)
     return <div className="panel"><h2>数据加载失败</h2><p className="muted">{error}</p></div>;
   if (!trades || !candles) return <Skeleton variant="chart" />;
@@ -101,7 +101,7 @@ function PairDetail() {
   return (
     <>
       <Link href="/lab" className="back-link">
-        <ArrowLeft size={14} style={{ verticalAlign: "-2px" }} aria-hidden="true" /> 返回实验室
+        <ArrowLeft size={14} style={{ verticalAlign: "-2px" }} aria-hidden="true" /> 返回策略
       </Link>
       <h1>{symbol}{" "}
         <span className="badge backtest" style={{ fontSize: 13 }}>

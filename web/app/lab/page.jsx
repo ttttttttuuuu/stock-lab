@@ -18,6 +18,7 @@ const STRAT_LABELS = {
   ut_bot: "UT Bot (ATR)",
   ttm_squeeze: "TTM Squeeze",
   wavetrend: "WaveTrend",
+  natural_trade: "自然交易 (Fib引力)",
 };
 
 const fmt = (n, d = 2) =>
