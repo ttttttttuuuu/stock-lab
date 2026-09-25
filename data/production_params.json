@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-22T10:23:23.688828+00:00",
-  "note": "watchlist re-optimization",
+  "updated_at": "2026-09-25T08:06:18.278288+00:00",
+  "note": "weekly evolve 2026-09-25: 1 promotion(s)",
   "strategy_params": {
     "sma_cross": {
       "fast": 5,
@@ -35,9 +35,34 @@
     "wavetrend": {
       "ch_len": 14,
       "avg_len": 21
+    },
+    "natural_trade": {
+      "anchor": 40,
+      "vol_mult": 1.5,
+      "trend_ma": 30
     }
   },
   "strategy_exits": {
+    "sma_cross": [
+      0.08,
+      -0.04
+    ],
+    "rsi_reversion": [
+      0.05,
+      -0.05
+    ],
+    "macd_trend": [
+      0.06,
+      -0.03
+    ],
+    "bb_breakout": [
+      0.08,
+      -0.04
+    ],
+    "supertrend": [
+      0.08,
+      -0.04
+    ],
     "ut_bot": [
       0.15,
       -0.07
@@ -46,29 +71,13 @@
       0.1,
       -0.05
     ],
-    "supertrend": [
-      0.08,
-      -0.04
-    ],
-    "bb_breakout": [
-      0.08,
-      -0.04
-    ],
-    "macd_trend": [
-      0.06,
-      -0.03
-    ],
-    "rsi_reversion": [
-      0.05,
-      -0.05
-    ],
-    "sma_cross": [
-      0.08,
-      -0.04
-    ],
     "wavetrend": [
       0.1,
       -0.05
+    ],
+    "natural_trade": [
+      0.1,
+      -0.03
     ]
   },
   "watchlist": [

@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-22T09:24:34.554838+00:00",
+  "run_at": "2026-09-25T08:06:18.579800+00:00",
   "symbols": [
     "AAPL",
     "MSFT",
@@ -98,7 +98,8 @@
     "supertrend",
     "ut_bot",
     "ttm_squeeze",
-    "wavetrend"
+    "wavetrend",
+    "natural_trade"
   ],
-  "combos": 6003
+  "combos": 7047
 }

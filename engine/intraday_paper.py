@@ -163,13 +163,20 @@ def main():
                 sigs[(sym, name)] = strategies.STOCK_STRATEGIES[name](df)
 
     if did_full:
+        old_pairs = state.get("pairs") or []
         pairs = top_pairs(frames, sigs, tf, args.top)
         state["pairs"] = [{"symbol": p["symbol"], "strategy": p["strategy"],
                            "backtest_pnl": p.get("total_pnl")} for p in pairs]
         state["selected_on"] = now[:10]
+        gen_changed = bool(old_pairs) and {
+            (p["symbol"], p["strategy"]) for p in pairs
+        } != {(p["symbol"], p["strategy"]) for p in old_pairs}
         print(f"[{tf}-paper] verifying top {len(pairs)}: "
               + ", ".join(f"{p['symbol']}×{p['strategy']}" for p in pairs),
               flush=True)
+    else:
+        old_pairs = state.get("pairs") or []
+        gen_changed = False
 
     closed: list[dict] = []
     top_keys = {f"{p['symbol']}|{p['strategy']}" for p in pairs}
@@ -297,6 +304,33 @@ def main():
                 " VALUES (?,?,?)",
                 (p["key"], tf, json.dumps(p, ensure_ascii=False)))
 
+        # ---- portfolio generations: close the outgoing generation when a
+        # full re-selection changed the Top10 lineup ----
+        if gen_changed:
+            today = now[:10]
+            gens = state.setdefault("generations", [])
+            start = state.get("gen_start")
+            if not start:
+                # bootstrap: earliest book activity
+                row = conn.execute(
+                    "SELECT MIN(entry_date) FROM stock_paper_intra_trades"
+                    " WHERE timeframe=?", (tf,)).fetchone()
+                start = (row[0] or today)[:10]
+                if state["positions"]:
+                    start = min(start, min(p["entry_ts"]
+                                           for p in state["positions"])[:10])
+            r = conn.execute(
+                """SELECT COALESCE(SUM(pnl),0), COUNT(*)
+                   FROM stock_paper_intra_trades
+                   WHERE timeframe=? AND exit_date >= ? AND exit_date < ?""",
+                (tf, start, today)).fetchone()
+            gens.append({"id": len(gens) + 1, "start": start, "end": today,
+                         "pairs": old_pairs,
+                         "realized_pnl": round(r[0], 2), "trades": r[1]})
+            state["gen_start"] = today
+            print(f"[gen] 第 {len(gens)} 代结束: {start} ~ {today} "
+                  f"已实现 {r[0]:.2f} ({r[1]} 笔)", flush=True)
+
     STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False))
     with storage.get_conn() as conn:
         rows = conn.execute(
@@ -309,12 +343,38 @@ def main():
                 "shares", "exit_date", "exit_price", "exit_reason", "pnl",
                 "pnl_pct", "hold_bars"]
         all_closed = [dict(zip(cols, r)) for r in rows]
+        # current (open) generation with live realized stats
+        cur_start = state.get("gen_start")
+        if not cur_start:
+            row = conn.execute(
+                "SELECT MIN(entry_date) FROM stock_paper_intra_trades"
+                " WHERE timeframe=?", (tf,)).fetchone()
+            cur_start = (row[0] or now)[:10]
+            if state["positions"]:
+                cur_start = min(cur_start, min(p["entry_ts"]
+                                               for p in state["positions"])[:10])
+        r = conn.execute(
+            """SELECT COALESCE(SUM(pnl),0), COUNT(*)
+               FROM stock_paper_intra_trades
+               WHERE timeframe=? AND exit_date >= ?""",
+            (tf, cur_start)).fetchone()
+        generations = list(state.get("generations", [])) + [{
+            "id": len(state.get("generations", [])) + 1,
+            "start": cur_start, "end": None,
+            "pairs": [{"symbol": p["symbol"], "strategy": p["strategy"],
+                       "backtest_pnl": p.get("total_pnl",
+                                             p.get("backtest_pnl"))}
+                      for p in pairs],
+            "realized_pnl": round(r[0], 2), "trades": r[1],
+            "current": True,
+        }]
     export_web({
         "timeframe": tf, "updated_at": now,
         "positions": state["positions"], "closed_trades": all_closed,
         "pairs": [{"symbol": p["symbol"], "strategy": p["strategy"],
                    "backtest_pnl": p.get("total_pnl", p.get("backtest_pnl"))}
                   for p in pairs],
+        "generations": generations,
     })
     print(f"\n[{tf}-paper] open: {len(state['positions'])} | "
           f"closed today: {len(closed)}")

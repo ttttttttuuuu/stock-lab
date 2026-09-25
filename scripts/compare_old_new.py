@@ -23,7 +23,7 @@ HOLD_BARS = 7 * 10
 snap = json.loads((ROOT / "data/old_top10_1h_snapshot.json").read_text())
 state = json.loads((ROOT / "data/stock_paper_1h_positions.json").read_text())
 switch = state.get("selected_on")
-if not switch or switch <= snap["snapshot_date"]:
+if not switch or switch < snap["snapshot_date"]:
     sys.exit(f"re-selection hasn't happened yet (selected_on={switch}); "
              f"run this after the next full selection")
 

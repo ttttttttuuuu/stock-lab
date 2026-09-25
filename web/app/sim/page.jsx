@@ -200,16 +200,47 @@ export default function CapitalSim() {
         </div>
       </div>
 
-      {/* 代际拼接说明 */}
+      {/* 组合代际：换届记录 + 时间轴 */}
       <div className="panel">
-        <h2>组合会换届，净值怎么算？</h2>
+        <h2>组合代际</h2>
         <p className="hint" style={{ lineHeight: 1.8 }}>
-          Top10 组合不是固定的：云端每天按「训练期过滤 + 近 90 天验证期排名」重新选拔。
-          换届（重选）时，掉出榜单的配对按规则平仓，新配对从下一信号开始建仓——
-          <strong>净值曲线连续拼接，不因换届归零</strong>，每一代称为一个「代际」。
-          上方曲线为切分点固定组合的回测段；下方「实盘验证」是当前代际的真实记账。
-          首次全量重选发生在 2026-09-26（当前为第 1 代），之后的每次重选都会在此留下代际分界。
+          Top10 组合每周重选一次（训练期过滤 + 近 90 天验证期排名）。换届掉榜的配对按规则平仓、
+          新配对从下一信号建仓——<strong>净值连续拼接，不因换届归零</strong>。
+          每一代的构成与期间已实现盈亏记录如下：
         </p>
+        {live?.generations?.length > 0 && (
+          <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10 }}>
+            {[...live.generations].reverse().map((g) => (
+              <div key={g.id} className="panel"
+                   style={{ padding: 14, margin: 0,
+                            borderColor: g.current ? "var(--accent)" : undefined }}>
+                <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                  <strong>第 {g.id} 代</strong>
+                  {g.current && <span className="badge call">进行中</span>}
+                  <span className="muted" style={{ fontSize: 12 }}>
+                    {g.start} ~ {g.end || "至今"}
+                  </span>
+                  <span style={{ marginLeft: "auto" }}
+                        className={g.realized_pnl >= 0 ? "pos" : "neg"}>
+                    <strong>{signed(g.realized_pnl)}</strong>{" "}
+                    <span className="muted" style={{ fontSize: 12 }}>
+                      已实现 · {g.trades} 笔
+                    </span>
+                  </span>
+                </div>
+                <p style={{ margin: "10px 0 0", display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {g.pairs.map((p) => (
+                    <Link key={`${g.id}-${p.symbol}-${p.strategy}`}
+                          href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`}
+                          className="badge flat" style={{ textDecoration: "none" }}>
+                      {p.symbol} × {STRAT_LABELS[p.strategy] || p.strategy}
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {live && (live.positions.length > 0 || (live.closed_trades || []).length > 0) && (() => {
