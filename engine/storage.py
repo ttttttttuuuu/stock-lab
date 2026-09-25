@@ -297,9 +297,33 @@ def save_stock_paper_positions(conn: sqlite3.Connection, positions: list[dict]):
     )
 
 
-def reset_param_runs(conn: sqlite3.Connection):
-    """Full-refresh semantics: each optimization run replaces all rows."""
-    conn.execute("DELETE FROM param_runs")
+def reset_param_runs(conn: sqlite3.Connection, strategies: list | None = None):
+    """Full-refresh semantics by default: each optimization run replaces all
+    rows. With `strategies`, only those strategies' rows are replaced, so a
+    partial re-optimization cannot wipe the other strategies' results."""
+    if strategies:
+        q = ",".join("?" * len(strategies))
+        conn.execute(f"DELETE FROM param_runs WHERE strategy IN ({q})",
+                     strategies)
+    else:
+        conn.execute("DELETE FROM param_runs")
+
+
+def carry_forward_param_runs(conn: sqlite3.Connection, from_run_at: str,
+                             to_run_at: str, exclude: list):
+    """Copy rows for strategies NOT in `exclude` from a previous batch into
+    the new batch. Readers only look at MAX(run_at), so a partial run must
+    carry the untouched strategies forward to stay visible."""
+    if not exclude:
+        return 0
+    q = ",".join("?" * len(exclude))
+    cur = conn.execute(
+        f"""INSERT INTO param_runs (run_at, symbol, strategy, params,
+                                   is_default, metrics)
+            SELECT ?, symbol, strategy, params, is_default, metrics
+            FROM param_runs WHERE run_at=? AND strategy NOT IN ({q})""",
+        [to_run_at, from_run_at, *exclude])
+    return cur.rowcount
 
 
 def save_param_run(conn: sqlite3.Connection, run_at: str, symbol: str,

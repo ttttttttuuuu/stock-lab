@@ -41,9 +41,18 @@ def main():
     storage.init_db()
     run_at = datetime.now(timezone.utc).isoformat()
     n_runs = 0
+    full_run = set(strat_names) == set(PARAM_GRIDS.keys())
 
     with storage.get_conn() as conn:
-        storage.reset_param_runs(conn)
+        prev_run_at = None
+        if full_run:
+            storage.reset_param_runs(conn)
+        else:
+            # partial run: replace only the selected strategies, then carry
+            # the rest forward so "latest run_at" readers still see them
+            prev_run_at = conn.execute(
+                "SELECT MAX(run_at) FROM param_runs").fetchone()[0]
+            storage.reset_param_runs(conn, strat_names)
         for sym in symbols:
             print(f"[fetch] {sym} ...", flush=True)
             df = fetch_history(sym, years=args.years)
@@ -66,6 +75,12 @@ def main():
                 print(f"  {name:15s} best={json.dumps(best[0])} "
                       f"pnl={best[1]} (default "
                       f"{json.dumps(default)})", flush=True)
+
+        if not full_run and prev_run_at:
+            carried = storage.carry_forward_param_runs(
+                conn, prev_run_at, run_at, strat_names)
+            print(f"carried forward {carried} rows from previous batch "
+                  f"({prev_run_at})")
 
     out = {
         "run_at": run_at,
