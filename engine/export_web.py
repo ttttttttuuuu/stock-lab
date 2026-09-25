@@ -204,12 +204,43 @@ def main():
             f.unlink()
         syms = [row[0] for row in
                 conn.execute("SELECT DISTINCT symbol FROM prices")]
+        sym_meta = {}
         for sym in syms:
             rows = rows_to_dicts(conn, """
                 SELECT date, open, high, low, close, volume FROM prices
                 WHERE symbol=? ORDER BY date
             """, (sym,))
             (pdir / f"{sym}.json").write_text(json.dumps(rows))
+            if rows:
+                sym_meta[sym] = {
+                    "first_date": rows[0]["date"],
+                    "last_date": rows[-1]["date"],
+                    "last_close": rows[-1]["close"],
+                }
+
+        # per-symbol summary for the history page
+        best_by_sym = {}
+        active_cnt = defaultdict(int)
+        for p in pairs:
+            if p.get("trades", 0) > 0:
+                active_cnt[p["symbol"]] += 1
+                cur = best_by_sym.get(p["symbol"])
+                if cur is None or p.get("total_pnl", 0) > cur.get("total_pnl", 0):
+                    best_by_sym[p["symbol"]] = p
+        symbols_out = []
+        for sym in syms:
+            best = best_by_sym.get(sym)
+            symbols_out.append({
+                "symbol": sym,
+                **sym_meta.get(sym, {}),
+                "active_pairs": active_cnt.get(sym, 0),
+                "best_strategy": best["strategy"] if best else None,
+                "best_pnl": best.get("total_pnl") if best else None,
+                "best_win_rate": best.get("win_rate") if best else None,
+            })
+        symbols_out.sort(key=lambda x: x["best_pnl"] is not None
+                         and x["best_pnl"] or 0, reverse=True)
+        (OUT / "symbols.json").write_text(json.dumps(symbols_out))
 
         # stock paper verification book (top pairs, live)
         sp_positions = rows_to_dicts(conn, "SELECT * FROM stock_paper_positions")

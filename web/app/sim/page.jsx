@@ -37,12 +37,20 @@ export default function CapitalSim() {
   const finalValue = data.capital + port.test_total;
   const retPct = (port.test_total / data.capital) * 100;
 
+  // 9/1 以来的盈亏：以 9/1 之前最后一个净值为基准
+  const SEP = "2026-09-01";
+  const eq = port.equity || [];
+  const beforeSep = eq.filter((e) => e.date < SEP).pop();
+  const sepPoint = eq.find((e) => e.date >= SEP);
+  const sepBase = beforeSep ? beforeSep.pnl : 0;
+  const sinceSep = sepPoint ? Math.round((port.test_total - sepBase) * 100) / 100 : null;
+
   return (
     <>
-      <h1>资金模拟</h1>
+      <h1>模拟</h1>
       <p className="subtitle">
-        从切分点开始用 $1000 真实执行到今天 · 选股/选策略只用切分点之前的数据（无未来函数）·
-        日线每日自动重算，日内级别随进化更新
+        $1000 本金 · Top10 组合（每腿 $100）· 从切分点真实执行到今天 ·
+        选股/选策略只用切分点之前的数据（无未来函数）
       </p>
 
       {/* hero: the recommended answer */}
@@ -56,9 +64,15 @@ export default function CapitalSim() {
             </div>
           </div>
           <div className="card">
-            <div className="label">收益</div>
+            <div className="label">收益（全程）</div>
             <div className={`value ${port.test_total >= 0 ? "pos" : "neg"}`}>
               {signed(port.test_total)}（{retPct >= 0 ? "+" : ""}{fmt(retPct, 1)}%）
+            </div>
+          </div>
+          <div className="card">
+            <div className="label">9/1 以来</div>
+            <div className={`value ${(sinceSep ?? 0) >= 0 ? "pos" : "neg"}`}>
+              {sinceSep != null ? signed(sinceSep) : "—"}
             </div>
           </div>
           <div className="card">
@@ -84,6 +98,10 @@ export default function CapitalSim() {
                   formatter={(v) => [`$${fmt(v)}`, "组合累计盈亏"]}
                 />
                 <ReferenceLine y={0} stroke="var(--border)" strokeDasharray="4 4" />
+                {sepPoint && (
+                  <ReferenceLine x={sepPoint.date} stroke="#6366f1" strokeDasharray="4 4"
+                                 label={{ value: "9/1", fill: "#6366f1", fontSize: 11, position: "top" }} />
+                )}
                 <Line dataKey="pnl" dot={false} isAnimationActive={false}
                       stroke={port.test_total >= 0 ? "#22c55e" : "#ef4444"} strokeWidth={2} />
               </LineChart>
@@ -180,6 +198,18 @@ export default function CapitalSim() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* 代际拼接说明 */}
+      <div className="panel">
+        <h2>组合会换届，净值怎么算？</h2>
+        <p className="hint" style={{ lineHeight: 1.8 }}>
+          Top10 组合不是固定的：云端每天按「训练期过滤 + 近 90 天验证期排名」重新选拔。
+          换届（重选）时，掉出榜单的配对按规则平仓，新配对从下一信号开始建仓——
+          <strong>净值曲线连续拼接，不因换届归零</strong>，每一代称为一个「代际」。
+          上方曲线为切分点固定组合的回测段；下方「实盘验证」是当前代际的真实记账。
+          首次全量重选发生在 2026-09-26（当前为第 1 代），之后的每次重选都会在此留下代际分界。
+        </p>
       </div>
 
       {live && (live.positions.length > 0 || (live.closed_trades || []).length > 0) && (() => {

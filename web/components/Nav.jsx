@@ -4,19 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  LayoutDashboard, ArrowLeftRight, Radio, ClipboardCheck,
-  FlaskConical, Layers, Calculator, Sun, Moon, Cloud, HardDrive,
+  LayoutDashboard, History, FlaskConical, Layers, Calculator,
+  Sun, Moon, Cloud, HardDrive,
 } from "lucide-react";
 import { DATA_SOURCE } from "../lib/data";
 
 const links = [
-  { href: "/", label: "仪表盘", icon: LayoutDashboard },
-  { href: "/lab", label: "实验室", icon: FlaskConical, match: "/lab" },
-  { href: "/sim", label: "资金模拟", icon: Calculator },
+  { href: "/", label: "首页", icon: LayoutDashboard },
+  { href: "/lab", label: "策略", icon: FlaskConical, match: "/lab" },
+  { href: "/history", label: "历史", icon: History },
+  { href: "/sim", label: "模拟", icon: Calculator },
   { href: "/options", label: "期权", icon: Layers },
-  { href: "/trades", label: "交易明细", icon: ArrowLeftRight },
-  { href: "/signals", label: "信号与持仓", icon: Radio },
-  { href: "/review", label: "复盘", icon: ClipboardCheck },
 ];
 
 export default function Nav() {

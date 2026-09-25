@@ -343,6 +343,15 @@ export function loadProductionParams() {
   });
 }
 
+// per-symbol summary for the history page — static file written by
+// engine.export_web, same-origin in both data modes
+export function loadSymbols() {
+  return cached("symbols", async () => {
+    const r = await fetch(`${BASE}/data/symbols.json`);
+    return r.ok ? r.json() : [];
+  });
+}
+
 // live paper verification book for top stock-lab pairs
 export function loadStockPaper() {
   return cached("stockpaper:" + DATA_SOURCE, async () => {

@@ -176,7 +176,7 @@ export default function StockLab() {
 
   return (
     <>
-      <h1>选股实验室</h1>
+      <h1>策略</h1>
       <p className="subtitle">
         10 策略（含 4 个 TradingView 热门候选）× {symbols} 只股票 · 股价回测（非期权）· 每笔 $100 名义本金 ·
         策略级止盈止损 / 最长持有 10 个交易日
