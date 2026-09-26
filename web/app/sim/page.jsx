@@ -233,10 +233,89 @@ export default function CapitalSim() {
             </div>
           );
         })()}
+        {live?.prev_gen_shadow && (() => {
+          const sh = live.prev_gen_shadow;
+          const since = sh.since;
+          const liveByPair = {};
+          (live.closed_trades || []).forEach((t) => {
+            if (t.exit_date >= since) {
+              const k = `${t.symbol}|${t.strategy}`;
+              liveByPair[k] = Math.round(((liveByPair[k] || 0) + (t.pnl || 0)) * 100) / 100;
+            }
+          });
+          const unrealByPair = {};
+          live.positions.forEach((p) => { unrealByPair[p.key] = p.unrealized_pnl ?? 0; });
+          const oldKeys = new Set(sh.pairs.map((p) => `${p.symbol}|${p.strategy}`));
+          const newFaces = (live.pairs || [])
+            .filter((p) => !oldKeys.has(`${p.symbol}|${p.strategy}`));
+          const cell = (v) => v == null
+            ? <td className="num muted">—</td>
+            : <td className={`num ${v >= 0 ? "pos" : "neg"}`}>{signed(v)}</td>;
+          return (
+            <div className="table-wrap" style={{ marginTop: 12 }}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>配对</th>
+                    <th className="num">假设持有</th>
+                    <th className="num">实盘（新账本）</th>
+                    <th className="num">差值</th>
+                    <th>备注</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sh.pairs.map((p) => {
+                    const k = `${p.symbol}|${p.strategy}`;
+                    const live_ = (liveByPair[k] ?? 0) + (unrealByPair[k] ?? 0);
+                    const hasLive = liveByPair[k] != null || unrealByPair[k] != null;
+                    const kept = (live.pairs || [])
+                      .some((x) => x.symbol === p.symbol && x.strategy === p.strategy);
+                    return (
+                      <tr key={k}>
+                        <td>
+                          <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
+                            <strong>{p.symbol}</strong>
+                          </Link>{" "}
+                          <span className="badge backtest">{STRAT_LABELS[p.strategy] || p.strategy}</span>
+                        </td>
+                        {cell(p.pnl)}
+                        {cell(hasLive ? Math.round(live_ * 100) / 100 : null)}
+                        {cell(hasLive ? Math.round((live_ - p.pnl) * 100) / 100 : null)}
+                        <td>{kept
+                          ? <span className="badge call">留在新组合</span>
+                          : <span className="badge flat">已掉榜</span>}</td>
+                      </tr>
+                    );
+                  })}
+                  {newFaces.map((p) => {
+                    const k = `${p.symbol}|${p.strategy}`;
+                    const live_ = Math.round(
+                      ((liveByPair[k] ?? 0) + (unrealByPair[k] ?? 0)) * 100) / 100;
+                    return (
+                      <tr key={k} style={{ background: "rgba(99,102,241,0.06)" }}>
+                        <td>
+                          <Link href={`/lab/pair?strategy=${p.strategy}&symbol=${p.symbol}`} className="sym-link">
+                            <strong>{p.symbol}</strong>
+                          </Link>{" "}
+                          <span className="badge backtest">{STRAT_LABELS[p.strategy] || p.strategy}</span>
+                        </td>
+                        <td className="num muted">—</td>
+                        {cell(live_)}
+                        <td className="num muted">—</td>
+                        <td><span className="badge call">新加入</span></td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          );
+        })()}
         {live?.prev_gen_shadow && (
           <p className="hint" style={{ marginTop: 8 }}>
             假设持有 = 上一代 10 个配对从换届日起按同样规则在最新 K 线上重放的盈亏；
-            实盘 = 当前代际已实现 + 在仓浮盈。每次换届后自动开始新一轮对照。
+            实盘 = 该配对在当前账本里换届日后的已实现 + 浮盈。掉榜配对的实盘为 —（已不再交易）。
+            数据随每日云端账本自动更新。
           </p>
         )}
         {live?.generations?.length > 0 && (
