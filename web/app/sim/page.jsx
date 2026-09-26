@@ -208,6 +208,37 @@ export default function CapitalSim() {
           新配对从下一信号建仓——<strong>净值连续拼接，不因换届归零</strong>。
           每一代的构成与期间已实现盈亏记录如下：
         </p>
+        {live?.prev_gen_shadow && live?.generations?.length > 0 && (() => {
+          const sh = live.prev_gen_shadow;
+          const cur = live.generations.find((g) => g.current);
+          const unreal = live.positions.reduce((a, p) => a + (p.unrealized_pnl ?? 0), 0);
+          const newTotal = Math.round(((cur?.realized_pnl ?? 0) + unreal) * 100) / 100;
+          const diff = Math.round((newTotal - sh.total) * 100) / 100;
+          return (
+            <div className="cards" style={{ marginTop: 12 }}>
+              <div className="card">
+                <div className="label">第 {sh.gen_id} 代 · 假设继续持有</div>
+                <div className={`value ${sh.total >= 0 ? "pos" : "neg"}`}>{signed(sh.total)}</div>
+              </div>
+              <div className="card">
+                <div className="label">第 {cur?.id} 代 · 实盘（含浮盈）</div>
+                <div className={`value ${newTotal >= 0 ? "pos" : "neg"}`}>{signed(newTotal)}</div>
+              </div>
+              <div className="card">
+                <div className="label">换届决策（{sh.since} 起）</div>
+                <div className={`value ${diff >= 0 ? "pos" : "neg"}`}>
+                  {diff >= 0 ? "跑赢" : "跑输"} ${fmt(Math.abs(diff))}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+        {live?.prev_gen_shadow && (
+          <p className="hint" style={{ marginTop: 8 }}>
+            假设持有 = 上一代 10 个配对从换届日起按同样规则在最新 K 线上重放的盈亏；
+            实盘 = 当前代际已实现 + 在仓浮盈。每次换届后自动开始新一轮对照。
+          </p>
+        )}
         {live?.generations?.length > 0 && (
           <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10 }}>
             {[...live.generations].reverse().map((g) => (

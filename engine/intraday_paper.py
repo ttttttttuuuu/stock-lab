@@ -148,6 +148,13 @@ def main():
               flush=True)
 
     frames, sigs = {}, {}
+    # previous generation's pairs are shadow-tracked: their symbols join the
+    # daily fetch so we can score the hypothetical "what if we had kept them"
+    gens = state.get("generations", [])
+    shadow_gen = gens[-1] if gens else None
+    if shadow_gen:
+        symbols = sorted(set(symbols)
+                         | {p["symbol"] for p in shadow_gen["pairs"]})
     for sym in symbols:
         try:
             df = strategies.prepare(fetch_intraday(sym, tf, use_cache=not fresh))
@@ -284,6 +291,36 @@ def main():
 
         eval_ts[key] = ts.iloc[last_i]
 
+    # ---- shadow book: hypothetical PnL of the previous generation had it
+    # been kept trading from the switch date forward ----
+    shadow = None
+    if shadow_gen:
+        from .stock_backtest import compute_metrics, run_stock_backtest
+        switch = shadow_gen["end"]
+        sp = []
+        for p in shadow_gen["pairs"]:
+            sym, name = p["symbol"], p["strategy"]
+            df = frames.get(sym)
+            if df is None or name in wl:
+                continue
+            sig = sigs.get((sym, name))
+            if sig is None:
+                sig = strategies.STOCK_STRATEGIES[name](df)
+            dates = df["date"].astype(str)
+            mask = dates >= switch
+            if int(mask.sum()) < 5:
+                continue
+            tr = run_stock_backtest(df[mask].reset_index(drop=True),
+                                    sig[mask].reset_index(drop=True),
+                                    sym, name, max_hold_days=hold)
+            m = compute_metrics(tr)
+            sp.append({"symbol": sym, "strategy": name,
+                       "pnl": round(m.get("total_pnl", 0), 2),
+                       "trades": m.get("trades", 0)})
+        shadow = {"gen_id": shadow_gen["id"], "since": switch, "pairs": sp,
+                  "total": round(sum(x["pnl"] for x in sp), 2)}
+        state["shadow"] = shadow
+
     with storage.get_conn() as conn:
         ensure_tables(conn)
         for t in closed:
@@ -375,6 +412,7 @@ def main():
                    "backtest_pnl": p.get("total_pnl", p.get("backtest_pnl"))}
                   for p in pairs],
         "generations": generations,
+        "prev_gen_shadow": shadow or state.get("shadow"),
     })
     print(f"\n[{tf}-paper] open: {len(state['positions'])} | "
           f"closed today: {len(closed)}")
