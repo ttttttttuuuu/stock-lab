@@ -170,6 +170,8 @@ class FutuBroker:
             qty=whole, code=us_code(symbol), trd_side=side_map[side.upper()],
             trd_env=self.env)
         if price is None:
+            # futu-api 的 price 是必填参数，市价单传 0
+            kwargs["price"] = 0
             kwargs["order_type"] = futu.OrderType.MARKET
         else:
             kwargs["price"] = float(price)

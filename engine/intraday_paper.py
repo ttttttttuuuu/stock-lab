@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -186,6 +187,7 @@ def main():
         gen_changed = False
 
     closed: list[dict] = []
+    mirror_opens: list[dict] = []  # 本次新开仓（供富途模拟镜像）
     top_keys = {f"{p['symbol']}|{p['strategy']}" for p in pairs}
     active_keys = set(top_keys)
     # positions whose pair dropped out keep getting marked/closed by the rules
@@ -285,6 +287,7 @@ def main():
                     "unrealized_pct": 0.0, "marked_at": now,
                 }
                 state["positions"].append(pos)
+                mirror_opens.append(dict(pos))
                 entry_i = i
                 print(f"  [open] {key} {side} @ {close:.2f} @ {bar_ts}",
                       flush=True)
@@ -369,6 +372,12 @@ def main():
                   f"已实现 {r[0]:.2f} ({r[1]} 笔)", flush=True)
 
     STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False))
+
+    # 富途模拟盘镜像（BROKER=futu_sim 才启用；纸面账本仍是主账）
+    if os.environ.get("BROKER") == "futu_sim":
+        from . import futu_mirror
+        futu_mirror.mirror(mirror_opens, closed)
+
     with storage.get_conn() as conn:
         rows = conn.execute(
             """SELECT symbol, strategy, side, entry_date, entry_price, shares,
