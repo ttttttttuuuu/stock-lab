@@ -60,8 +60,9 @@ def main():
             print(f"✓ 模拟挂单成功: {od.code} BUY 1 @ {low} "
                   f"order_id={od.order_id}")
             futu = b._futu  # noqa: SLF001 - smoke test only
-            ret, data = b.trd.cancel_order(
-                order_id=od.order_id, trd_env=b.env)
+            ret, data = b.trd.modify_order(
+                futu.ModifyOrderOp.CANCEL, order_id=od.order_id,
+                qty=od.qty, price=od.price, trd_env=b.env)
             print("✓ 撤单:", "成功" if ret == futu.RET_OK else f"失败 {data}")
         except BrokerError as e:
             print(f"✗ 模拟下单失败（若提示未解锁，设置 FUTU_TRADE_PWD 环境变量后重试）: {e}")
