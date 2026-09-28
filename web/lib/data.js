@@ -258,6 +258,16 @@ export function loadSignalsData() {
 
 // ---------- stock lab (strategy x symbol stock-price backtest) ----------
 
+// Futu SIMULATE account snapshot — static file written by engine.futu_export
+// (same-origin). Only refreshed on demand via /api/futu/refresh since it
+// needs the local OpenD gateway.
+export function loadFutuSim() {
+  return cached("futusim", async () => {
+    const r = await fetch(`${BASE}/data/futu_sim.json`);
+    return r.ok ? r.json() : null;
+  });
+}
+
 // drop cached entries (memory + localStorage) by key prefix — used after a
 // lazy refresh writes new data so the page re-reads fresh values
 export function invalidatePrefix(prefix) {

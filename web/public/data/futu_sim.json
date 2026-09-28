@@ -1,0 +1,198 @@
+{
+  "available": true,
+  "updated_at": "2026-09-28T03:26:30.264707+00:00",
+  "mirror": [],
+  "acc_id": 3228242,
+  "account": {
+    "total_assets": 222495.92,
+    "cash": 80707.85,
+    "market_val": 141788.07,
+    "frozen_cash": 0.0,
+    "available_funds": "N/A",
+    "currency": "N/A"
+  },
+  "positions": [
+    {
+      "code": "US.NVDA",
+      "qty": 1.0,
+      "cost_price": 149.3,
+      "market_val": 225.07,
+      "pl_val": 75.77,
+      "pl_ratio": 50.75016744809109
+    },
+    {
+      "code": "US.TSM",
+      "qty": 100.0,
+      "cost_price": 66.85178,
+      "market_val": 45061.0,
+      "pl_val": 38375.822,
+      "pl_ratio": 574.0433837363792
+    },
+    {
+      "code": "US.CHEF",
+      "qty": 300.0,
+      "cost_price": 12.15,
+      "market_val": 33081.0,
+      "pl_val": 29436.0,
+      "pl_ratio": 807.5720164609054
+    },
+    {
+      "code": "US.NIO",
+      "qty": 100.0,
+      "cost_price": 12.77,
+      "market_val": 358.0,
+      "pl_val": -919.0,
+      "pl_ratio": -71.96554424432263
+    },
+    {
+      "code": "US.AMD",
+      "qty": 100.0,
+      "cost_price": 75.21,
+      "market_val": 63063.0,
+      "pl_val": 55542.0,
+      "pl_ratio": 738.4922217790188
+    }
+  ],
+  "orders": [
+    {
+      "order_id": "7177841",
+      "code": "US.F",
+      "stock_name": "福特汽车",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 5.0,
+      "price": 10.8,
+      "order_status": "SUBMITTED",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 23:14:34",
+      "updated_time": "2026-09-27 23:14:34"
+    },
+    {
+      "order_id": "7177840",
+      "code": "US.NVDA",
+      "stock_name": "英伟达",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 202.56,
+      "order_status": "SUBMITTED",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 23:14:33",
+      "updated_time": "2026-09-27 23:14:33"
+    },
+    {
+      "order_id": "7177839",
+      "code": "US.AAPL",
+      "stock_name": "苹果",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 306.96,
+      "order_status": "SUBMITTED",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 23:14:33",
+      "updated_time": "2026-09-27 23:14:33"
+    },
+    {
+      "order_id": "7177759",
+      "code": "US.F",
+      "stock_name": "福特汽车",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 5.0,
+      "price": 10.8,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 22:53:46",
+      "updated_time": "2026-09-27 23:11:38"
+    },
+    {
+      "order_id": "7177758",
+      "code": "US.NVDA",
+      "stock_name": "英伟达",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 202.56,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 22:53:46",
+      "updated_time": "2026-09-27 23:11:38"
+    },
+    {
+      "order_id": "7177757",
+      "code": "US.AAPL",
+      "stock_name": "苹果",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 306.96,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 22:53:46",
+      "updated_time": "2026-09-27 23:11:38"
+    },
+    {
+      "order_id": "7176877",
+      "code": "US.F",
+      "stock_name": "福特汽车",
+      "trd_side": "BUY",
+      "order_type": "MARKET",
+      "qty": 43.0,
+      "price": 0.0,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 10:52:02",
+      "updated_time": "2026-09-27 10:52:40"
+    },
+    {
+      "order_id": "7176874",
+      "code": "US.AAPL",
+      "stock_name": "苹果",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 170.53,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 10:38:52",
+      "updated_time": "2026-09-27 10:44:46"
+    },
+    {
+      "order_id": "7176873",
+      "code": "US.AAPL",
+      "stock_name": "苹果",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 170.53,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 10:36:35",
+      "updated_time": "2026-09-27 10:44:46"
+    },
+    {
+      "order_id": "7176872",
+      "code": "US.AAPL",
+      "stock_name": "苹果",
+      "trd_side": "BUY",
+      "order_type": "NORMAL",
+      "qty": 1.0,
+      "price": 170.53,
+      "order_status": "CANCELLED_ALL",
+      "dealt_qty": 0.0,
+      "dealt_avg_price": 0.0,
+      "create_time": "2026-09-27 10:32:04",
+      "updated_time": "2026-09-27 10:44:46"
+    }
+  ]
+}

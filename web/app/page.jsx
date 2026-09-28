@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import {
   loadStockPaper, loadStockPaper1h, loadSignalsData, loadStockLab,
+  loadFutuSim, invalidatePrefix,
 } from "../lib/data";
 import { STRAT_LABELS } from "../lib/stratLabels";
 import Skeleton from "../components/Skeleton";
@@ -20,14 +21,30 @@ export default function Home() {
   const [paper1h, setPaper1h] = useState(null);  // 1h 账本
   const [sig, setSig] = useState(null);
   const [lab, setLab] = useState(null);
+  const [futu, setFutu] = useState(null);        // 富途模拟账户
+  const [futuBusy, setFutuBusy] = useState(false);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     loadStockPaper().then(setPaper).catch(() => {});
     loadStockPaper1h().then(setPaper1h).catch(() => {});
     loadSignalsData().then(setSig).catch(() => {});
+    loadFutuSim().then(setFutu).catch(() => {});
     loadStockLab().then(setLab).catch(() => {}).finally(() => setReady(true));
   }, []);
+
+  const refreshFutu = async () => {
+    setFutuBusy(true);
+    try {
+      const r = await fetch("/api/futu/refresh", { method: "POST" });
+      if (r.ok) {
+        const payload = await r.json();
+        invalidatePrefix("futusim");
+        setFutu(payload);
+      }
+    } catch { /* dev server 未启动时静默失败 */ }
+    setFutuBusy(false);
+  };
 
   if (!ready && !lab) return <Skeleton variant="dashboard" />;
 
@@ -60,22 +77,111 @@ export default function Home() {
         美股短线 · 每笔 $100 名义本金 · 多策略 × 多股票 · 云端每日自动更新
       </p>
 
-      {/* 真实账户：未接交易所，空状态 */}
-      <div className="panel" style={{ borderStyle: "dashed", opacity: 0.85 }}>
+      {/* 富途模拟账户：本机 OpenD 在线时实时可查 */}
+      <div className="panel" style={{ borderColor: futu?.available ? "var(--accent)" : undefined,
+                                      borderStyle: futu?.available ? "solid" : "dashed",
+                                      opacity: futu?.available ? 1 : 0.85 }}>
         <h2>
           <Wallet size={15} style={{ verticalAlign: "-2px", marginRight: 6 }} aria-hidden="true" />
-          真实账户
-          <span className="badge flat" style={{ marginLeft: 8 }}>未接入</span>
+          富途模拟账户
+          <span className={`badge ${futu?.available ? "call" : "flat"}`} style={{ marginLeft: 8 }}>
+            {futu?.available ? "OpenD 在线" : "OpenD 离线"}
+          </span>
+          <button className="btn" style={{ marginLeft: "auto", padding: "4px 10px", fontSize: 12 }}
+                  onClick={refreshFutu} disabled={futuBusy}>
+            {futuBusy ? "刷新中…" : "刷新"}
+          </button>
         </h2>
-        <div className="cards" style={{ marginTop: 12 }}>
-          <div className="card"><div className="label">账户净值</div><div className="value">—</div></div>
-          <div className="card"><div className="label">持仓</div><div className="value">—</div></div>
-          <div className="card"><div className="label">浮动盈亏</div><div className="value">—</div></div>
-          <div className="card"><div className="label">账户表现</div><div className="value">—</div></div>
-        </div>
-        <p className="hint" style={{ marginTop: 10 }}>
-          交易所接入规划中（富途牛牛）。当前全部表现为纸面模拟，规则与实盘一致。
-        </p>
+        {futu?.available ? (() => {
+          const acct = futu.account || {};
+          const posList = futu.positions || [];
+          const unreal = posList.reduce((a, p) => a + (p.pl_val || 0), 0);
+          const activeOrders = (futu.orders || []).filter((o) =>
+            ["SUBMITTED", "SUBMITTING", "WAITING_SUBMIT", "FILLED_PART"].includes(o.order_status));
+          return (
+            <>
+              <div className="cards" style={{ marginTop: 12 }}>
+                <div className="card"><div className="label">总资产</div>
+                  <div className="value">${fmt(acct.total_assets)}</div></div>
+                <div className="card"><div className="label">现金</div>
+                  <div className="value">${fmt(acct.cash)}</div></div>
+                <div className="card"><div className="label">持仓市值</div>
+                  <div className="value">${fmt(acct.market_val)}</div></div>
+                <div className="card"><div className="label">持仓浮动盈亏</div>
+                  <div className={`value ${unreal >= 0 ? "pos" : "neg"}`}>{signed(unreal)}</div></div>
+              </div>
+              {posList.length > 0 && (
+                <table style={{ marginTop: 14 }}>
+                  <thead><tr>
+                    <th>代码</th><th style={{ textAlign: "right" }}>数量</th>
+                    <th style={{ textAlign: "right" }}>成本价</th>
+                    <th style={{ textAlign: "right" }}>市值</th>
+                    <th style={{ textAlign: "right" }}>盈亏</th>
+                  </tr></thead>
+                  <tbody>
+                    {posList.map((p) => (
+                      <tr key={p.code}>
+                        <td>{p.code}</td>
+                        <td style={{ textAlign: "right" }}>{fmt(p.qty, 0)}</td>
+                        <td style={{ textAlign: "right" }}>${fmt(p.cost_price)}</td>
+                        <td style={{ textAlign: "right" }}>${fmt(p.market_val)}</td>
+                        <td style={{ textAlign: "right" }}
+                            className={p.pl_val >= 0 ? "pos" : "neg"}>
+                          {signed(p.pl_val)} ({p.pl_ratio >= 0 ? "+" : ""}{fmt(p.pl_ratio, 1)}%)
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {activeOrders.length > 0 && (
+                <>
+                  <h3 style={{ marginTop: 16 }}>未完成订单</h3>
+                  <table style={{ marginTop: 8 }}>
+                    <thead><tr>
+                      <th>代码</th><th>方向</th>
+                      <th style={{ textAlign: "right" }}>数量</th>
+                      <th style={{ textAlign: "right" }}>价格</th><th>状态</th>
+                    </tr></thead>
+                    <tbody>
+                      {activeOrders.map((o) => (
+                        <tr key={o.order_id}>
+                          <td>{o.code}</td>
+                          <td className={o.trd_side === "BUY" ? "pos" : "neg"}>
+                            {o.trd_side === "BUY" ? "买入" : "卖出"}
+                          </td>
+                          <td style={{ textAlign: "right" }}>{fmt(o.qty, 0)}</td>
+                          <td style={{ textAlign: "right" }}>
+                            {o.price > 0 ? `$${fmt(o.price)}` : "市价"}
+                          </td>
+                          <td><span className="badge flat">{o.order_status}</span></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </>
+              )}
+              <p className="hint" style={{ marginTop: 10 }}>
+                账户 {futu.acc_id} · 更新于{" "}
+                {new Date(futu.updated_at).toLocaleString("zh-CN", { hour12: false })}
+                {" · 需本机 OpenD 在线，云端访问时显示最后快照"}
+              </p>
+            </>
+          );
+        })() : (
+          <>
+            <div className="cards" style={{ marginTop: 12 }}>
+              <div className="card"><div className="label">总资产</div><div className="value">—</div></div>
+              <div className="card"><div className="label">现金</div><div className="value">—</div></div>
+              <div className="card"><div className="label">持仓市值</div><div className="value">—</div></div>
+              <div className="card"><div className="label">浮动盈亏</div><div className="value">—</div></div>
+            </div>
+            <p className="hint" style={{ marginTop: 10 }}>
+              {futu?.error ? `连接失败：${futu.error}` : "富途 OpenD 未运行或未登录，启动后点「刷新」。"}
+              {" "}真实账户接入规划中，当前仅模拟环境。
+            </p>
+          </>
+        )}
       </div>
 
       {/* 模拟账户摘要 */}
