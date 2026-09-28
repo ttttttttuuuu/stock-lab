@@ -131,9 +131,12 @@ class FutuBroker:
             raise BrokerError(f"position_list_query failed: {data}")
         out = []
         for _, r in data.iterrows():
+            qty = float(r.get("qty", 0))
+            if qty == 0:
+                continue  # 清仓后接口仍返回 0 数量的占位行
             out.append({
                 "code": r.get("code"),
-                "qty": float(r.get("qty", 0)),
+                "qty": qty,
                 "cost_price": r.get("cost_price"),
                 "market_val": r.get("market_val"),
                 "pl_val": r.get("pl_val"),
