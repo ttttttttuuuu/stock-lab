@@ -61,14 +61,19 @@ def mirror(opens: list[dict], closes: list[dict]):
     now = datetime.now(timezone.utc).isoformat()
     broker = FutuBroker(simulate=True)
     try:
+        from . import futu_book
+        # 先同步上一轮挂单的真实成交，重建虚拟账本（ sizing 要用账面现金）
+        futu_book.sync_fills(broker, state)
+        book = futu_book.rebuild(state)
         acct = broker.account()
-        print(f"[futu-mirror] 模拟账户现金 {acct.get('cash')} "
-              f"{acct.get('currency')}", flush=True)
+        print(f"[futu-mirror] 沙盒现金 {acct.get('cash')} | "
+              f"虚拟账本现金 {book['cash']}/{book['start_capital']}", flush=True)
 
         for pos in opens:
             ev = _event_key("open", pos["key"], pos["entry_ts"])
             rec = _find(state, ev)
-            if rec and rec["status"] in ("submitted", "skipped"):
+            if rec and rec["status"] in ("submitted", "skipped",
+                                         "filled", "cancelled"):
                 continue
             if rec is None:
                 rec = {"event": ev, "action": "open",
@@ -80,17 +85,20 @@ def mirror(opens: list[dict], closes: list[dict]):
                 rec.update(status="skipped",
                            reason="做空不镜像（富途美股模拟卖空未接线）")
             else:
-                qty = int(BUDGET / float(pos["entry_price"]))
+                # sizing 受虚拟现金约束：资金不足的信号直接跳过
+                spend = min(BUDGET, book["cash"])
+                qty = int(spend / float(pos["entry_price"]))
                 if qty < 1:
                     rec.update(status="skipped",
-                               reason=f"{BUDGET:.0f}U 买不起 1 股 "
-                                      f"@ {pos['entry_price']}")
+                               reason=f"虚拟现金不足（余 ${book['cash']:.0f}，"
+                                      f"买不起 1 股 @ {pos['entry_price']}）")
                 else:
                     try:
                         res = broker.place_stock_order(
                             pos["symbol"], "BUY", qty=qty, price=None)
                         rec.update(status="submitted", qty=qty,
                                    order_id=res.order_id, time=now)
+                        book["cash"] -= qty * float(pos["entry_price"])
                         print(f"[futu-mirror] BUY {pos['symbol']} x{qty} "
                               f"order_id={res.order_id}", flush=True)
                     except BrokerError as e:
@@ -103,7 +111,8 @@ def mirror(opens: list[dict], closes: list[dict]):
             pair_key = f"{t['symbol']}|{t['strategy']}"
             ev = _event_key("close", pair_key, t["exit_date"])
             rec = _find(state, ev)
-            if rec and rec["status"] in ("submitted", "skipped"):
+            if rec and rec["status"] in ("submitted", "skipped",
+                                         "filled", "cancelled"):
                 continue
             open_rec = _find(state, _event_key("open", pair_key,
                                                t["entry_date"]))
@@ -112,14 +121,17 @@ def mirror(opens: list[dict], closes: list[dict]):
                        "symbol": t["symbol"], "strategy": t["strategy"],
                        "paper_side": t["side"],
                        "paper_price": t["exit_price"],
-                       "exit_reason": t["exit_reason"], "time": now}
+                       "exit_reason": t["exit_reason"],
+                       "open_event": _event_key("open", pair_key,
+                                                t["entry_date"]),
+                       "time": now}
                 state["orders"].append(rec)
             if t["side"] != "long" or not open_rec \
-                    or open_rec["status"] != "submitted":
+                    or open_rec["status"] not in ("submitted", "filled"):
                 rec.update(status="skipped",
                            reason="无对应的已镜像开仓单（做空或未成交）")
             else:
-                qty = open_rec.get("qty", 0)
+                qty = open_rec.get("fill_qty") or open_rec.get("qty", 0)
                 try:
                     res = broker.place_stock_order(
                         t["symbol"], "SELL", qty=qty, price=None)
@@ -132,5 +144,7 @@ def mirror(opens: list[dict], closes: list[dict]):
                     print(f"[futu-mirror] close {t['symbol']} 失败: {e}",
                           flush=True)
             _save(state)
+
+        futu_book.save(state)  # 重放重建 data/futu_book.json
     finally:
         broker.close()

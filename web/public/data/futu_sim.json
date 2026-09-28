@@ -1,6 +1,6 @@
 {
   "available": true,
-  "updated_at": "2026-09-28T13:32:13.515691+00:00",
+  "updated_at": "2026-09-28T13:38:42.692009+00:00",
   "mirror": [],
   "acc_id": 3228242,
   "account": {
@@ -297,8 +297,8 @@
   "quotes": [
     {
       "code": "US.ARM",
-      "last_price": 299.83,
-      "update_time": "2026-09-28 09:32:12",
+      "last_price": 285.415,
+      "update_time": "2026-09-28 09:38:41",
       "pre_price": 306.66,
       "pre_high_price": 306.66,
       "pre_low_price": 297.0,
@@ -313,8 +313,8 @@
     },
     {
       "code": "US.DELL",
-      "last_price": 553.6416,
-      "update_time": "2026-09-28 09:32:11",
+      "last_price": 552.57,
+      "update_time": "2026-09-28 09:38:40",
       "pre_price": 553.9,
       "pre_high_price": 556.0,
       "pre_low_price": 546.44,
@@ -329,8 +329,8 @@
     },
     {
       "code": "US.INTC",
-      "last_price": 121.22,
-      "update_time": "2026-09-28 09:32:13",
+      "last_price": 118.235,
+      "update_time": "2026-09-28 09:38:42",
       "pre_price": 120.54,
       "pre_high_price": 121.5891,
       "pre_low_price": 115.66,
@@ -345,8 +345,8 @@
     },
     {
       "code": "US.LCID",
-      "last_price": 4.0001,
-      "update_time": "2026-09-28 09:32:13",
+      "last_price": 3.985,
+      "update_time": "2026-09-28 09:38:31",
       "pre_price": 4.0497,
       "pre_high_price": 4.08,
       "pre_low_price": 4.0,
@@ -361,8 +361,8 @@
     },
     {
       "code": "US.NVDA",
-      "last_price": 231.555,
-      "update_time": "2026-09-28 09:32:12",
+      "last_price": 231.7252,
+      "update_time": "2026-09-28 09:38:42",
       "pre_price": 229.55,
       "pre_high_price": 230.0,
       "pre_low_price": 222.75,
@@ -377,8 +377,8 @@
     },
     {
       "code": "US.PLTR",
-      "last_price": 186.06,
-      "update_time": "2026-09-28 09:32:12",
+      "last_price": 189.01,
+      "update_time": "2026-09-28 09:38:42",
       "pre_price": 186.41,
       "pre_high_price": 188.99,
       "pre_low_price": 185.7,
@@ -393,8 +393,8 @@
     },
     {
       "code": "US.SMCI",
-      "last_price": 42.745,
-      "update_time": "2026-09-28 09:32:12",
+      "last_price": 42.68,
+      "update_time": "2026-09-28 09:38:41",
       "pre_price": 42.78,
       "pre_high_price": 42.9677,
       "pre_low_price": 42.28,
@@ -407,5 +407,15 @@
       "overnight_volume": 258862.0,
       "overnight_change_rate": -1.803
     }
-  ]
+  ],
+  "book": {
+    "start_capital": 3000.0,
+    "cash": 3000.0,
+    "positions": [],
+    "closed": [],
+    "realized_pnl": 0,
+    "updated_at": "2026-09-28T13:38:43.295445+00:00",
+    "market_val": 0.0,
+    "net_value": 3000.0
+  }
 }

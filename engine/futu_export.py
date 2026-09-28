@@ -97,6 +97,27 @@ def main():
             quotes = fetch_quotes(
                 futu, sorted(set(tracked_symbols()) | set(pos_syms)))
             payload["quotes"] = quotes
+            # 策略虚拟账本：先同步挂单成交再重放重建，按最新价估值持仓
+            try:
+                from . import futu_book
+                mstate = futu_book.load_mirror()
+                futu_book.sync_fills(b, mstate)
+                futu_book.save_mirror(mstate)
+                book = futu_book.save(mstate)
+                px = {q["code"]: q.get("last_price") for q in quotes}
+                mkt = 0.0
+                for p in book["positions"]:
+                    lp = px.get(f"US.{p['symbol']}")
+                    p["last_price"] = lp
+                    p["market_val"] = round(p["qty"] * lp, 2) if lp else None
+                    p["unrealized_pnl"] = (
+                        round(p["market_val"] - p["cost"], 2) if lp else None)
+                    mkt += p["market_val"] or 0
+                book["market_val"] = round(mkt, 2)
+                book["net_value"] = round(book["cash"] + mkt, 2)
+                payload["book"] = book
+            except Exception as e:  # noqa: BLE001
+                print(f"[futu-export] 虚拟账本重建失败: {e}")
         finally:
             b.close()
         print(f"[futu-export] 账户 {payload['acc_id']} "

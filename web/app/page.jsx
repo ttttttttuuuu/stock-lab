@@ -94,40 +94,50 @@ export default function Home() {
         </h2>
         {futu?.available ? (() => {
           const acct = futu.account || {};
-          const posList = futu.positions || [];
-          const unreal = posList.reduce((a, p) => a + (p.pl_val || 0), 0);
+          const book = futu.book;
+          const posList = book?.positions || [];
           const activeOrders = (futu.orders || []).filter((o) =>
             ["SUBMITTED", "SUBMITTING", "WAITING_SUBMIT", "FILLED_PART"].includes(o.order_status));
           return (
             <>
               <div className="cards" style={{ marginTop: 12 }}>
-                <div className="card"><div className="label">总资产</div>
-                  <div className="value">${fmt(acct.total_assets)}</div></div>
-                <div className="card"><div className="label">现金</div>
-                  <div className="value">${fmt(acct.cash)}</div></div>
-                <div className="card"><div className="label">持仓市值</div>
-                  <div className="value">${fmt(acct.market_val)}</div></div>
-                <div className="card"><div className="label">持仓浮动盈亏</div>
-                  <div className={`value ${unreal >= 0 ? "pos" : "neg"}`}>{signed(unreal)}</div></div>
+                <div className="card">
+                  <div className="label">策略净值（起步 ${fmt(book?.start_capital ?? 3000, 0)}）</div>
+                  <div className={`value ${(book?.net_value ?? 0) >= (book?.start_capital ?? 3000) ? "pos" : "neg"}`}>
+                    ${fmt(book?.net_value ?? book?.start_capital ?? 3000)}
+                  </div>
+                </div>
+                <div className="card"><div className="label">虚拟现金</div>
+                  <div className="value">${fmt(book?.cash ?? 3000)}</div></div>
+                <div className="card"><div className="label">在仓</div>
+                  <div className="value">{posList.length}</div></div>
+                <div className="card"><div className="label">已实现盈亏</div>
+                  <div className={`value ${(book?.realized_pnl ?? 0) >= 0 ? "pos" : "neg"}`}>
+                    {signed(book?.realized_pnl ?? 0)}
+                  </div></div>
               </div>
               {posList.length > 0 && (
                 <table style={{ marginTop: 14 }}>
                   <thead><tr>
-                    <th>代码</th><th style={{ textAlign: "right" }}>数量</th>
-                    <th style={{ textAlign: "right" }}>成本价</th>
-                    <th style={{ textAlign: "right" }}>市值</th>
-                    <th style={{ textAlign: "right" }}>盈亏</th>
+                    <th>代码</th><th>策略</th>
+                    <th style={{ textAlign: "right" }}>数量</th>
+                    <th style={{ textAlign: "right" }}>买入成本</th>
+                    <th style={{ textAlign: "right" }}>最新价</th>
+                    <th style={{ textAlign: "right" }}>浮动盈亏</th>
                   </tr></thead>
                   <tbody>
                     {posList.map((p) => (
-                      <tr key={p.code}>
-                        <td>{p.code}</td>
+                      <tr key={`${p.symbol}-${p.strategy}`}>
+                        <td>{p.symbol}</td>
+                        <td><span className="badge flat">{p.strategy}</span></td>
                         <td style={{ textAlign: "right" }}>{fmt(p.qty, 0)}</td>
                         <td style={{ textAlign: "right" }}>${fmt(p.cost_price)}</td>
-                        <td style={{ textAlign: "right" }}>${fmt(p.market_val)}</td>
+                        <td style={{ textAlign: "right" }}>
+                          {p.last_price ? `$${fmt(p.last_price)}` : "—"}
+                        </td>
                         <td style={{ textAlign: "right" }}
-                            className={p.pl_val >= 0 ? "pos" : "neg"}>
-                          {signed(p.pl_val)} ({p.pl_ratio >= 0 ? "+" : ""}{fmt(p.pl_ratio, 1)}%)
+                            className={(p.unrealized_pnl ?? 0) >= 0 ? "pos" : "neg"}>
+                          {p.unrealized_pnl != null ? signed(p.unrealized_pnl) : "—"}
                         </td>
                       </tr>
                     ))}
@@ -201,9 +211,10 @@ export default function Home() {
                 );
               })()}
               <p className="hint" style={{ marginTop: 10 }}>
-                账户 {futu.acc_id} · 更新于{" "}
+                沙盒账户总额 ${fmt(acct.total_assets)}（富途平台设定，仅作执行沙盒）
+                {" · 更新于 "}
                 {new Date(futu.updated_at).toLocaleString("zh-CN", { hour12: false })}
-                {" · 需本机 OpenD 在线，云端访问时显示最后快照"}
+                {" · 需本机 OpenD 在线"}
               </p>
             </>
           );
