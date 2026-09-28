@@ -69,6 +69,10 @@ class FutuBroker:
                 "OpenD 解锁。当前项目阶段只允许模拟盘。")
         self._futu = futu
         self.env = futu.TrdEnv.SIMULATE if simulate else futu.TrdEnv.REAL
+        # 模拟账户选择：默认用美股股票模拟账户（3228242，支持股票交易）。
+        # 注意 13183835 是期权模拟账户，不支持股票下单（"不支持此证券类型"）。
+        # 可用 FUTU_SIM_ACC_ID 覆盖。
+        self.acc_id = int(os.environ.get("FUTU_SIM_ACC_ID", "3228242"))
         self.host, self.port = host, port
         self._trd = None
         self._unlocked = False
@@ -93,7 +97,7 @@ class FutuBroker:
 
     # ---- account / quotes ------------------------------------------------
     def account(self) -> dict:
-        ret, data = self.trd.accinfo_query(trd_env=self.env)
+        ret, data = self.trd.accinfo_query(acc_id=self.acc_id, trd_env=self.env)
         if ret != self._futu.RET_OK:
             raise BrokerError(f"accinfo_query failed: {data}")
         row = data.iloc[0].to_dict()
@@ -122,7 +126,7 @@ class FutuBroker:
             ctx.close()
 
     def positions(self) -> list[dict]:
-        ret, data = self.trd.position_list_query(trd_env=self.env)
+        ret, data = self.trd.position_list_query(acc_id=self.acc_id, trd_env=self.env)
         if ret != self._futu.RET_OK:
             raise BrokerError(f"position_list_query failed: {data}")
         out = []
@@ -146,7 +150,7 @@ class FutuBroker:
         pwd = os.environ.get("FUTU_TRADE_PWD")
         if not pwd:
             return  # many simulate setups need no unlock; try and see
-        ret, data = self.trd.unlock_trade(password=pwd, trd_env=self.env)
+        ret, data = self.trd.unlock_trade(password=pwd, acc_id=self.acc_id, trd_env=self.env)
         if ret == self._futu.RET_OK:
             self._unlocked = True
         # failure surfaces on the first order with a clear broker error
@@ -168,7 +172,7 @@ class FutuBroker:
                 f"请提高单笔本金或改用整股 sizing")
         kwargs = dict(
             qty=whole, code=us_code(symbol), trd_side=side_map[side.upper()],
-            trd_env=self.env)
+            acc_id=self.acc_id, trd_env=self.env)
         if price is None:
             # futu-api 的 price 是必填参数，市价单传 0
             kwargs["price"] = 0
