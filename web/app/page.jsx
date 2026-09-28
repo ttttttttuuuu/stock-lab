@@ -161,6 +161,45 @@ export default function Home() {
                   </table>
                 </>
               )}
+              {(() => {
+                const night = (futu.quotes || []).filter((q) => q.overnight_price > 0);
+                if (!night.length) return null;
+                return (
+                  <>
+                    <h3 style={{ marginTop: 16 }}>
+                      夜盘实况
+                      <span className="muted" style={{ fontSize: 12, fontWeight: 400, marginLeft: 8 }}>
+                        美东 20:00–04:00 · Blue Ocean
+                      </span>
+                    </h3>
+                    <table style={{ marginTop: 8 }}>
+                      <thead><tr>
+                        <th>代码</th>
+                        <th style={{ textAlign: "right" }}>收盘价</th>
+                        <th style={{ textAlign: "right" }}>夜盘价</th>
+                        <th style={{ textAlign: "right" }}>夜盘涨跌</th>
+                        <th style={{ textAlign: "right" }}>夜盘区间</th>
+                      </tr></thead>
+                      <tbody>
+                        {night.map((q) => (
+                          <tr key={q.code}>
+                            <td>{q.code.replace("US.", "")}</td>
+                            <td style={{ textAlign: "right" }}>${fmt(q.last_price)}</td>
+                            <td style={{ textAlign: "right" }}>${fmt(q.overnight_price)}</td>
+                            <td style={{ textAlign: "right" }}
+                                className={q.overnight_change_rate >= 0 ? "pos" : "neg"}>
+                              {q.overnight_change_rate >= 0 ? "+" : ""}{fmt(q.overnight_change_rate, 2)}%
+                            </td>
+                            <td style={{ textAlign: "right" }} className="muted">
+                              {fmt(q.overnight_low_price)} ~ {fmt(q.overnight_high_price)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </>
+                );
+              })()}
               <p className="hint" style={{ marginTop: 10 }}>
                 账户 {futu.acc_id} · 更新于{" "}
                 {new Date(futu.updated_at).toLocaleString("zh-CN", { hour12: false })}
