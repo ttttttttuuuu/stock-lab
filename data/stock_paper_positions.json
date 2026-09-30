@@ -13,7 +13,7 @@
       "last_mark": 72.19,
       "unrealized_pnl": 2.67,
       "unrealized_pct": 2.67,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 285.87
     },
     {
@@ -29,7 +29,7 @@
       "last_mark": 308.24,
       "unrealized_pnl": -2.22,
       "unrealized_pct": -2.22,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 206.9
     },
     {
@@ -45,7 +45,7 @@
       "last_mark": 607.87,
       "unrealized_pnl": -1.1,
       "unrealized_pct": -1.1,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 198.1
     },
     {
@@ -61,7 +61,7 @@
       "last_mark": 72.19,
       "unrealized_pnl": 2.67,
       "unrealized_pct": 2.67,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 186.54
     },
     {
@@ -77,7 +77,7 @@
       "last_mark": 157.14,
       "unrealized_pnl": -3.12,
       "unrealized_pct": -3.12,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 173.8
     },
     {
@@ -93,7 +93,7 @@
       "last_mark": 72.19,
       "unrealized_pnl": -2.67,
       "unrealized_pct": -2.67,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 171.94
     },
     {
@@ -109,7 +109,7 @@
       "last_mark": 44.58,
       "unrealized_pnl": 4.8,
       "unrealized_pct": 4.8,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 165.7
     },
     {
@@ -125,7 +125,7 @@
       "last_mark": 41.78,
       "unrealized_pnl": 0.82,
       "unrealized_pct": 0.82,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 150.2
     },
     {
@@ -141,7 +141,7 @@
       "last_mark": 157.14,
       "unrealized_pnl": -3.12,
       "unrealized_pct": -3.12,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 149.61
     },
     {
@@ -157,7 +157,7 @@
       "last_mark": 187.48,
       "unrealized_pnl": -2.25,
       "unrealized_pct": -2.25,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 141.44
     },
     {
@@ -173,7 +173,7 @@
       "last_mark": 44.58,
       "unrealized_pnl": 4.8,
       "unrealized_pct": 4.8,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 141.01
     },
     {
@@ -189,7 +189,7 @@
       "last_mark": 486.76,
       "unrealized_pnl": -2.61,
       "unrealized_pct": -2.61,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 140.57
     },
     {
@@ -200,12 +200,12 @@
       "entry_date": "2026-09-23",
       "entry_price": 549.83,
       "shares": 0.181874,
-      "days_held": 2,
-      "last_mark_date": "2026-09-25",
-      "last_mark": 562.89,
-      "unrealized_pnl": 2.38,
-      "unrealized_pct": 2.38,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "days_held": 3,
+      "last_mark_date": "2026-09-28",
+      "last_mark": 543.43,
+      "unrealized_pnl": -1.16,
+      "unrealized_pct": -1.16,
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 135.59
     },
     {
@@ -221,7 +221,7 @@
       "last_mark": 328.12,
       "unrealized_pnl": -2.0,
       "unrealized_pct": -2.0,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 130.95
     },
     {
@@ -237,7 +237,7 @@
       "last_mark": 72.19,
       "unrealized_pnl": 1.93,
       "unrealized_pct": 1.93,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 277.57
     },
     {
@@ -253,7 +253,7 @@
       "last_mark": 44.58,
       "unrealized_pnl": -0.89,
       "unrealized_pct": -0.89,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 200.86
     },
     {
@@ -269,7 +269,7 @@
       "last_mark": 72.19,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 181.83
     },
     {
@@ -285,7 +285,7 @@
       "last_mark": 116.46,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 164.8
     },
     {
@@ -301,7 +301,7 @@
       "last_mark": 41.86,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 163.97
     },
     {
@@ -317,7 +317,7 @@
       "last_mark": 486.76,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-09-29T01:21:09.894233+00:00",
+      "marked_at": "2026-09-30T00:51:40.341503+00:00",
       "backtest_pnl": 138.22
     }
   ]
