@@ -1,0 +1,51 @@
+name: weekly-evolve
+
+# Beijing 07:17 Saturday  ==  UTC 23:17 Friday
+# 周五收盘数据落地后跑全量进化：重取 2 年数据 → 参数寻优 → 出场优化 →
+# 晋升策略 → 重跑回测矩阵，让下周的 Top10 选拔用上最新参数。
+on:
+  schedule:
+    - cron: "17 23 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit state (trader.db / JSON) back to the repo
+
+concurrency:
+  group: weekly-evolve
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # 全量进化在模块内完成：refetch -> grids -> promote -> matrix ->
+      # sync Supabase -> export（单步执行，失败则整体失败并告警）
+      - name: weekly evolution
+        run: python -m engine.weekly_evolve
+
+      - name: commit state back
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trader.db data/*.json web/public/data/
+          if git diff --cached --quiet; then
+            echo "no state changes"
+          else
+            git commit -m "weekly evolve $(date -u +%F)"
+            git push
+          fi
