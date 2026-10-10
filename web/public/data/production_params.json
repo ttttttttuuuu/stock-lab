@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-25T08:06:18.278288+00:00",
-  "note": "weekly evolve 2026-09-25: 1 promotion(s)",
+  "updated_at": "2026-10-10T02:19:20.132505+00:00",
+  "note": "weekly evolve 2026-10-10: 1 promotion(s)",
   "strategy_params": {
     "sma_cross": {
       "fast": 5,
@@ -60,8 +60,8 @@
       -0.04
     ],
     "supertrend": [
-      0.08,
-      -0.04
+      0.15,
+      -0.07
     ],
     "ut_bot": [
       0.15,
