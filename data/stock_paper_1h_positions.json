@@ -1,21 +1,6 @@
 {
   "positions": [
     {
-      "key": "ARM|macd_trend",
-      "symbol": "ARM",
-      "strategy": "macd_trend",
-      "side": "long",
-      "entry_ts": "2026-10-16 14:00:00-04:00",
-      "entry_price": 229.095,
-      "shares": 0.4365,
-      "bars_held": 8,
-      "last_mark_ts": "2026-10-19 15:00:00-04:00",
-      "last_mark": 227.74,
-      "unrealized_pnl": -0.59,
-      "unrealized_pct": -0.59,
-      "marked_at": "2026-10-21T00:13:14.034784+00:00"
-    },
-    {
       "key": "MU|macd_trend",
       "symbol": "MU",
       "strategy": "macd_trend",
@@ -23,12 +8,12 @@
       "entry_ts": "2026-10-16 10:00:00-04:00",
       "entry_price": 903.96,
       "shares": 0.110624,
-      "bars_held": 12,
-      "last_mark_ts": "2026-10-19 15:00:00-04:00",
-      "last_mark": 905.35,
-      "unrealized_pnl": 0.15,
-      "unrealized_pct": 0.15,
-      "marked_at": "2026-10-21T00:13:14.034784+00:00"
+      "bars_held": 19,
+      "last_mark_ts": "2026-10-20 15:00:00-04:00",
+      "last_mark": 895.85,
+      "unrealized_pnl": -0.9,
+      "unrealized_pct": -0.9,
+      "marked_at": "2026-10-22T00:17:58.413759+00:00"
     },
     {
       "key": "DELL|macd_trend",
@@ -38,12 +23,12 @@
       "entry_ts": "2026-10-19 12:00:00-04:00",
       "entry_price": 462.1199,
       "shares": 0.216394,
-      "bars_held": 3,
-      "last_mark_ts": "2026-10-19 15:00:00-04:00",
-      "last_mark": 455.22,
-      "unrealized_pnl": -1.49,
-      "unrealized_pct": -1.49,
-      "marked_at": "2026-10-21T00:13:14.034784+00:00"
+      "bars_held": 10,
+      "last_mark_ts": "2026-10-20 15:00:00-04:00",
+      "last_mark": 461.65,
+      "unrealized_pnl": -0.1,
+      "unrealized_pct": -0.1,
+      "marked_at": "2026-10-22T00:17:58.413759+00:00"
     },
     {
       "key": "NVDA|macd_trend",
@@ -53,12 +38,12 @@
       "entry_ts": "2026-10-19 11:00:00-04:00",
       "entry_price": 219.3597,
       "shares": 0.455872,
-      "bars_held": 4,
-      "last_mark_ts": "2026-10-19 15:00:00-04:00",
-      "last_mark": 217.09,
-      "unrealized_pnl": -1.03,
-      "unrealized_pct": -1.03,
-      "marked_at": "2026-10-21T00:13:14.034784+00:00"
+      "bars_held": 11,
+      "last_mark_ts": "2026-10-20 15:00:00-04:00",
+      "last_mark": 216.48,
+      "unrealized_pnl": -1.31,
+      "unrealized_pct": -1.31,
+      "marked_at": "2026-10-22T00:17:58.413759+00:00"
     },
     {
       "key": "SMCI|macd_trend",
@@ -68,12 +53,27 @@
       "entry_ts": "2026-10-19 12:00:00-04:00",
       "entry_price": 32.5001,
       "shares": 3.076914,
-      "bars_held": 3,
-      "last_mark_ts": "2026-10-19 15:00:00-04:00",
-      "last_mark": 32.075,
-      "unrealized_pnl": -1.31,
-      "unrealized_pct": -1.31,
-      "marked_at": "2026-10-21T00:13:14.034784+00:00"
+      "bars_held": 10,
+      "last_mark_ts": "2026-10-20 15:00:00-04:00",
+      "last_mark": 32.46,
+      "unrealized_pnl": -0.12,
+      "unrealized_pct": -0.12,
+      "marked_at": "2026-10-22T00:17:58.413759+00:00"
+    },
+    {
+      "key": "ARM|macd_trend",
+      "symbol": "ARM",
+      "strategy": "macd_trend",
+      "side": "long",
+      "entry_ts": "2026-10-20 10:00:00-04:00",
+      "entry_price": 226.03,
+      "shares": 0.442419,
+      "bars_held": 5,
+      "last_mark_ts": "2026-10-20 15:00:00-04:00",
+      "last_mark": 220.92,
+      "unrealized_pnl": -2.26,
+      "unrealized_pct": -2.26,
+      "marked_at": "2026-10-22T00:17:58.413759+00:00"
     }
   ],
   "pairs": [
@@ -130,28 +130,28 @@
   ],
   "selected_on": "2026-10-16",
   "eval_ts": {
-    "ARM|ensemble": "2026-10-19 15:00:00-04:00",
-    "ARM|macd_trend": "2026-10-19 15:00:00-04:00",
+    "ARM|ensemble": "2026-10-20 15:00:00-04:00",
+    "ARM|macd_trend": "2026-10-20 15:00:00-04:00",
     "ARM|supertrend": "2026-09-24 15:00:00-04:00",
     "ARM|ut_bot": "2026-09-24 15:00:00-04:00",
     "COIN|macd_trend": "2026-09-24 15:00:00-04:00",
-    "MU|macd_trend": "2026-10-19 15:00:00-04:00",
+    "MU|macd_trend": "2026-10-20 15:00:00-04:00",
     "ORCL|ut_bot": "2026-09-23 15:00:00-04:00",
-    "SMCI|ensemble": "2026-10-19 15:00:00-04:00",
-    "SMCI|macd_trend": "2026-10-19 15:00:00-04:00",
+    "SMCI|ensemble": "2026-10-20 15:00:00-04:00",
+    "SMCI|macd_trend": "2026-10-20 15:00:00-04:00",
     "SMCI|sma_cross": "2026-09-24 15:00:00-04:00",
-    "DELL|ensemble": "2026-10-19 15:00:00-04:00",
-    "INTC|ensemble": "2026-10-19 15:00:00-04:00",
+    "DELL|ensemble": "2026-10-20 15:00:00-04:00",
+    "INTC|ensemble": "2026-10-20 15:00:00-04:00",
     "INTC|natural_trade": "2026-10-06 15:00:00-04:00",
     "INTC|ut_bot": "2026-10-07 15:00:00-04:00",
     "LCID|bb_breakout": "2026-10-14 15:00:00-04:00",
-    "NVDA|macd_trend": "2026-10-19 15:00:00-04:00",
+    "NVDA|macd_trend": "2026-10-20 15:00:00-04:00",
     "PLTR|macd_trend": "2026-09-30 15:00:00-04:00",
-    "AMD|ensemble": "2026-10-19 15:00:00-04:00",
+    "AMD|ensemble": "2026-10-20 15:00:00-04:00",
     "INTC|ttm_squeeze": "2026-10-14 15:00:00-04:00",
     "META|sma_cross": "2026-10-15 15:00:00-04:00",
     "SHOP|ttm_squeeze": "2026-10-15 15:00:00-04:00",
-    "DELL|macd_trend": "2026-10-19 15:00:00-04:00"
+    "DELL|macd_trend": "2026-10-20 15:00:00-04:00"
   },
   "generations": [
     {
@@ -399,8 +399,8 @@
       {
         "symbol": "ARM",
         "strategy": "macd_trend",
-        "pnl": -4.78,
-        "trades": 2
+        "pnl": -9.69,
+        "trades": 3
       },
       {
         "symbol": "ARM",
@@ -429,13 +429,13 @@
       {
         "symbol": "LCID",
         "strategy": "bb_breakout",
-        "pnl": 0.63,
-        "trades": 1
+        "pnl": -1.85,
+        "trades": 2
       },
       {
         "symbol": "META",
         "strategy": "sma_cross",
-        "pnl": 3.22,
+        "pnl": 4.67,
         "trades": 1
       },
       {
@@ -447,7 +447,7 @@
       {
         "symbol": "SHOP",
         "strategy": "ttm_squeeze",
-        "pnl": 0.85,
+        "pnl": -1.97,
         "trades": 1
       },
       {
@@ -457,6 +457,6 @@
         "trades": 2
       }
     ],
-    "total": 0.52
+    "total": -8.24
   }
 }
