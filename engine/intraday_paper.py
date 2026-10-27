@@ -32,6 +32,54 @@ STATE_FILE = ROOT / "data" / "stock_paper_1h_positions.json"
 MIN_VAL_TRADES = 8
 VAL_WINDOW_DAYS = 90  # recent regime window for pair ranking
 
+# Live-performance veto (same policy as engine.stock_paper): pairs whose
+# recent closed paper trades are consistently losing get no NEW entries.
+# Entry-only (open positions exit naturally) and self-healing (rolling
+# window lets an old bad record age out).
+VETO_WINDOW_DAYS = 45
+VETO_MIN_TRADES = 3
+VETO_MAX_PNL = -15.0
+EQUITY_FILES = (ROOT / "data" / "stock_paper_1h_equity.json",
+                ROOT / "web" / "public" / "data" / "stock_paper_1h_equity.json")
+
+
+def live_veto(conn, tf: str) -> set[str]:
+    """Pair keys ("SYM|strategy") vetoed by their recent live record."""
+    from datetime import date, timedelta
+    cutoff = (date.today() - timedelta(days=VETO_WINDOW_DAYS)).isoformat()
+    rows = conn.execute(
+        "SELECT symbol, strategy, pnl FROM stock_paper_intra_trades"
+        " WHERE timeframe = ? AND exit_date >= ?", (tf, cutoff)).fetchall()
+    agg: dict[str, list] = {}
+    for sym, strat, pnl in rows:
+        a = agg.setdefault(f"{sym}|{strat}", [0, 0.0])
+        a[0] += 1
+        a[1] += pnl or 0.0
+    veto = {k for k, (n, total) in agg.items()
+            if n >= VETO_MIN_TRADES and total <= VETO_MAX_PNL}
+    if veto:
+        print(f"[{tf}-paper] live veto (new entries blocked): {sorted(veto)}",
+              flush=True)
+    return veto
+
+
+def write_equity_snapshot(realized: float, unrealized: float,
+                          n_positions: int, day: str):
+    """One equity point per day for the long-term profitability curve."""
+    hist = []
+    if EQUITY_FILES[0].exists():
+        hist = json.loads(EQUITY_FILES[0].read_text())
+    hist = [h for h in hist if h.get("date") != day]
+    hist.append({"date": day, "realized": round(realized, 2),
+                 "unrealized": round(unrealized, 2),
+                 "total": round(realized + unrealized, 2),
+                 "positions": n_positions})
+    hist.sort(key=lambda h: h["date"])
+    text = json.dumps(hist, ensure_ascii=False)
+    for path in EQUITY_FILES:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+
 
 def load_state() -> dict:
     if STATE_FILE.exists():
@@ -60,7 +108,8 @@ def ensure_tables(conn):
         )""")
 
 
-def top_pairs(frames: dict, sigs: dict, tf: str, top_n: int) -> list[dict]:
+def top_pairs(frames: dict, sigs: dict, tf: str, top_n: int,
+              exclude: set[str] | None = None) -> list[dict]:
     """Dual-window selection (regime-aware):
     - train window: everything older than VAL_WINDOW_DAYS — must be
       profitable (long-term viability filter)
@@ -84,7 +133,7 @@ def top_pairs(frames: dict, sigs: dict, tf: str, top_n: int) -> list[dict]:
         if len(dtr) < 50 or len(dva) < 20:
             continue
         for name in strategies.STOCK_STRATEGIES:
-            if name in wl:
+            if name in wl or (exclude and f"{sym}|{name}" in exclude):
                 continue
             sig = sigs[(sym, name)]
             tr = run_stock_backtest(dtr, sig[tr_mask].reset_index(drop=True),
@@ -122,6 +171,11 @@ def main():
     storage.init_db()
     now = datetime.now(timezone.utc).isoformat()
     state = load_state()
+
+    # live veto is refreshed EVERY run (not only on selection days) so open
+    # positions of vetoed pairs are never force-closed (see manage_keys)
+    with storage.get_conn() as conn:
+        vetoed = live_veto(conn, tf)
 
     wl = set(production.watchlist())
     from .run_backtest import DEFAULT_SYMBOLS as INTRA_SYMBOLS
@@ -172,7 +226,7 @@ def main():
 
     if did_full:
         old_pairs = state.get("pairs") or []
-        pairs = top_pairs(frames, sigs, tf, args.top)
+        pairs = top_pairs(frames, sigs, tf, args.top, exclude=vetoed)
         state["pairs"] = [{"symbol": p["symbol"], "strategy": p["strategy"],
                            "backtest_pnl": p.get("total_pnl")} for p in pairs]
         state["selected_on"] = now[:10]
@@ -189,6 +243,11 @@ def main():
     closed: list[dict] = []
     mirror_opens: list[dict] = []  # 本次新开仓（供富途模拟镜像）
     top_keys = {f"{p['symbol']}|{p['strategy']}" for p in pairs}
+    # entry-only veto: vetoed pairs with open positions stay manageable
+    # (no dropped_from_top force-close) but can never re-enter (entries
+    # require key in top_keys, which excludes them)
+    manage_keys = top_keys | {p["key"] for p in state["positions"]
+                              if p["key"] in vetoed}
     active_keys = set(top_keys)
     # positions whose pair dropped out keep getting marked/closed by the rules
     for pos in state["positions"]:
@@ -258,7 +317,7 @@ def main():
                     reason = "take_profit"
                 elif pos["bars_held"] >= hold:
                     reason = "time_stop"
-                elif i == last_i and key not in top_keys:
+                elif i == last_i and key not in manage_keys:
                     reason = "dropped_from_top"
                 if reason:
                     closed.append({
@@ -343,6 +402,15 @@ def main():
                 "INSERT INTO stock_paper_intra_positions (key, timeframe, data)"
                 " VALUES (?,?,?)",
                 (p["key"], tf, json.dumps(p, ensure_ascii=False)))
+
+        # long-term equity history — one point per day
+        realized = conn.execute(
+            "SELECT COALESCE(SUM(pnl), 0) FROM stock_paper_intra_trades"
+            " WHERE timeframe=?", (tf,)).fetchone()[0]
+        unrealized = sum(p.get("unrealized_pnl") or 0.0
+                         for p in state["positions"])
+        write_equity_snapshot(realized, unrealized,
+                              len(state["positions"]), now[:10])
 
         # ---- portfolio generations: close the outgoing generation when a
         # full re-selection changed the Top10 lineup ----
