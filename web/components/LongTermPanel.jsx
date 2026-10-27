@@ -12,6 +12,32 @@ const fmt = (n, d = 2) =>
 const signed = (n) => `${n >= 0 ? "+" : "-"}$${fmt(Math.abs(n))}`;
 const COLORS = { daily: "#f59e0b", h1: "#6366f1" };
 
+// ---- Futu HK real costs (mirrors engine/futu_costs.py, official schedule) ----
+function futuOrderFees(shares, price, side) {
+  const amount = shares * price;
+  const commission = Math.min(Math.max(0.0049 * shares, 0.99), amount * 0.005);
+  const platform = Math.min(Math.max(0.005 * shares, 1.0), amount * 0.005);
+  let fees = commission + platform + 0.003 * shares;
+  if (side === "sell") {
+    fees += Math.max(amount * 0.000008, 0.01);
+    fees += Math.min(Math.max(0.000166 * shares, 0.01), 8.30);
+  }
+  return fees;
+}
+
+function tradeNet(t, notional) {
+  const shares = notional / t.entry_price;
+  const short = t.side === "short";
+  const fees = futuOrderFees(shares, t.entry_price, short ? "sell" : "buy")
+             + futuOrderFees(shares, t.exit_price, short ? "buy" : "sell");
+  const gross = notional * (t.pnl_pct || 0) / 100;
+  const days = Math.max(0, (new Date(t.exit_date) - new Date(t.entry_date)) / 86400000);
+  const borrow = short ? notional * 0.05 * days / 365 : 0;
+  const slippage = notional * 0.0005 * 2; // 5 bps per side
+  return { gross, net: gross - fees - borrow - slippage,
+           cost: fees + borrow + slippage };
+}
+
 function bookStats(book, equity) {
   const closed = book?.closed_trades || [];
   const pos = book?.positions || [];
@@ -75,6 +101,7 @@ function isoWeek(dateStr) {
 export default function LongTermPanel() {
   const [daily, setDaily] = useState(null);
   const [h1, setH1] = useState(null);
+  const [notional, setNotional] = useState(1000);
 
   useEffect(() => {
     loadStockPaper().then(setDaily).catch(() => {});
@@ -108,6 +135,23 @@ export default function LongTermPanel() {
     { label: "日线", s: sd, color: COLORS.daily },
     { label: "1 小时", s: sh, color: COLORS.h1 },
   ];
+
+  // real-cost scenario at the selected per-trade notional
+  const costRows = [
+    { label: "日线", book: daily, color: COLORS.daily },
+    { label: "1 小时", book: h1, color: COLORS.h1 },
+  ].map(({ label, book, color }) => {
+    const nets = (book?.closed_trades || []).map((t) => tradeNet(t, notional));
+    const total = nets.reduce((a, x) => a + x.net, 0);
+    const gross = nets.reduce((a, x) => a + x.gross, 0);
+    const cost = nets.reduce((a, x) => a + x.cost, 0);
+    const gw = nets.filter((x) => x.net > 0).reduce((a, x) => a + x.net, 0);
+    const gl = -nets.filter((x) => x.net < 0).reduce((a, x) => a + x.net, 0);
+    return { label, color, total,
+             exp: nets.length ? total / nets.length : null,
+             pf: gl > 0 ? gw / gl : null,
+             costPct: gross ? Math.abs((cost / gross) * 100) : null };
+  });
 
   return (
     <div className="panel" style={{ borderColor: "var(--accent)" }}>
@@ -147,6 +191,47 @@ export default function LongTermPanel() {
           ))}
         </tbody>
       </table>
+
+      {/* 富途真实成本测算 */}
+      <h3 style={{ marginTop: 18 }}>富途真实成本测算</h3>
+      <p style={{ margin: "8px 0", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+        <span className="muted" style={{ fontSize: 12 }}>单笔金额：</span>
+        {[100, 500, 1000, 2000].map((n) => (
+          <button key={n} className="btn" onClick={() => setNotional(n)}
+                  style={{ padding: "3px 10px", fontSize: 12,
+                           ...(notional === n ? { borderColor: "var(--accent)",
+                             color: "var(--accent)", fontWeight: 700 } : {}) }}>
+            ${n}
+          </button>
+        ))}
+      </p>
+      <table>
+        <thead><tr>
+          <th>账本</th><th style={{ textAlign: "right" }}>净合计（扣费）</th>
+          <th style={{ textAlign: "right" }}>每笔净期望</th>
+          <th style={{ textAlign: "right" }}>盈利因子（净）</th>
+          <th style={{ textAlign: "right" }}>费用占毛利</th>
+        </tr></thead>
+        <tbody>
+          {costRows.map(({ label, color, total, exp, pf, costPct }) => (
+            <tr key={label}>
+              <td><span style={{ color, fontWeight: 600 }}>{label}</span></td>
+              <td style={{ textAlign: "right", fontWeight: 700 }}
+                  className={total >= 0 ? "pos" : "neg"}>{signed(total)}</td>
+              <td style={{ textAlign: "right" }}
+                  className={(exp ?? 0) >= 0 ? "pos" : "neg"}>{exp == null ? "—" : signed(exp)}</td>
+              <td style={{ textAlign: "right" }}>{pf == null ? "—" : fmt(pf)}</td>
+              <td style={{ textAlign: "right" }} className="muted">
+                {costPct == null ? "—" : `${fmt(costPct, 0)}%`}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="hint" style={{ marginTop: 8 }}>
+        含佣金/平台费/交收费/卖出规费、滑点 0.05%×2、沽空借货年化 5%；未含碎股优惠（待验证）。
+        按同一批真实平仓交易等比换算，不代表未来收益。
+      </p>
 
       {curve.length > 1 && (
         <>
