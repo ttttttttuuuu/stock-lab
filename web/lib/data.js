@@ -3,8 +3,9 @@
 //   are set (reads live cloud tables via PostgREST)
 // - Static JSON mode otherwise (files exported by `python -m engine.export_web`)
 //
-// Caching: in-memory Map for the session (all loaders) + localStorage
-// stale-while-revalidate for small payloads (overview/signals). TTL 5 min.
+// Caching: in-memory Map (5 min TTL for in-session navigation) +
+// network-first on every full refresh; localStorage is only a
+// network-failure fallback, never served before a successful fetch.
 // The 7.5MB trades payload is memory-cached only (localStorage quota).
 
 const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -18,7 +19,6 @@ export const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_EXPORT === "1";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const TTL_MS = 5 * 60 * 1000;
-const SWR_WINDOW_MS = 24 * 3600 * 1000;
 const memCache = new Map();
 
 // jsonb columns may come back double-encoded as strings from older syncs
@@ -43,31 +43,25 @@ async function cached(key, loader, { persist = false } = {}) {
   const mem = memCache.get(key);
   if (mem && now - mem.t < TTL_MS) return mem.v;
 
-  if (persist && typeof localStorage !== "undefined") {
-    const disk = persistGet(key);
-    if (disk) {
-      if (now - disk.t < TTL_MS) {
+  // network-first: every full page refresh fetches the latest cloud data.
+  // localStorage is ONLY a fallback when the network request fails
+  // (stale-while-error), never served before a successful fetch.
+  try {
+    const v = await loader();
+    const entry = { t: now, v };
+    memCache.set(key, entry);
+    if (persist && typeof localStorage !== "undefined") persistSet(key, entry);
+    return v;
+  } catch (err) {
+    if (persist && typeof localStorage !== "undefined") {
+      const disk = persistGet(key);
+      if (disk) {
         memCache.set(key, disk);
-        return disk.v;
-      }
-      if (now - disk.t < SWR_WINDOW_MS) {
-        // stale-while-revalidate: serve stale, refresh in background
-        memCache.set(key, disk);
-        loader().then((v) => {
-          const entry = { t: Date.now(), v };
-          memCache.set(key, entry);
-          persistSet(key, entry);
-        }).catch(() => {});
         return disk.v;
       }
     }
+    throw err;
   }
-
-  const v = await loader();
-  const entry = { t: now, v };
-  memCache.set(key, entry);
-  if (persist && typeof localStorage !== "undefined") persistSet(key, entry);
-  return v;
 }
 
 const PAGE = 1000;
@@ -522,21 +516,5 @@ export function loadExitOpt() {
       } catch { /* table not created yet — fall back to local export */ }
     }
     return (await fetch(`${BASE}/data/exit_opt.json`)).json();
-  }, { persist: true });
-}
-
-// long-term equity history of the live paper books (daily snapshots,
-// backfilled to 2026-09-18) — static files, same-origin in both data modes
-export function loadPaperEquity() {
-  return cached("paperequity", async () => {
-    const r = await fetch(`${BASE}/data/stock_paper_equity.json`);
-    return r.ok ? r.json() : [];
-  }, { persist: true });
-}
-
-export function loadPaper1hEquity() {
-  return cached("paper1hequity", async () => {
-    const r = await fetch(`${BASE}/data/stock_paper_1h_equity.json`);
-    return r.ok ? r.json() : [];
   }, { persist: true });
 }

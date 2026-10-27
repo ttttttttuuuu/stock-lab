@@ -5,9 +5,7 @@ import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip,
   ResponsiveContainer, ReferenceLine,
 } from "recharts";
-import {
-  loadStockPaper, loadStockPaper1h, loadPaperEquity, loadPaper1hEquity,
-} from "../lib/data";
+import { loadStockPaper, loadStockPaper1h } from "../lib/data";
 
 const fmt = (n, d = 2) =>
   n == null ? "—" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d });
@@ -36,6 +34,32 @@ function bookStats(book, equity) {
   };
 }
 
+// Equity curve derived LIVE from the book's closed trades (Supabase) +
+// current open-position marks — no static files, always fresh on refresh.
+// Historical points are realized-only; the final point adds today's
+// unrealized PnL (same convention as the cloud daily snapshots).
+function buildEquity(book) {
+  const closed = book?.closed_trades || [];
+  const byDay = {};
+  for (const t of closed) {
+    const d = (t.exit_date || "").slice(0, 10);
+    if (d) byDay[d] = (byDay[d] || 0) + (t.pnl || 0);
+  }
+  let cum = 0;
+  const hist = Object.keys(byDay).sort().map((d) => {
+    cum += byDay[d];
+    return { date: d, total: Math.round(cum * 100) / 100 };
+  });
+  if (!hist.length) return hist;
+  const u = (book?.positions || [])
+    .reduce((a, p) => a + (p.unrealized_pnl || 0), 0);
+  const today = new Date().toISOString().slice(0, 10);
+  const lastTotal = Math.round((cum + u) * 100) / 100;
+  if (hist[hist.length - 1].date === today) hist[hist.length - 1].total = lastTotal;
+  else hist.push({ date: today, total: lastTotal });
+  return hist;
+}
+
 function isoWeek(dateStr) {
   const d = new Date(dateStr.slice(0, 10) + "T00:00:00Z");
   const day = (d.getUTCDay() + 6) % 7; // Mon=0
@@ -51,18 +75,16 @@ function isoWeek(dateStr) {
 export default function LongTermPanel() {
   const [daily, setDaily] = useState(null);
   const [h1, setH1] = useState(null);
-  const [eqD, setEqD] = useState([]);
-  const [eqH, setEqH] = useState([]);
 
   useEffect(() => {
     loadStockPaper().then(setDaily).catch(() => {});
     loadStockPaper1h().then(setH1).catch(() => {});
-    loadPaperEquity().then(setEqD).catch(() => {});
-    loadPaper1hEquity().then(setEqH).catch(() => {});
   }, []);
 
   if (!daily && !h1) return null;
 
+  const eqD = buildEquity(daily);
+  const eqH = buildEquity(h1);
   const sd = bookStats(daily, eqD);
   const sh = bookStats(h1, eqH);
 
