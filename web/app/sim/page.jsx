@@ -8,6 +8,7 @@ import {
 import { loadCapitalSim, loadStockPaper1h } from "../../lib/data";
 import { STRAT_LABELS } from "../../lib/stratLabels";
 import Skeleton from "../../components/Skeleton";
+import LongTermPanel from "../../components/LongTermPanel";
 
 const fmt = (n, d = 2) =>
   n == null ? "—" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d });
@@ -52,6 +53,8 @@ export default function CapitalSim() {
         $1000 本金 · Top10 组合（每腿 $100）· 从切分点真实执行到今天 ·
         选股/选策略只用切分点之前的数据（无未来函数）
       </p>
+
+      <LongTermPanel />
 
       {/* hero: the recommended answer */}
       <div className="panel" style={{ borderColor: "var(--accent)" }}>

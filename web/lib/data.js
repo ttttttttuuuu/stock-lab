@@ -265,7 +265,7 @@ export function loadFutuSim() {
   return cached("futusim", async () => {
     const r = await fetch(`${BASE}/data/futu_sim.json`);
     return r.ok ? r.json() : null;
-  });
+  }, { persist: true });
 }
 
 // drop cached entries (memory + localStorage) by key prefix — used after a
@@ -332,7 +332,7 @@ export function loadCapitalSim() {
   return cached("capsim", async () => {
     const r = await fetch(`${BASE}/data/capital_sim.json`);
     return r.ok ? r.json() : null;
-  });
+  }, { persist: true });
 }
 
 // live 1h paper verification of the recommended portfolio — static file
@@ -341,7 +341,7 @@ export function loadStockPaper1h() {
   return cached("stockpaper1h", async () => {
     const r = await fetch(`${BASE}/data/stock_paper_1h.json`);
     return r.ok ? r.json() : null;
-  });
+  }, { persist: true });
 }
 
 // production params (incl. watchlist of probation strategies) — static file
@@ -359,7 +359,7 @@ export function loadSymbols() {
   return cached("symbols", async () => {
     const r = await fetch(`${BASE}/data/symbols.json`);
     return r.ok ? r.json() : [];
-  });
+  }, { persist: true });
 }
 
 // live paper verification book for top stock-lab pairs
@@ -522,5 +522,21 @@ export function loadExitOpt() {
       } catch { /* table not created yet — fall back to local export */ }
     }
     return (await fetch(`${BASE}/data/exit_opt.json`)).json();
+  }, { persist: true });
+}
+
+// long-term equity history of the live paper books (daily snapshots,
+// backfilled to 2026-09-18) — static files, same-origin in both data modes
+export function loadPaperEquity() {
+  return cached("paperequity", async () => {
+    const r = await fetch(`${BASE}/data/stock_paper_equity.json`);
+    return r.ok ? r.json() : [];
+  }, { persist: true });
+}
+
+export function loadPaper1hEquity() {
+  return cached("paper1hequity", async () => {
+    const r = await fetch(`${BASE}/data/stock_paper_1h_equity.json`);
+    return r.ok ? r.json() : [];
   }, { persist: true });
 }
