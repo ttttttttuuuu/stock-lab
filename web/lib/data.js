@@ -338,6 +338,53 @@ export function loadStockPaper1h() {
   }, { persist: true });
 }
 
+// Real-cost candidate book: Supabase is authoritative; static JSON is only a
+// fallback for local development or while the new cloud tables are pending.
+export function loadRealBook() {
+  return cached("realbook:" + DATA_SOURCE, async () => {
+    if (DATA_SOURCE === "supabase") {
+      try {
+        const [metaRows, positionsRaw, trades, equity] = await Promise.all([
+          sbTable("real_book_meta"),
+          sbTable("real_book_positions"),
+          sbTable("real_book_trades", "order=exit_date.asc"),
+          sbTable("real_book_equity", "order=date.asc"),
+        ]);
+        const meta = metaRows.length ? maybeParse(metaRows[0].data) : null;
+        if (meta) {
+          const latest = equity[equity.length - 1] || {};
+          const nets = trades.map((t) => t.pnl_net || 0);
+          const wins = nets.filter((n) => n > 0);
+          const losses = nets.filter((n) => n <= 0);
+          const grossWin = wins.reduce((a, n) => a + n, 0);
+          const grossLoss = -losses.reduce((a, n) => a + n, 0);
+          return {
+            timeframe: "1h", initial_cash: 3000, notional: 1000,
+            updated_at: latest.marked_at || positionsRaw[0]?.marked_at,
+            started_at: meta.started_at,
+            sample_status: trades.length ? "active" : "accumulating",
+            account: {
+              equity: latest.equity ?? 3000, cash: latest.cash ?? meta.cash,
+              realized: nets.reduce((a, n) => a + n, 0),
+              unrealized: latest.unrealized ?? 0,
+            },
+            metrics: {
+              trades: trades.length, total_pnl: nets.reduce((a, n) => a + n, 0),
+              avg_pnl: trades.length ? nets.reduce((a, n) => a + n, 0) / trades.length : null,
+              profit_factor: grossLoss > 0 ? grossWin / grossLoss : null,
+            },
+            pairs: meta.pairs || [],
+            positions: positionsRaw.map((p) => maybeParse(p.data)),
+            closed_trades: trades, equity,
+          };
+        }
+      } catch { /* new tables not applied yet — use local fallback */ }
+    }
+    const r = await fetch(`${BASE}/data/real_book.json`);
+    return r.ok ? r.json() : null;
+  }, { persist: true });
+}
+
 // production params (incl. watchlist of probation strategies) — static file
 // served same-origin in both Supabase and local mode; written by export_web
 export function loadProductionParams() {

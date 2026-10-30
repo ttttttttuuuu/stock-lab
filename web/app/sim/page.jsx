@@ -9,6 +9,7 @@ import { loadCapitalSim, loadStockPaper1h } from "../../lib/data";
 import { STRAT_LABELS } from "../../lib/stratLabels";
 import Skeleton from "../../components/Skeleton";
 import LongTermPanel from "../../components/LongTermPanel";
+import RealBookPanel from "../../components/RealBookPanel";
 
 const fmt = (n, d = 2) =>
   n == null ? "—" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d });
@@ -55,6 +56,7 @@ export default function CapitalSim() {
       </p>
 
       <LongTermPanel />
+      <RealBookPanel />
 
       {/* hero: the recommended answer */}
       <div className="panel" style={{ borderColor: "var(--accent)" }}>

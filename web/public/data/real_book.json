@@ -1,0 +1,14 @@
+{
+  "timeframe": "1h",
+  "updated_at": null,
+  "started_at": null,
+  "initial_cash": 3000,
+  "notional": 1000,
+  "sample_status": "pending",
+  "account": { "equity": 3000, "cash": 3000, "realized": 0, "unrealized": 0 },
+  "metrics": { "trades": 0, "total_pnl": 0, "avg_pnl": null, "profit_factor": null },
+  "pairs": [],
+  "positions": [],
+  "closed_trades": [],
+  "equity": []
+}

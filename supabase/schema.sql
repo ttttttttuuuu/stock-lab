@@ -252,3 +252,64 @@ alter table exit_runs enable row level security;
 create policy "public read exit_runs" on exit_runs for select using (true);
 create policy "anon insert exit_runs" on exit_runs for insert with check (true);
 create policy "anon delete exit_runs" on exit_runs for delete using (true);
+
+-- ============================================================
+-- Real-cost candidate book: $3,000 cash, 3 diversified 1h pairs.
+-- Added 2026-10-27. Run this section once in the Supabase SQL editor.
+-- ============================================================
+
+create table if not exists real_book_meta (
+  key text primary key,
+  data jsonb not null
+);
+create table if not exists real_book_positions (
+  key text primary key,
+  data jsonb not null
+);
+create table if not exists real_book_trades (
+  id bigint generated always as identity primary key,
+  symbol text not null,
+  strategy text not null,
+  side text not null,
+  entry_date timestamptz,
+  entry_price double precision,
+  shares double precision,
+  exit_date timestamptz,
+  exit_price double precision,
+  exit_reason text,
+  pnl double precision,
+  pnl_pct double precision,
+  hold_days double precision,
+  fees double precision,
+  slippage double precision,
+  borrow double precision,
+  pnl_net double precision,
+  created_at timestamptz default now()
+);
+create table if not exists real_book_equity (
+  date date primary key,
+  equity double precision,
+  cash double precision,
+  realized double precision,
+  unrealized double precision,
+  positions_count integer,
+  marked_at timestamptz
+);
+
+alter table real_book_meta enable row level security;
+alter table real_book_positions enable row level security;
+alter table real_book_trades enable row level security;
+alter table real_book_equity enable row level security;
+
+create policy "public read real_book_meta" on real_book_meta for select using (true);
+create policy "public read real_book_positions" on real_book_positions for select using (true);
+create policy "public read real_book_trades" on real_book_trades for select using (true);
+create policy "public read real_book_equity" on real_book_equity for select using (true);
+create policy "anon insert real_book_meta" on real_book_meta for insert with check (true);
+create policy "anon delete real_book_meta" on real_book_meta for delete using (true);
+create policy "anon insert real_book_positions" on real_book_positions for insert with check (true);
+create policy "anon delete real_book_positions" on real_book_positions for delete using (true);
+create policy "anon insert real_book_trades" on real_book_trades for insert with check (true);
+create policy "anon delete real_book_trades" on real_book_trades for delete using (true);
+create policy "anon insert real_book_equity" on real_book_equity for insert with check (true);
+create policy "anon delete real_book_equity" on real_book_equity for delete using (true);

@@ -45,6 +45,10 @@ jobs:
         continue-on-error: true
         run: python -m engine.intraday_paper
 
+      - name: real-cost candidate book
+        continue-on-error: true
+        run: python -m engine.real_book
+
       - name: sync to Supabase
         continue-on-error: true
         run: python -m engine.sync

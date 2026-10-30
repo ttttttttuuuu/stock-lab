@@ -155,6 +155,28 @@ CREATE TABLE IF NOT EXISTS exit_runs (
     is_default INTEGER NOT NULL DEFAULT 0,
     metrics TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS real_book_meta (
+    key TEXT PRIMARY KEY,
+    data TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS real_book_positions (
+    key TEXT PRIMARY KEY,
+    data TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS real_book_trades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    symbol TEXT NOT NULL, strategy TEXT NOT NULL, side TEXT NOT NULL,
+    entry_date TEXT, entry_price REAL, shares REAL,
+    exit_date TEXT, exit_price REAL, exit_reason TEXT,
+    pnl REAL, pnl_pct REAL, hold_days REAL,
+    fees REAL, slippage REAL, borrow REAL, pnl_net REAL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS real_book_equity (
+    date TEXT PRIMARY KEY,
+    equity REAL, cash REAL, realized REAL, unrealized REAL,
+    positions_count INTEGER, marked_at TEXT
+);
 """
 
 
@@ -384,9 +406,9 @@ def _sb_delete_all(table: str):
     url = f"{SUPABASE_URL}/rest/v1/{table}?id=gt.0"
     if table in ("prices", "paper_positions"):  # no id column
         url = f"{SUPABASE_URL}/rest/v1/{table}?symbol=neq.__none__"
-    elif table == "stock_paper_positions":      # keyed by "key"
+    elif table in ("stock_paper_positions", "real_book_positions", "real_book_meta"):
         url = f"{SUPABASE_URL}/rest/v1/{table}?key=neq.__none__"
-    elif table == "equity_snapshots":
+    elif table in ("equity_snapshots", "real_book_equity"):
         url = f"{SUPABASE_URL}/rest/v1/{table}?date=gte.1970-01-01"
     headers = {
         "apikey": SUPABASE_KEY,
@@ -403,6 +425,7 @@ JSONB_COLUMNS = {"backtest_runs": {"metrics"}, "signals": {"details"},
                  "paper_positions": {"data"}, "strategy_alerts": {"reasons"},
                  "stock_runs": {"metrics"},
                  "stock_paper_positions": {"data"},
+                 "real_book_positions": {"data"}, "real_book_meta": {"data"},
                  "param_runs": {"params", "metrics"},
                  "exit_runs": {"metrics"}}
 
@@ -421,7 +444,8 @@ def sync_to_supabase():
                   "paper_positions", "equity_snapshots", "strategy_alerts",
                   "stock_runs", "stock_trades",
                   "stock_paper_positions", "stock_paper_trades",
-                  "param_runs", "exit_runs"):
+                  "param_runs", "exit_runs", "real_book_meta",
+                  "real_book_positions", "real_book_trades", "real_book_equity"):
         rows = conn.execute(f"SELECT * FROM {table}").fetchall()
         cols = [d[0] for d in conn.execute(f"SELECT * FROM {table} LIMIT 1").description]
         dicts = [dict(zip(cols, r)) for r in rows]
