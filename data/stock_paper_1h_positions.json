@@ -1,21 +1,6 @@
 {
   "positions": [
     {
-      "key": "ARM|sma_cross",
-      "symbol": "ARM",
-      "strategy": "sma_cross",
-      "side": "short",
-      "entry_ts": "2026-11-05 10:00:00-05:00",
-      "entry_price": 165.43,
-      "shares": 0.604485,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 166.63,
-      "unrealized_pnl": -0.73,
-      "unrealized_pct": -0.73,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
-    },
-    {
       "key": "ARM|supertrend",
       "symbol": "ARM",
       "strategy": "supertrend",
@@ -23,57 +8,12 @@
       "entry_ts": "2026-11-05 10:00:00-05:00",
       "entry_price": 165.43,
       "shares": 0.604485,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 166.63,
-      "unrealized_pnl": -0.73,
-      "unrealized_pct": -0.73,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
-    },
-    {
-      "key": "DELL|macd_trend",
-      "symbol": "DELL",
-      "strategy": "macd_trend",
-      "side": "short",
-      "entry_ts": "2026-11-05 10:00:00-05:00",
-      "entry_price": 321.175,
-      "shares": 0.311357,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 316.72,
-      "unrealized_pnl": 1.39,
-      "unrealized_pct": 1.39,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
-    },
-    {
-      "key": "INTC|sma_cross",
-      "symbol": "INTC",
-      "strategy": "sma_cross",
-      "side": "short",
-      "entry_ts": "2026-11-05 10:00:00-05:00",
-      "entry_price": 53.395,
-      "shares": 1.872835,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 52.11,
-      "unrealized_pnl": 2.41,
-      "unrealized_pct": 2.41,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
-    },
-    {
-      "key": "INTC|ttm_squeeze",
-      "symbol": "INTC",
-      "strategy": "ttm_squeeze",
-      "side": "short",
-      "entry_ts": "2026-11-05 09:00:00-05:00",
-      "entry_price": 53.775,
-      "shares": 1.8596,
-      "bars_held": 6,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 52.11,
-      "unrealized_pnl": 3.1,
-      "unrealized_pct": 3.1,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
+      "bars_held": 12,
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 174.62,
+      "unrealized_pnl": -5.56,
+      "unrealized_pct": -5.56,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
     },
     {
       "key": "INTC|ut_bot",
@@ -83,42 +23,87 @@
       "entry_ts": "2026-11-05 10:00:00-05:00",
       "entry_price": 53.395,
       "shares": 1.872835,
+      "bars_held": 12,
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 56.29,
+      "unrealized_pnl": -5.42,
+      "unrealized_pct": -5.42,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
+    },
+    {
+      "key": "ARM|sma_cross",
+      "symbol": "ARM",
+      "strategy": "sma_cross",
+      "side": "short",
+      "entry_ts": "2026-11-06 10:00:00-05:00",
+      "entry_price": 173.2,
+      "shares": 0.577367,
       "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 52.11,
-      "unrealized_pnl": 2.41,
-      "unrealized_pct": 2.41,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 174.62,
+      "unrealized_pnl": -0.82,
+      "unrealized_pct": -0.82,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
+    },
+    {
+      "key": "DELL|macd_trend",
+      "symbol": "DELL",
+      "strategy": "macd_trend",
+      "side": "long",
+      "entry_ts": "2026-11-06 14:00:00-05:00",
+      "entry_price": 331.52,
+      "shares": 0.301641,
+      "bars_held": 1,
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 328.58,
+      "unrealized_pnl": -0.89,
+      "unrealized_pct": -0.89,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
+    },
+    {
+      "key": "INTC|sma_cross",
+      "symbol": "INTC",
+      "strategy": "sma_cross",
+      "side": "short",
+      "entry_ts": "2026-11-06 10:00:00-05:00",
+      "entry_price": 55.82,
+      "shares": 1.791473,
+      "bars_held": 5,
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 56.29,
+      "unrealized_pnl": -0.84,
+      "unrealized_pct": -0.84,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
     },
     {
       "key": "MU|supertrend",
       "symbol": "MU",
       "strategy": "supertrend",
       "side": "short",
-      "entry_ts": "2026-11-05 10:00:00-05:00",
-      "entry_price": 670.78,
-      "shares": 0.14908,
+      "entry_ts": "2026-11-06 10:00:00-05:00",
+      "entry_price": 689.5,
+      "shares": 0.145033,
       "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 658.44,
-      "unrealized_pnl": 1.84,
-      "unrealized_pct": 1.84,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 689.425,
+      "unrealized_pnl": 0.01,
+      "unrealized_pct": 0.01,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
     },
     {
       "key": "PLTR|macd_trend",
       "symbol": "PLTR",
       "strategy": "macd_trend",
-      "side": "short",
-      "entry_ts": "2026-11-05 10:00:00-05:00",
-      "entry_price": 155.0274,
-      "shares": 0.645047,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-05 15:00:00-05:00",
-      "last_mark": 154.85,
-      "unrealized_pnl": 0.11,
-      "unrealized_pct": 0.11,
-      "marked_at": "2026-11-07T01:12:39.612347+00:00"
+      "side": "long",
+      "entry_ts": "2026-11-06 13:00:00-05:00",
+      "entry_price": 160.46,
+      "shares": 0.623208,
+      "bars_held": 2,
+      "last_mark_ts": "2026-11-06 15:00:00-05:00",
+      "last_mark": 160.39,
+      "unrealized_pnl": -0.04,
+      "unrealized_pct": -0.04,
+      "marked_at": "2026-11-10T03:54:29.114151+00:00"
     }
   ],
   "pairs": [
@@ -177,7 +162,7 @@
   "eval_ts": {
     "ARM|ensemble": "2026-11-03 15:00:00-05:00",
     "ARM|macd_trend": "2026-11-03 15:00:00-05:00",
-    "ARM|supertrend": "2026-11-05 15:00:00-05:00",
+    "ARM|supertrend": "2026-11-06 15:00:00-05:00",
     "ARM|ut_bot": "2026-11-04 15:00:00-05:00",
     "COIN|macd_trend": "2026-09-24 15:00:00-04:00",
     "MU|macd_trend": "2026-10-21 15:00:00-04:00",
@@ -185,23 +170,23 @@
     "SMCI|ensemble": "2026-10-27 15:00:00-04:00",
     "SMCI|macd_trend": "2026-10-21 15:00:00-04:00",
     "SMCI|sma_cross": "2026-09-24 15:00:00-04:00",
-    "DELL|ensemble": "2026-11-05 15:00:00-05:00",
-    "INTC|ensemble": "2026-11-05 15:00:00-05:00",
+    "DELL|ensemble": "2026-11-06 15:00:00-05:00",
+    "INTC|ensemble": "2026-11-06 15:00:00-05:00",
     "INTC|natural_trade": "2026-10-06 15:00:00-04:00",
-    "INTC|ut_bot": "2026-11-05 15:00:00-05:00",
+    "INTC|ut_bot": "2026-11-06 15:00:00-05:00",
     "LCID|bb_breakout": "2026-10-14 15:00:00-04:00",
     "NVDA|macd_trend": "2026-10-21 15:00:00-04:00",
-    "PLTR|macd_trend": "2026-11-05 15:00:00-05:00",
+    "PLTR|macd_trend": "2026-11-06 15:00:00-05:00",
     "AMD|ensemble": "2026-10-27 15:00:00-04:00",
-    "INTC|ttm_squeeze": "2026-11-05 15:00:00-05:00",
+    "INTC|ttm_squeeze": "2026-11-06 15:00:00-05:00",
     "META|sma_cross": "2026-10-15 15:00:00-04:00",
     "SHOP|ttm_squeeze": "2026-10-15 15:00:00-04:00",
-    "DELL|macd_trend": "2026-11-05 15:00:00-05:00",
+    "DELL|macd_trend": "2026-11-06 15:00:00-05:00",
     "SHOP|macd_trend": "2026-10-28 15:00:00-04:00",
     "INTC|supertrend": "2026-11-04 15:00:00-05:00",
-    "ARM|sma_cross": "2026-11-05 15:00:00-05:00",
-    "INTC|sma_cross": "2026-11-05 15:00:00-05:00",
-    "MU|supertrend": "2026-11-05 15:00:00-05:00"
+    "ARM|sma_cross": "2026-11-06 15:00:00-05:00",
+    "INTC|sma_cross": "2026-11-06 15:00:00-05:00",
+    "MU|supertrend": "2026-11-06 15:00:00-05:00"
   },
   "generations": [
     {
@@ -622,7 +607,68 @@
   "shadow": {
     "gen_id": 7,
     "since": "2026-11-06",
-    "pairs": [],
-    "total": 0
+    "pairs": [
+      {
+        "symbol": "ARM",
+        "strategy": "macd_trend",
+        "pnl": -0.18,
+        "trades": 1
+      },
+      {
+        "symbol": "ARM",
+        "strategy": "supertrend",
+        "pnl": -0.39,
+        "trades": 1
+      },
+      {
+        "symbol": "INTC",
+        "strategy": "ut_bot",
+        "pnl": -0.07,
+        "trades": 1
+      },
+      {
+        "symbol": "INTC",
+        "strategy": "ensemble",
+        "pnl": 0,
+        "trades": 0
+      },
+      {
+        "symbol": "INTC",
+        "strategy": "supertrend",
+        "pnl": -0.07,
+        "trades": 1
+      },
+      {
+        "symbol": "ARM",
+        "strategy": "ut_bot",
+        "pnl": -0.39,
+        "trades": 1
+      },
+      {
+        "symbol": "DELL",
+        "strategy": "macd_trend",
+        "pnl": 3.44,
+        "trades": 2
+      },
+      {
+        "symbol": "ARM",
+        "strategy": "ensemble",
+        "pnl": -0.18,
+        "trades": 1
+      },
+      {
+        "symbol": "PLTR",
+        "strategy": "macd_trend",
+        "pnl": 1.13,
+        "trades": 2
+      },
+      {
+        "symbol": "DELL",
+        "strategy": "ensemble",
+        "pnl": 4.33,
+        "trades": 1
+      }
+    ],
+    "total": 7.62
   }
 }
