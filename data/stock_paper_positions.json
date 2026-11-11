@@ -13,7 +13,7 @@
       "last_mark": 83.32,
       "unrealized_pnl": 1.96,
       "unrealized_pct": 1.96,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 126.26
     },
     {
@@ -29,7 +29,7 @@
       "last_mark": 291.14,
       "unrealized_pnl": -0.16,
       "unrealized_pct": -0.16,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 135.37
     },
     {
@@ -45,7 +45,7 @@
       "last_mark": 29.08,
       "unrealized_pnl": 0.38,
       "unrealized_pct": 0.38,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 138.74
     },
     {
@@ -61,7 +61,7 @@
       "last_mark": 29.08,
       "unrealized_pnl": 0.38,
       "unrealized_pct": 0.38,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 132.89
     },
     {
@@ -77,7 +77,7 @@
       "last_mark": 35.34,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 244.28
     },
     {
@@ -91,9 +91,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 58.86,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 227.14
     },
     {
@@ -107,9 +107,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 508.58,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 196.12
     },
     {
@@ -123,9 +123,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 125.59,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 180.5
     },
     {
@@ -139,9 +139,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 58.86,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 178.16
     },
     {
@@ -155,9 +155,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 370.55,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 161.78
     },
     {
@@ -171,9 +171,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 169.2,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 154.2
     },
     {
@@ -187,9 +187,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 370.55,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 132.5
     },
     {
@@ -203,9 +203,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 346.31,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 130.13
     },
     {
@@ -221,7 +221,7 @@
       "last_mark": 410.0,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 124.63
     },
     {
@@ -235,9 +235,9 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 291.14,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 122.74
     },
     {
@@ -253,7 +253,7 @@
       "last_mark": 410.0,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
       "backtest_pnl": 122.66
     },
     {
@@ -267,10 +267,58 @@
       "days_held": 0,
       "last_mark_date": "2026-11-09",
       "last_mark": 291.14,
+      "unrealized_pnl": -0.0,
+      "unrealized_pct": -0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
+      "backtest_pnl": 119.15
+    },
+    {
+      "key": "DELL|supertrend",
+      "symbol": "DELL",
+      "strategy": "supertrend",
+      "side": "short",
+      "entry_date": "2026-11-09",
+      "entry_price": 346.31,
+      "shares": 0.288759,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09",
+      "last_mark": 346.31,
       "unrealized_pnl": 0.0,
       "unrealized_pct": 0.0,
-      "marked_at": "2026-11-10T03:54:10.568592+00:00",
-      "backtest_pnl": 119.15
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
+      "backtest_pnl": 117.21
+    },
+    {
+      "key": "BABA|macd_trend",
+      "symbol": "BABA",
+      "strategy": "macd_trend",
+      "side": "long",
+      "entry_date": "2026-11-09",
+      "entry_price": 105.38,
+      "shares": 0.948947,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09",
+      "last_mark": 105.38,
+      "unrealized_pnl": 0.0,
+      "unrealized_pct": 0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
+      "backtest_pnl": 116.31
+    },
+    {
+      "key": "PLTR|ut_bot",
+      "symbol": "PLTR",
+      "strategy": "ut_bot",
+      "side": "short",
+      "entry_date": "2026-11-09",
+      "entry_price": 169.2,
+      "shares": 0.591017,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09",
+      "last_mark": 169.2,
+      "unrealized_pnl": 0.0,
+      "unrealized_pct": 0.0,
+      "marked_at": "2026-11-11T01:34:32.520102+00:00",
+      "backtest_pnl": 115.1
     }
   ]
 }

@@ -15,11 +15,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 10.75,
+      "last_mark": 12.25,
       "last_mark_source": "chain",
-      "unrealized_pnl": 47.27,
-      "unrealized_pct": 47.26,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 67.82,
+      "unrealized_pct": 67.81,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CSCO",
@@ -36,11 +36,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 5.925,
+      "last_mark": 6.425,
       "last_mark_source": "chain",
-      "unrealized_pnl": 12.86,
-      "unrealized_pct": 12.86,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 22.38,
+      "unrealized_pct": 22.38,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CSCO",
@@ -57,11 +57,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 5.925,
+      "last_mark": 6.425,
       "last_mark_source": "chain",
-      "unrealized_pnl": 12.86,
-      "unrealized_pct": 12.86,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 22.38,
+      "unrealized_pct": 22.38,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PLTR",
@@ -78,32 +78,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 9.35,
+      "last_mark": 9.7,
       "last_mark_source": "chain",
-      "unrealized_pnl": -21.6,
-      "unrealized_pct": -21.59,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "SOFI",
-      "strategy": "sma_cross",
-      "kind": "call",
-      "strike": 16.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-02",
-      "entry_underlying": 16.6,
-      "entry_price": 0.715,
-      "qty": 1.3986,
-      "iv_entry": 0.6695,
-      "dte_left": 7,
-      "days_held": 3,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.56,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -21.68,
-      "unrealized_pct": -21.68,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -18.67,
+      "unrealized_pct": -18.66,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BA",
@@ -120,11 +99,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 4.2,
+      "last_mark": 3.085,
       "last_mark_source": "chain",
-      "unrealized_pnl": 10.53,
-      "unrealized_pct": 10.53,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -18.82,
+      "unrealized_pct": -18.82,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "JPM",
@@ -141,11 +120,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 5.325,
+      "last_mark": 4.625,
       "last_mark_source": "chain",
-      "unrealized_pnl": -25.53,
-      "unrealized_pct": -25.52,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -35.32,
+      "unrealized_pct": -35.31,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "JPM",
@@ -162,11 +141,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 5.325,
+      "last_mark": 4.625,
       "last_mark_source": "chain",
-      "unrealized_pnl": -25.53,
-      "unrealized_pct": -25.52,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -35.32,
+      "unrealized_pct": -35.31,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "NIO",
@@ -183,32 +162,11 @@
       "dte_left": 7,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 0.4,
+      "last_mark": 0.27,
       "last_mark_source": "chain",
-      "unrealized_pnl": 73.91,
-      "unrealized_pct": 73.91,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "LCID",
-      "strategy": "sma_cross",
-      "kind": "put",
-      "strike": 3.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-02",
-      "entry_underlying": 3.0,
-      "entry_price": 0.355,
-      "qty": 2.8169,
-      "iv_entry": 0.7816,
-      "dte_left": 7,
-      "days_held": 3,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.18,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -49.3,
-      "unrealized_pct": -49.3,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 17.39,
+      "unrealized_pct": 17.39,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SMCI",
@@ -225,11 +183,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 2.37,
+      "last_mark": 2.695,
       "last_mark_source": "chain",
-      "unrealized_pnl": 11.53,
-      "unrealized_pct": 11.53,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 26.82,
+      "unrealized_pct": 26.82,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SMCI",
@@ -246,32 +204,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 2.37,
+      "last_mark": 2.695,
       "last_mark_source": "chain",
-      "unrealized_pnl": 11.53,
-      "unrealized_pct": 11.53,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "SOFI",
-      "strategy": "macd_trend",
-      "kind": "call",
-      "strike": 16.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-02",
-      "entry_underlying": 16.6,
-      "entry_price": 0.785,
-      "qty": 1.2739,
-      "iv_entry": 0.6695,
-      "dte_left": 6,
-      "days_held": 3,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.56,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -28.66,
-      "unrealized_pct": -28.66,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 26.82,
+      "unrealized_pct": 26.82,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PYPL",
@@ -288,11 +225,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.61,
+      "last_mark": 0.585,
       "last_mark_source": "chain",
-      "unrealized_pnl": 64.29,
-      "unrealized_pct": 64.29,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -40.31,
+      "unrealized_pct": -40.31,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PYPL",
@@ -309,11 +246,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.61,
+      "last_mark": 0.585,
       "last_mark_source": "chain",
-      "unrealized_pnl": 64.29,
-      "unrealized_pct": 64.29,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -40.31,
+      "unrealized_pct": -40.31,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BA",
@@ -330,11 +267,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 4.2,
+      "last_mark": 3.085,
       "last_mark_source": "chain",
-      "unrealized_pnl": -9.19,
-      "unrealized_pct": -9.19,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -33.29,
+      "unrealized_pct": -33.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BA",
@@ -351,11 +288,11 @@
       "dte_left": 6,
       "days_held": 3,
       "last_mark_date": "2026-11-09",
-      "last_mark": 4.2,
+      "last_mark": 3.085,
       "last_mark_source": "chain",
-      "unrealized_pnl": -9.19,
-      "unrealized_pct": -9.19,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -33.29,
+      "unrealized_pct": -33.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "AAPL",
@@ -372,11 +309,11 @@
       "dte_left": 4,
       "days_held": 2,
       "last_mark_date": "2026-11-09",
-      "last_mark": 19.025,
+      "last_mark": 16.1,
       "last_mark_source": "chain",
-      "unrealized_pnl": 8.09,
-      "unrealized_pct": 8.1,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -8.52,
+      "unrealized_pct": -8.52,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "DIS",
@@ -397,49 +334,7 @@
       "last_mark_source": "chain",
       "unrealized_pnl": -6.14,
       "unrealized_pct": -6.14,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "NKE",
-      "strategy": "ensemble",
-      "kind": "call",
-      "strike": 38.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-03",
-      "entry_underlying": 38.48,
-      "entry_price": 2.18,
-      "qty": 0.4587,
-      "iv_entry": 0.2856,
-      "dte_left": 6,
-      "days_held": 2,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 1.595,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -26.83,
-      "unrealized_pct": -26.83,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "MSFT",
-      "strategy": "sma_cross",
-      "kind": "call",
-      "strike": 555.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 555.8,
-      "entry_price": 3.8,
-      "qty": 0.2632,
-      "iv_entry": 0.3348,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 2.885,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -24.08,
-      "unrealized_pct": -24.08,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MSFT",
@@ -456,11 +351,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 12.4,
+      "last_mark": 22.25,
       "last_mark_source": "chain",
-      "unrealized_pnl": -45.55,
-      "unrealized_pct": -45.55,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -2.3,
+      "unrealized_pct": -2.31,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "NVDA",
@@ -481,49 +376,7 @@
       "last_mark_source": "chain",
       "unrealized_pnl": 17.65,
       "unrealized_pct": 17.65,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "GOOGL",
-      "strategy": "sma_cross",
-      "kind": "put",
-      "strike": 290.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 288.93,
-      "entry_price": 10.75,
-      "qty": 0.093,
-      "iv_entry": 0.5255,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 5.425,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -49.52,
-      "unrealized_pct": -49.53,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "GOOGL",
-      "strategy": "macd_trend",
-      "kind": "put",
-      "strike": 290.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 288.93,
-      "entry_price": 10.75,
-      "qty": 0.093,
-      "iv_entry": 0.5255,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 5.425,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -49.52,
-      "unrealized_pct": -49.53,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "NFLX",
@@ -540,11 +393,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 2.38,
+      "last_mark": 3.355,
       "last_mark_source": "chain",
-      "unrealized_pnl": 35.61,
-      "unrealized_pct": 35.61,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 91.17,
+      "unrealized_pct": 91.17,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CSCO",
@@ -561,11 +414,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 7.5,
+      "last_mark": 7.75,
       "last_mark_source": "chain",
-      "unrealized_pnl": -24.62,
-      "unrealized_pct": -24.62,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -22.11,
+      "unrealized_pct": -22.11,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "TXN",
@@ -582,11 +435,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.68,
+      "last_mark": 1.79,
       "last_mark_source": "chain",
-      "unrealized_pnl": 5.33,
-      "unrealized_pct": 5.33,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 12.23,
+      "unrealized_pct": 12.23,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "DELL",
@@ -603,32 +456,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 5.25,
+      "last_mark": 1.88,
       "last_mark_source": "chain",
-      "unrealized_pnl": 47.89,
-      "unrealized_pct": 47.89,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "SMCI",
-      "strategy": "rsi_reversion",
-      "kind": "call",
-      "strike": 29.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 29.6,
-      "entry_price": 0.8,
-      "qty": 1.25,
-      "iv_entry": 0.7931,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.795,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -0.63,
-      "unrealized_pct": -0.63,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -47.04,
+      "unrealized_pct": -47.04,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "COIN",
@@ -645,11 +477,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 16.325,
+      "last_mark": 20.55,
       "last_mark_source": "chain",
-      "unrealized_pnl": 0.62,
-      "unrealized_pct": 0.62,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 26.64,
+      "unrealized_pct": 26.66,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "COIN",
@@ -666,11 +498,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 16.325,
+      "last_mark": 20.55,
       "last_mark_source": "chain",
-      "unrealized_pnl": 0.62,
-      "unrealized_pct": 0.62,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 26.64,
+      "unrealized_pct": 26.66,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SNAP",
@@ -687,53 +519,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 0.945,
+      "last_mark": 1.055,
       "last_mark_source": "chain",
-      "unrealized_pnl": 8.0,
-      "unrealized_pct": 8.0,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "GM",
-      "strategy": "sma_cross",
-      "kind": "call",
-      "strike": 92.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 92.43,
-      "entry_price": 1.165,
-      "qty": 0.8584,
-      "iv_entry": 0.4376,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.62,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -46.78,
-      "unrealized_pct": -46.78,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "GM",
-      "strategy": "macd_trend",
-      "kind": "call",
-      "strike": 92.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 92.43,
-      "entry_price": 1.165,
-      "qty": 0.8584,
-      "iv_entry": 0.4376,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.62,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -46.78,
-      "unrealized_pct": -46.78,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 20.57,
+      "unrealized_pct": 20.57,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "DIS",
@@ -750,53 +540,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.49,
+      "last_mark": 1.3,
       "last_mark_source": "chain",
-      "unrealized_pnl": 14.18,
-      "unrealized_pct": 14.18,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "NKE",
-      "strategy": "sma_cross",
-      "kind": "call",
-      "strike": 40.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 40.49,
-      "entry_price": 0.6,
-      "qty": 1.6667,
-      "iv_entry": 0.3237,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.445,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -25.83,
-      "unrealized_pct": -25.83,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "NKE",
-      "strategy": "macd_trend",
-      "kind": "call",
-      "strike": 40.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 40.49,
-      "entry_price": 0.6,
-      "qty": 1.6667,
-      "iv_entry": 0.3237,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.445,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -25.83,
-      "unrealized_pct": -25.83,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -0.38,
+      "unrealized_pct": -0.38,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SBUX",
@@ -813,11 +561,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.08,
+      "last_mark": 1.075,
       "last_mark_source": "chain",
-      "unrealized_pnl": 44.97,
-      "unrealized_pct": 44.97,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 44.3,
+      "unrealized_pct": 44.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SBUX",
@@ -834,11 +582,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.08,
+      "last_mark": 1.075,
       "last_mark_source": "chain",
-      "unrealized_pnl": 44.97,
-      "unrealized_pct": 44.97,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 44.3,
+      "unrealized_pct": 44.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MCD",
@@ -855,11 +603,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 3.7,
+      "last_mark": 3.625,
       "last_mark_source": "chain",
-      "unrealized_pnl": 9.79,
-      "unrealized_pct": 9.79,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 7.57,
+      "unrealized_pct": 7.57,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MCD",
@@ -876,32 +624,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 3.7,
+      "last_mark": 3.625,
       "last_mark_source": "chain",
-      "unrealized_pnl": 9.79,
-      "unrealized_pct": 9.79,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "JPM",
-      "strategy": "macd_trend",
-      "kind": "call",
-      "strike": 352.5,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 352.11,
-      "entry_price": 1.27,
-      "qty": 0.7874,
-      "iv_entry": 0.2116,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.675,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -46.85,
-      "unrealized_pct": -46.85,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 7.57,
+      "unrealized_pct": 7.57,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BAC",
@@ -918,32 +645,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 1.55,
+      "last_mark": 1.425,
       "last_mark_source": "chain",
-      "unrealized_pnl": -32.02,
-      "unrealized_pct": -32.02,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "BAC",
-      "strategy": "macd_trend",
-      "kind": "call",
-      "strike": 52.0,
-      "expiry": "2026-11-13",
-      "price_source": "chain",
-      "entry_date": "2026-11-04",
-      "entry_underlying": 51.63,
-      "entry_price": 0.255,
-      "qty": 3.9216,
-      "iv_entry": 0.2666,
-      "dte_left": 6,
-      "days_held": 1,
-      "last_mark_date": "2026-11-09",
-      "last_mark": 0.185,
-      "last_mark_source": "chain",
-      "unrealized_pnl": -27.45,
-      "unrealized_pct": -27.45,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": -37.5,
+      "unrealized_pct": -37.5,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BABA",
@@ -960,11 +666,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 2.035,
+      "last_mark": 3.225,
       "last_mark_source": "chain",
-      "unrealized_pnl": 2.26,
-      "unrealized_pct": 2.26,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
+      "unrealized_pnl": 62.06,
+      "unrealized_pct": 62.06,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "RIVN",
@@ -981,43 +687,11 @@
       "dte_left": 6,
       "days_held": 1,
       "last_mark_date": "2026-11-09",
-      "last_mark": 0.39,
+      "last_mark": 0.19,
       "last_mark_source": "chain",
-      "unrealized_pnl": 34.48,
-      "unrealized_pct": 34.48,
-      "marked_at": "2026-11-10T03:48:08.028488+00:00"
-    },
-    {
-      "symbol": "NVDA",
-      "strategy": "sma_cross",
-      "kind": "put",
-      "strike": 177.5,
-      "expiry": "2026-11-16",
-      "price_source": "chain",
-      "entry_date": "2026-11-09",
-      "entry_underlying": 178.67,
-      "entry_price": 5.025,
-      "qty": 0.199,
-      "iv_entry": 0.4923,
-      "dte_left": 6,
-      "days_held": 0,
-      "last_mark_date": "2026-11-09"
-    },
-    {
-      "symbol": "NVDA",
-      "strategy": "macd_trend",
-      "kind": "put",
-      "strike": 177.5,
-      "expiry": "2026-11-16",
-      "price_source": "chain",
-      "entry_date": "2026-11-09",
-      "entry_underlying": 178.67,
-      "entry_price": 5.025,
-      "qty": 0.199,
-      "iv_entry": 0.4923,
-      "dte_left": 6,
-      "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "unrealized_pnl": -34.48,
+      "unrealized_pct": -34.48,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "TSLA",
@@ -1033,7 +707,12 @@
       "iv_entry": 0.612,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 7.125,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -19.03,
+      "unrealized_pct": -19.03,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "TSLA",
@@ -1049,7 +728,12 @@
       "iv_entry": 0.612,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 7.125,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -19.03,
+      "unrealized_pct": -19.03,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "TSLA",
@@ -1065,7 +749,12 @@
       "iv_entry": 0.612,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 7.125,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -19.03,
+      "unrealized_pct": -19.03,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "AMZN",
@@ -1081,7 +770,12 @@
       "iv_entry": 0.4222,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.425,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 38.92,
+      "unrealized_pct": 38.92,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "AMZN",
@@ -1097,7 +791,12 @@
       "iv_entry": 0.4222,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.425,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 38.92,
+      "unrealized_pct": 38.92,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "META",
@@ -1113,7 +812,12 @@
       "iv_entry": 0.4354,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 12.65,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -9.97,
+      "unrealized_pct": -9.96,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "GOOGL",
@@ -1129,55 +833,12 @@
       "iv_entry": 0.5302,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
-    },
-    {
-      "symbol": "AVGO",
-      "strategy": "sma_cross",
-      "kind": "put",
-      "strike": 320.0,
-      "expiry": "2026-11-16",
-      "price_source": "chain",
-      "entry_date": "2026-11-09",
-      "entry_underlying": 319.48,
-      "entry_price": 10.0,
-      "qty": 0.1,
-      "iv_entry": 0.6531,
-      "dte_left": 6,
-      "days_held": 0,
-      "last_mark_date": "2026-11-09"
-    },
-    {
-      "symbol": "AVGO",
-      "strategy": "macd_trend",
-      "kind": "put",
-      "strike": 320.0,
-      "expiry": "2026-11-16",
-      "price_source": "chain",
-      "entry_date": "2026-11-09",
-      "entry_underlying": 319.48,
-      "entry_price": 10.0,
-      "qty": 0.1,
-      "iv_entry": 0.6531,
-      "dte_left": 6,
-      "days_held": 0,
-      "last_mark_date": "2026-11-09"
-    },
-    {
-      "symbol": "AVGO",
-      "strategy": "ensemble",
-      "kind": "put",
-      "strike": 320.0,
-      "expiry": "2026-11-16",
-      "price_source": "chain",
-      "entry_date": "2026-11-09",
-      "entry_underlying": 319.48,
-      "entry_price": 10.0,
-      "qty": 0.1,
-      "iv_entry": 0.6531,
-      "dte_left": 6,
-      "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.025,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -6.4,
+      "unrealized_pct": -6.4,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ORCL",
@@ -1193,7 +854,12 @@
       "iv_entry": 0.8075,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.375,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 18.6,
+      "unrealized_pct": 18.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ORCL",
@@ -1209,7 +875,12 @@
       "iv_entry": 0.8075,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.375,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 18.6,
+      "unrealized_pct": 18.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ORCL",
@@ -1225,7 +896,12 @@
       "iv_entry": 0.8075,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.375,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 18.6,
+      "unrealized_pct": 18.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CRM",
@@ -1241,7 +917,12 @@
       "iv_entry": 0.3658,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 5.675,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -14.98,
+      "unrealized_pct": -14.98,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ADBE",
@@ -1257,7 +938,12 @@
       "iv_entry": 0.4073,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 8.1,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 11.34,
+      "unrealized_pct": 11.34,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ADBE",
@@ -1273,7 +959,12 @@
       "iv_entry": 0.4073,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 7.35,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -13.52,
+      "unrealized_pct": -13.53,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ADBE",
@@ -1289,7 +980,12 @@
       "iv_entry": 0.4073,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 8.1,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 11.34,
+      "unrealized_pct": 11.34,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "INTC",
@@ -1305,7 +1001,12 @@
       "iv_entry": 1.4042,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 3.3,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 13.6,
+      "unrealized_pct": 13.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "INTC",
@@ -1321,7 +1022,12 @@
       "iv_entry": 1.4042,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 2.47,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -25.72,
+      "unrealized_pct": -25.71,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "INTC",
@@ -1337,7 +1043,12 @@
       "iv_entry": 1.4042,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 3.3,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 13.6,
+      "unrealized_pct": 13.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MU",
@@ -1353,7 +1064,12 @@
       "iv_entry": 0.9725,
       "dte_left": 6,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 31.075,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -0.48,
+      "unrealized_pct": -0.48,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "TXN",
@@ -1369,7 +1085,12 @@
       "iv_entry": 0.5825,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 7.575,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -25.72,
+      "unrealized_pct": -25.74,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ARM",
@@ -1385,7 +1106,12 @@
       "iv_entry": 0.9103,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 13.05,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 17.31,
+      "unrealized_pct": 17.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ARM",
@@ -1401,7 +1127,12 @@
       "iv_entry": 0.9103,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 13.05,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 17.31,
+      "unrealized_pct": 17.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "ARM",
@@ -1417,7 +1148,12 @@
       "iv_entry": 0.9103,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 13.05,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 17.31,
+      "unrealized_pct": 17.3,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "DELL",
@@ -1433,7 +1169,12 @@
       "iv_entry": 1.0483,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 27.125,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 25.29,
+      "unrealized_pct": 25.29,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "DELL",
@@ -1449,7 +1190,12 @@
       "iv_entry": 1.0483,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 27.125,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 25.29,
+      "unrealized_pct": 25.29,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PLTR",
@@ -1465,7 +1211,12 @@
       "iv_entry": 0.6337,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.6,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -2.22,
+      "unrealized_pct": -2.22,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PLTR",
@@ -1481,7 +1232,12 @@
       "iv_entry": 0.6337,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 6.6,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -2.22,
+      "unrealized_pct": -2.22,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "COIN",
@@ -1497,7 +1253,12 @@
       "iv_entry": 0.7441,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.75,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -32.37,
+      "unrealized_pct": -32.38,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MSTR",
@@ -1513,7 +1274,12 @@
       "iv_entry": 0.807,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 9.375,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 29.76,
+      "unrealized_pct": 29.76,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MSTR",
@@ -1529,7 +1295,12 @@
       "iv_entry": 0.807,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.6,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -37.63,
+      "unrealized_pct": -37.63,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "MSTR",
@@ -1545,7 +1316,12 @@
       "iv_entry": 0.807,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 9.375,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 29.76,
+      "unrealized_pct": 29.76,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "HOOD",
@@ -1561,7 +1337,12 @@
       "iv_entry": 0.6874,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.675,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 19.87,
+      "unrealized_pct": 19.87,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "HOOD",
@@ -1577,7 +1358,12 @@
       "iv_entry": 0.6874,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.675,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 19.87,
+      "unrealized_pct": 19.87,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "HOOD",
@@ -1593,7 +1379,12 @@
       "iv_entry": 0.6874,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.675,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 19.87,
+      "unrealized_pct": 19.87,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SOFI",
@@ -1609,7 +1400,12 @@
       "iv_entry": 0.7355,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 0.52,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -32.03,
+      "unrealized_pct": -32.03,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SNAP",
@@ -1625,7 +1421,12 @@
       "iv_entry": 0.7572,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 0.185,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -22.92,
+      "unrealized_pct": -22.92,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "UBER",
@@ -1641,7 +1442,12 @@
       "iv_entry": 0.341,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.225,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -34.32,
+      "unrealized_pct": -34.32,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "UBER",
@@ -1657,7 +1463,12 @@
       "iv_entry": 0.341,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.225,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -34.32,
+      "unrealized_pct": -34.32,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SHOP",
@@ -1673,7 +1484,12 @@
       "iv_entry": 0.5996,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 9.225,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 55.05,
+      "unrealized_pct": 55.04,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SHOP",
@@ -1689,7 +1505,12 @@
       "iv_entry": 0.5996,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 9.225,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 55.05,
+      "unrealized_pct": 55.04,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "SHOP",
@@ -1705,7 +1526,12 @@
       "iv_entry": 0.5996,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 9.225,
+      "last_mark_source": "chain",
+      "unrealized_pnl": 55.05,
+      "unrealized_pct": 55.04,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "F",
@@ -1721,7 +1547,12 @@
       "iv_entry": 0.291,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 0.16,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -33.33,
+      "unrealized_pct": -33.33,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "GM",
@@ -1737,7 +1568,12 @@
       "iv_entry": 0.4981,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.625,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -29.65,
+      "unrealized_pct": -29.65,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "WMT",
@@ -1753,7 +1589,12 @@
       "iv_entry": 0.28,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 3.95,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -3.07,
+      "unrealized_pct": -3.07,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "XOM",
@@ -1769,7 +1610,12 @@
       "iv_entry": 0.3239,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.15,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -4.6,
+      "unrealized_pct": -4.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "XOM",
@@ -1785,7 +1631,12 @@
       "iv_entry": 0.3239,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.15,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -4.6,
+      "unrealized_pct": -4.6,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CVX",
@@ -1801,7 +1652,12 @@
       "iv_entry": 0.282,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.325,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -13.06,
+      "unrealized_pct": -13.07,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "CVX",
@@ -1817,7 +1673,12 @@
       "iv_entry": 0.282,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 4.325,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -13.06,
+      "unrealized_pct": -13.07,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "PFE",
@@ -1833,7 +1694,12 @@
       "iv_entry": 0.2641,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 0.345,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -11.54,
+      "unrealized_pct": -11.54,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "BABA",
@@ -1849,7 +1715,12 @@
       "iv_entry": 0.3517,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 3.175,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -30.22,
+      "unrealized_pct": -30.22,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "RIVN",
@@ -1865,7 +1736,12 @@
       "iv_entry": 0.5848,
       "dte_left": 10,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 0.38,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -36.14,
+      "unrealized_pct": -36.13,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "IWM",
@@ -1881,7 +1757,12 @@
       "iv_entry": 0.2636,
       "dte_left": 7,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.695,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -41.25,
+      "unrealized_pct": -41.25,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "IWM",
@@ -1897,7 +1778,12 @@
       "iv_entry": 0.2636,
       "dte_left": 7,
       "days_held": 0,
-      "last_mark_date": "2026-11-09"
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.695,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -41.25,
+      "unrealized_pct": -41.25,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
     },
     {
       "symbol": "IWM",
@@ -1911,6 +1797,571 @@
       "entry_price": 2.885,
       "qty": 0.3466,
       "iv_entry": 0.2636,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09",
+      "last_mark": 1.695,
+      "last_mark_source": "chain",
+      "unrealized_pnl": -41.25,
+      "unrealized_pct": -41.25,
+      "marked_at": "2026-11-11T01:28:29.868920+00:00"
+    },
+    {
+      "symbol": "AAPL",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 350.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 350.69,
+      "entry_price": 5.425,
+      "qty": 0.1843,
+      "iv_entry": 0.2658,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "AMD",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 507.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 508.58,
+      "entry_price": 19.725,
+      "qty": 0.0507,
+      "iv_entry": 1.1727,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "AMD",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 507.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 508.58,
+      "entry_price": 19.725,
+      "qty": 0.0507,
+      "iv_entry": 1.1727,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "AMD",
+      "strategy": "ensemble",
+      "kind": "put",
+      "strike": 507.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 508.58,
+      "entry_price": 19.725,
+      "qty": 0.0507,
+      "iv_entry": 1.1727,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "AMZN",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 267.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 266.93,
+      "entry_price": 3.775,
+      "qty": 0.2649,
+      "iv_entry": 0.4222,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "META",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 642.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 641.37,
+      "entry_price": 16.025,
+      "qty": 0.0624,
+      "iv_entry": 0.4354,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "META",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 642.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 641.37,
+      "entry_price": 16.025,
+      "qty": 0.0624,
+      "iv_entry": 0.4354,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "CRM",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 215.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 214.94,
+      "entry_price": 6.825,
+      "qty": 0.1465,
+      "iv_entry": 0.3658,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "MU",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 732.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 733.15,
+      "entry_price": 38.0,
+      "qty": 0.0263,
+      "iv_entry": 0.9725,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "MU",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 732.5,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 733.15,
+      "entry_price": 38.0,
+      "qty": 0.0263,
+      "iv_entry": 0.9725,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QCOM",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 172.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 171.47,
+      "entry_price": 5.75,
+      "qty": 0.1739,
+      "iv_entry": 0.7022,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QCOM",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 172.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 171.47,
+      "entry_price": 5.75,
+      "qty": 0.1739,
+      "iv_entry": 0.7022,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QCOM",
+      "strategy": "ensemble",
+      "kind": "put",
+      "strike": 172.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 171.47,
+      "entry_price": 5.75,
+      "qty": 0.1739,
+      "iv_entry": 0.7022,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "SNAP",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 5.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 5.05,
+      "entry_price": 0.195,
+      "qty": 5.1282,
+      "iv_entry": 0.7572,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "UBER",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 71.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 71.17,
+      "entry_price": 2.205,
+      "qty": 0.4535,
+      "iv_entry": 0.341,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "PYPL",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 60.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 60.05,
+      "entry_price": 1.61,
+      "qty": 0.6211,
+      "iv_entry": 0.259,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "F",
+      "strategy": "sma_cross",
+      "kind": "call",
+      "strike": 12.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 12.52,
+      "entry_price": 0.16,
+      "qty": 6.25,
+      "iv_entry": 0.291,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "F",
+      "strategy": "macd_trend",
+      "kind": "call",
+      "strike": 12.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 12.52,
+      "entry_price": 0.16,
+      "qty": 6.25,
+      "iv_entry": 0.291,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "DIS",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 119.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 119.12,
+      "entry_price": 3.725,
+      "qty": 0.2685,
+      "iv_entry": 0.2292,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "SBUX",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 109.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 109.44,
+      "entry_price": 1.795,
+      "qty": 0.5571,
+      "iv_entry": 0.3106,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "MCD",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 282.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 281.44,
+      "entry_price": 4.425,
+      "qty": 0.226,
+      "iv_entry": 0.2875,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "WMT",
+      "strategy": "sma_cross",
+      "kind": "call",
+      "strike": 126.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 125.66,
+      "entry_price": 3.95,
+      "qty": 0.2532,
+      "iv_entry": 0.28,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "WMT",
+      "strategy": "macd_trend",
+      "kind": "call",
+      "strike": 126.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 125.66,
+      "entry_price": 3.95,
+      "qty": 0.2532,
+      "iv_entry": 0.28,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "XOM",
+      "strategy": "rsi_reversion",
+      "kind": "call",
+      "strike": 165.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 164.73,
+      "entry_price": 2.775,
+      "qty": 0.3604,
+      "iv_entry": 0.3239,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "CVX",
+      "strategy": "rsi_reversion",
+      "kind": "call",
+      "strike": 210.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 210.78,
+      "entry_price": 4.45,
+      "qty": 0.2247,
+      "iv_entry": 0.282,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "PFE",
+      "strategy": "sma_cross",
+      "kind": "call",
+      "strike": 29.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 29.23,
+      "entry_price": 0.71,
+      "qty": 1.4085,
+      "iv_entry": 0.2641,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "NIO",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 3.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 3.41,
+      "entry_price": 0.27,
+      "qty": 3.7037,
+      "iv_entry": 0.3893,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "RIVN",
+      "strategy": "rsi_reversion",
+      "kind": "put",
+      "strike": 14.0,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 14.01,
+      "entry_price": 0.69,
+      "qty": 1.4493,
+      "iv_entry": 0.5848,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "LCID",
+      "strategy": "macd_trend",
+      "kind": "call",
+      "strike": 3.5,
+      "expiry": "2026-11-20",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 3.6,
+      "entry_price": 0.395,
+      "qty": 2.5316,
+      "iv_entry": 1.0422,
+      "dte_left": 9,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 753.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 752.69,
+      "entry_price": 7.685,
+      "qty": 0.1301,
+      "iv_entry": 0.2227,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 753.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 752.69,
+      "entry_price": 7.685,
+      "qty": 0.1301,
+      "iv_entry": 0.2227,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "ensemble",
+      "kind": "put",
+      "strike": 753.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 752.69,
+      "entry_price": 7.685,
+      "qty": 0.1301,
+      "iv_entry": 0.2227,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QQQ",
+      "strategy": "sma_cross",
+      "kind": "put",
+      "strike": 679.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 679.35,
+      "entry_price": 12.2,
+      "qty": 0.082,
+      "iv_entry": 0.3587,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QQQ",
+      "strategy": "macd_trend",
+      "kind": "put",
+      "strike": 679.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 679.35,
+      "entry_price": 12.2,
+      "qty": 0.082,
+      "iv_entry": 0.3587,
+      "dte_left": 7,
+      "days_held": 0,
+      "last_mark_date": "2026-11-09"
+    },
+    {
+      "symbol": "QQQ",
+      "strategy": "ensemble",
+      "kind": "put",
+      "strike": 679.0,
+      "expiry": "2026-11-18",
+      "price_source": "chain",
+      "entry_date": "2026-11-09",
+      "entry_underlying": 679.35,
+      "entry_price": 12.2,
+      "qty": 0.082,
+      "iv_entry": 0.3587,
       "dte_left": 7,
       "days_held": 0,
       "last_mark_date": "2026-11-09"
