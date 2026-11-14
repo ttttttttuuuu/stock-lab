@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-10T02:19:20.132505+00:00",
-  "note": "weekly evolve 2026-10-10: 1 promotion(s)",
+  "updated_at": "2026-11-14T03:11:46.661973+00:00",
+  "note": "weekly evolve 2026-11-14: 2 promotion(s)",
   "strategy_params": {
     "sma_cross": {
       "fast": 5,
@@ -29,8 +29,8 @@
       "atr_period": 14
     },
     "ttm_squeeze": {
-      "n": 15,
-      "mult_kc": 2.0
+      "mult_kc": 1.5,
+      "n": 25
     },
     "wavetrend": {
       "ch_len": 14,
@@ -72,7 +72,7 @@
       -0.05
     ],
     "wavetrend": [
-      0.1,
+      0.05,
       -0.05
     ],
     "natural_trade": [
