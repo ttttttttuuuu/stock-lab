@@ -8,12 +8,12 @@
       "entry_ts": "2026-11-09 10:00:00-05:00",
       "entry_price": 59.085,
       "shares": 1.692477,
-      "bars_held": 19,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 62.51,
-      "unrealized_pnl": 5.8,
-      "unrealized_pct": 5.8,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "bars_held": 26,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 61.22,
+      "unrealized_pnl": 3.61,
+      "unrealized_pct": 3.61,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     },
     {
       "key": "ARM|macd_trend",
@@ -23,12 +23,12 @@
       "entry_ts": "2026-11-11 10:00:00-05:00",
       "entry_price": 202.36,
       "shares": 0.494169,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 203.38,
-      "unrealized_pnl": 0.5,
-      "unrealized_pct": 0.5,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "bars_held": 12,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 199.82,
+      "unrealized_pnl": -1.26,
+      "unrealized_pct": -1.26,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     },
     {
       "key": "ARM|sma_cross",
@@ -38,12 +38,12 @@
       "entry_ts": "2026-11-11 11:00:00-05:00",
       "entry_price": 205.945,
       "shares": 0.485567,
-      "bars_held": 4,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 203.38,
-      "unrealized_pnl": -1.25,
-      "unrealized_pct": -1.25,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "bars_held": 11,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 199.82,
+      "unrealized_pnl": -2.97,
+      "unrealized_pct": -2.97,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     },
     {
       "key": "ARM|ut_bot",
@@ -53,42 +53,12 @@
       "entry_ts": "2026-11-09 10:00:00-05:00",
       "entry_price": 189.825,
       "shares": 0.526801,
-      "bars_held": 19,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 203.38,
-      "unrealized_pnl": 7.14,
-      "unrealized_pct": 7.14,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
-    },
-    {
-      "key": "DELL|ensemble",
-      "symbol": "DELL",
-      "strategy": "ensemble",
-      "side": "long",
-      "entry_ts": "2026-11-11 15:00:00-05:00",
-      "entry_price": 373.73,
-      "shares": 0.267573,
-      "bars_held": 0,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 373.73,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
-    },
-    {
-      "key": "DELL|macd_trend",
-      "symbol": "DELL",
-      "strategy": "macd_trend",
-      "side": "long",
-      "entry_ts": "2026-11-11 10:00:00-05:00",
-      "entry_price": 377.155,
-      "shares": 0.265143,
-      "bars_held": 5,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 373.73,
-      "unrealized_pnl": -0.91,
-      "unrealized_pct": -0.91,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "bars_held": 26,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 199.82,
+      "unrealized_pnl": 5.27,
+      "unrealized_pct": 5.27,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     },
     {
       "key": "INTC|ensemble",
@@ -98,27 +68,12 @@
       "entry_ts": "2026-11-11 15:00:00-05:00",
       "entry_price": 62.51,
       "shares": 1.599744,
-      "bars_held": 0,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 62.51,
-      "unrealized_pnl": 0.0,
-      "unrealized_pct": 0.0,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
-    },
-    {
-      "key": "INTC|sma_cross",
-      "symbol": "INTC",
-      "strategy": "sma_cross",
-      "side": "long",
-      "entry_ts": "2026-11-11 12:00:00-05:00",
-      "entry_price": 63.325,
-      "shares": 1.579155,
-      "bars_held": 3,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 62.51,
-      "unrealized_pnl": -1.29,
-      "unrealized_pct": -1.29,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "bars_held": 7,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 61.22,
+      "unrealized_pnl": -2.06,
+      "unrealized_pct": -2.06,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     },
     {
       "key": "PLTR|macd_trend",
@@ -128,12 +83,72 @@
       "entry_ts": "2026-11-11 10:00:00-05:00",
       "entry_price": 173.3,
       "shares": 0.577034,
+      "bars_held": 12,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 171.56,
+      "unrealized_pnl": -1.0,
+      "unrealized_pct": -1.0,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
+    },
+    {
+      "key": "ARM|ensemble",
+      "symbol": "ARM",
+      "strategy": "ensemble",
+      "side": "long",
+      "entry_ts": "2026-11-12 11:00:00-05:00",
+      "entry_price": 201.49,
+      "shares": 0.496303,
+      "bars_held": 4,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 199.82,
+      "unrealized_pnl": -0.83,
+      "unrealized_pct": -0.83,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
+    },
+    {
+      "key": "DELL|ensemble",
+      "symbol": "DELL",
+      "strategy": "ensemble",
+      "side": "long",
+      "entry_ts": "2026-11-12 13:00:00-05:00",
+      "entry_price": 374.56,
+      "shares": 0.26698,
+      "bars_held": 2,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 371.35,
+      "unrealized_pnl": -0.86,
+      "unrealized_pct": -0.86,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
+    },
+    {
+      "key": "DELL|macd_trend",
+      "symbol": "DELL",
+      "strategy": "macd_trend",
+      "side": "long",
+      "entry_ts": "2026-11-12 10:00:00-05:00",
+      "entry_price": 364.18,
+      "shares": 0.274589,
       "bars_held": 5,
-      "last_mark_ts": "2026-11-11 15:00:00-05:00",
-      "last_mark": 172.47,
-      "unrealized_pnl": -0.48,
-      "unrealized_pct": -0.48,
-      "marked_at": "2026-11-13T02:14:12.012493+00:00"
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 371.35,
+      "unrealized_pnl": 1.97,
+      "unrealized_pct": 1.97,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
+    },
+    {
+      "key": "INTC|sma_cross",
+      "symbol": "INTC",
+      "strategy": "sma_cross",
+      "side": "long",
+      "entry_ts": "2026-11-12 10:00:00-05:00",
+      "entry_price": 62.4,
+      "shares": 1.602564,
+      "bars_held": 5,
+      "last_mark_ts": "2026-11-12 15:00:00-05:00",
+      "last_mark": 61.22,
+      "unrealized_pnl": -1.89,
+      "unrealized_pct": -1.89,
+      "marked_at": "2026-11-14T01:51:15.164935+00:00"
     }
   ],
   "pairs": [
@@ -190,32 +205,32 @@
   ],
   "selected_on": "2026-11-13",
   "eval_ts": {
-    "ARM|ensemble": "2026-11-11 15:00:00-05:00",
-    "ARM|macd_trend": "2026-11-11 15:00:00-05:00",
+    "ARM|ensemble": "2026-11-12 15:00:00-05:00",
+    "ARM|macd_trend": "2026-11-12 15:00:00-05:00",
     "ARM|supertrend": "2026-11-11 15:00:00-05:00",
-    "ARM|ut_bot": "2026-11-11 15:00:00-05:00",
+    "ARM|ut_bot": "2026-11-12 15:00:00-05:00",
     "COIN|macd_trend": "2026-09-24 15:00:00-04:00",
     "MU|macd_trend": "2026-10-21 15:00:00-04:00",
     "ORCL|ut_bot": "2026-09-23 15:00:00-04:00",
     "SMCI|ensemble": "2026-10-27 15:00:00-04:00",
     "SMCI|macd_trend": "2026-10-21 15:00:00-04:00",
     "SMCI|sma_cross": "2026-09-24 15:00:00-04:00",
-    "DELL|ensemble": "2026-11-11 15:00:00-05:00",
-    "INTC|ensemble": "2026-11-11 15:00:00-05:00",
+    "DELL|ensemble": "2026-11-12 15:00:00-05:00",
+    "INTC|ensemble": "2026-11-12 15:00:00-05:00",
     "INTC|natural_trade": "2026-10-06 15:00:00-04:00",
-    "INTC|ut_bot": "2026-11-11 15:00:00-05:00",
+    "INTC|ut_bot": "2026-11-12 15:00:00-05:00",
     "LCID|bb_breakout": "2026-10-14 15:00:00-04:00",
     "NVDA|macd_trend": "2026-10-21 15:00:00-04:00",
-    "PLTR|macd_trend": "2026-11-11 15:00:00-05:00",
+    "PLTR|macd_trend": "2026-11-12 15:00:00-05:00",
     "AMD|ensemble": "2026-10-27 15:00:00-04:00",
     "INTC|ttm_squeeze": "2026-11-10 15:00:00-05:00",
     "META|sma_cross": "2026-10-15 15:00:00-04:00",
     "SHOP|ttm_squeeze": "2026-10-15 15:00:00-04:00",
-    "DELL|macd_trend": "2026-11-11 15:00:00-05:00",
+    "DELL|macd_trend": "2026-11-12 15:00:00-05:00",
     "SHOP|macd_trend": "2026-10-28 15:00:00-04:00",
     "INTC|supertrend": "2026-11-04 15:00:00-05:00",
-    "ARM|sma_cross": "2026-11-11 15:00:00-05:00",
-    "INTC|sma_cross": "2026-11-11 15:00:00-05:00",
+    "ARM|sma_cross": "2026-11-12 15:00:00-05:00",
+    "INTC|sma_cross": "2026-11-12 15:00:00-05:00",
     "MU|supertrend": "2026-11-11 15:00:00-05:00"
   },
   "generations": [
@@ -694,70 +709,9 @@
   ],
   "gen_start": "2026-11-13",
   "shadow": {
-    "gen_id": 7,
-    "since": "2026-11-06",
-    "pairs": [
-      {
-        "symbol": "ARM",
-        "strategy": "macd_trend",
-        "pnl": 11.98,
-        "trades": 5
-      },
-      {
-        "symbol": "ARM",
-        "strategy": "supertrend",
-        "pnl": -1.99,
-        "trades": 2
-      },
-      {
-        "symbol": "INTC",
-        "strategy": "ut_bot",
-        "pnl": 4.3,
-        "trades": 2
-      },
-      {
-        "symbol": "INTC",
-        "strategy": "ensemble",
-        "pnl": 12.19,
-        "trades": 2
-      },
-      {
-        "symbol": "INTC",
-        "strategy": "supertrend",
-        "pnl": 0.76,
-        "trades": 2
-      },
-      {
-        "symbol": "ARM",
-        "strategy": "ut_bot",
-        "pnl": -1.99,
-        "trades": 2
-      },
-      {
-        "symbol": "DELL",
-        "strategy": "macd_trend",
-        "pnl": 15.55,
-        "trades": 5
-      },
-      {
-        "symbol": "ARM",
-        "strategy": "ensemble",
-        "pnl": 3.26,
-        "trades": 4
-      },
-      {
-        "symbol": "PLTR",
-        "strategy": "macd_trend",
-        "pnl": 7.64,
-        "trades": 3
-      },
-      {
-        "symbol": "DELL",
-        "strategy": "ensemble",
-        "pnl": 8.93,
-        "trades": 2
-      }
-    ],
-    "total": 60.63
+    "gen_id": 8,
+    "since": "2026-11-13",
+    "pairs": [],
+    "total": 0
   }
 }
