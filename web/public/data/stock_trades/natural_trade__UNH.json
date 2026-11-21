@@ -1,1 +1,1 @@
-[]
+[{"symbol": "UNH", "strategy": "natural_trade", "side": "short", "entry_date": "2026-11-17", "entry_price": 389.68, "shares": 0.256621, "exit_date": "2026-11-18", "exit_price": 349.91, "exit_reason": "take_profit", "pnl": 10.21, "pnl_pct": 10.21, "hold_days": 1}, {"symbol": "UNH", "strategy": "natural_trade", "side": "short", "entry_date": "2026-11-19", "entry_price": 330.48, "shares": 0.30259, "exit_date": "2026-11-20", "exit_price": 339.85, "exit_reason": "end_of_data", "pnl": -2.84, "pnl_pct": -2.84, "hold_days": 1}]

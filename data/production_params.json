@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-11-14T03:11:46.661973+00:00",
-  "note": "weekly evolve 2026-11-14: 2 promotion(s)",
+  "updated_at": "2026-11-21T03:57:32.856553+00:00",
+  "note": "weekly evolve 2026-11-21: 2 promotion(s)",
   "strategy_params": {
     "sma_cross": {
       "fast": 5,
       "slow": 30
     },
     "rsi_reversion": {
-      "period": 7,
-      "oversold": 35,
-      "overbought": 65
+      "overbought": 70,
+      "oversold": 30,
+      "period": 14
     },
     "macd_trend": {
       "fast": 19,
@@ -29,12 +29,12 @@
       "atr_period": 14
     },
     "ttm_squeeze": {
-      "mult_kc": 1.5,
-      "n": 25
+      "n": 25,
+      "mult_kc": 1.5
     },
     "wavetrend": {
-      "ch_len": 14,
-      "avg_len": 21
+      "avg_len": 28,
+      "ch_len": 14
     },
     "natural_trade": {
       "anchor": 40,
